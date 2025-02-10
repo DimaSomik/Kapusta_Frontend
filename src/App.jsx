@@ -1,21 +1,25 @@
-import { useState } from 'react'
 import './App.css'
+import { Route, Routes } from 'react-router-dom';
+import { lazy } from 'react';
 
-function App() {
-  const [count, setCount] = useState(0)
+const AuthPage = lazy(() => import('./pages/AuthPage/AuthPage'));
+const InputExpensesPage = lazy(() => import('./pages/InputExpensesPage/InputExpensesPage'));
+const InputIncomePage = lazy(() => import('./pages/InputIncomePage/InputIncomePage'));
+const ReportExpensesPage = lazy(() => import('./pages/ReportExpensesPage/ReportExpensesPage'));
+const ReportIncomePage = lazy(() => import('./pages/ReportIncomePage/ReportIncomePage'));
 
+function App() { 
   return (
     <>
-      <div>
-      </div>
-      <h1>Kapusta Project</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
+      <Routes>
+        <Route path='/auth' element={<AuthPage />}/>
+        <Route path='/transaction/expenses' element={<InputExpensesPage />}/>
+        <Route path='/transaction/income' element={<InputIncomePage />} />
+        <Route path='/transaction/expense-categories' element={<ReportExpensesPage />} />
+        <Route path='/transaction/income-categories' element={<ReportIncomePage />} />
+      </Routes>
     </>
-  )
-}
+  );
+};
 
 export default App
