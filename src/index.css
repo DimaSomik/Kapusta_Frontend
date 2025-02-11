@@ -1,4 +1,29 @@
 :root {
+  font-family: "Roboto", sans-serif;
+
+  --primay-color: #52555f; /* orange in figma */
+  --secondary-color: #ff751d; /* orange in figma */
+  --tertiary-color: #fed9bf; /* lighter orange in figma */
+  --accent-color: #f5f6fb; /* bacground, outline, placeholder, ect. */
+  --lighter-accent-color: #fafbfd; /* expenses/income tab bacground */
+
+  --text-light-color: white;
+  --text-dark-color: black;
+  --alert-color: #eb5757; /* login required */
+
+  --icon-fill-color: #071f41;
+
+  --expences-color: #e53935;
+  --incomes-color: #407946;
+
+  --modal-gradient: linear-gradient(
+    147deg,
+    rgba(29, 52, 106, 1) 0%,
+    rgba(3, 22, 52, 1) 100%
+  );
+}
+
+/* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -65,4 +90,4 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
+} */
