@@ -1,0 +1,25 @@
+.reports-backlink {
+  display: flex;
+  align-items: flex-start;
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: rgba(82, 85, 95, 0.7);
+  transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+}
+
+.reports-backlink:hover {
+  color: rgba(82, 85, 95, 1);
+}
+
+.reports-backlink-text {
+  padding: 5px 0 5px 16px;
+}
+
+@media (max-width: 320px) {
+  .reports-backlink-text {
+    display: none;
+  }
+}
