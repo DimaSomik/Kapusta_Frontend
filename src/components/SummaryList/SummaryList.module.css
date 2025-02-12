@@ -1,5 +1,5 @@
 .tableContainer {
-  width: 300px;
+  width: 213px;
   background: #fafbfc;
   border-radius: 20px 20px 20px 0;
   overflow: hidden;
@@ -36,3 +36,15 @@ tr:not(:last-child) td {
 td:last-child {
   text-align: right;
 }
+
+@media (max-width: 320px) {
+  .tableContainer {
+    width: 230px;
+  }
+}
+
+/* @media (min-width: 768px) {
+  .tableContainer {
+    width: 230px;
+  }
+} */
