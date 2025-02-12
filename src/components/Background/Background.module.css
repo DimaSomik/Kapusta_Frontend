@@ -1,0 +1,267 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.background {
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 150vh;
+  width: 100%;
+  position: absolute;
+  background-color: white;
+}
+
+.header {
+    background-color: white; 
+    height: 56px; 
+    position: fixed; 
+    width: 100%;
+    top: 0; 
+    z-index: 100; 
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 0 20px; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000000;
+    z-index: 15; 
+    position: absolute;
+    top: 12px;
+    left: 20px;
+}
+
+.userExitContainer {
+    width: 170px;
+    height: 36px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin: 0;
+    padding-right: 16px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.userLogo {
+    width: 32px; 
+    height: 32px;
+    background-color: rgba(245, 246, 250, 1);
+    color: rgba(82, 85, 95, 1); 
+    font-weight: 700; 
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%; 
+}
+
+.username {
+    font-size: 12px;
+    color: rgba(82, 85, 95, 1);
+    font-weight: 400;
+}
+
+.line {
+    height: 36px;
+    width: 1px; 
+    background-color: rgba(224, 229, 235, 1); 
+    margin: 0 10px; 
+}
+
+.exit {
+    font-size: 12px;
+    color: rgba(82, 85, 95, 1);
+    font-weight: 400;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.cabbageBackground {
+    position: absolute; 
+    top: 56px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 526px;
+    background-color: rgba(245, 246, 251, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    border-bottom-left-radius: 30%;
+    z-index: 1; 
+}
+
+.cabbage1, .cabbage2, .cabbage3, .cabbage4, .cabbage5, .cabbage6,
+.cabbage7, .cabbage8, .cabbage9, .cabbage10,.cabbage11, .cabbage12,
+.cabbage13, .cabbage14 {
+    width: 83px;
+    height: 89px;
+    background-image: url();
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    z-index: 2;
+}
+
+.cabbage1 { --rotate: 10deg; top: 120%; left: 55%; }
+.cabbage2 { --rotate: 30deg; top: 115%; left: 80%; }
+.cabbage3 { --rotate: -20deg; top:  100%; left: 25%; }
+.cabbage4 { --rotate: 40deg; top:  123%; left: 35%; }
+.cabbage5 { --rotate: -10deg; top:  130%; left: 10%; }
+.cabbage6 { --rotate: 15deg; top:  125%; left: 50%; }
+.cabbage7 { --rotate: -30deg; top:  90%; left: 30%; }
+.cabbage8 { --rotate: 60deg; top:  117%; left: 15%; }
+.cabbage9 { --rotate: -50deg; top:  89%; left: 68%; }
+.cabbage10 { --rotate: 20deg; top:  82%; left: 3%; }
+.cabbage11 { --rotate: 35deg; top:  82%; left: 74%; }
+.cabbage12 { --rotate: -40deg; top:  81%; left: 45%; }
+.cabbage13 { --rotate: 10deg; top: 83%; left: 90%; }
+.cabbage14 { --rotate: 25deg; top:  83%; left: 62%; }
+
+.cabbageContainer {
+    position: absolute; 
+    top: 56px; 
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 56px); 
+    display: block;
+}
+
+/* TABLET */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .background {
+        background-color: white; 
+    }
+
+    .cabbageBackground {
+        display: block; 
+        background-color: rgba(245, 246, 250, 1); 
+        height: 324px; 
+        position: absolute;
+    }
+
+    .header {
+        max-width: 1024px;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between; 
+        align-items: center;
+        width: 100%; 
+    }
+
+    .cabbage1, .cabbage2, .cabbage3, .cabbage4, .cabbage5, .cabbage6,
+    .cabbage7, .cabbage8, .cabbage9, .cabbage10, .cabbage11, .cabbage12,
+    .cabbage13, .cabbage14 {
+        display: none; 
+    }
+   
+    .userExitContainer {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px; 
+        width: 100%; 
+        padding-right: 32px; 
+        align-items: center; 
+        height: 56px; 
+        background-color: rgba(245, 246, 250, 1);
+    }
+
+    .userLogo {
+        width: 32px;
+        height: 32px;
+        background-color: #88888824;
+        color: rgba(82, 85, 95, 1);
+        font-weight: 700;
+        font-size: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+
+    .logout {
+        display: block;
+        width: 16px; 
+        height: 16px; 
+        position: relative; 
+        margin-left: 10px; 
+        align-self: center; 
+    }
+
+    .cabbages {
+        background-image: url();
+        background-repeat: no-repeat; 
+        width: 183px; 
+        height: 146px;
+        top: 650px; 
+        left: 497px; 
+        position: absolute; 
+        z-index: 15;
+        margin-bottom: 59px;
+      
+    }
+}
+
+@media (max-width: 768px) {
+    .cabbageBackground {
+        display: block;
+        height: 324px; 
+    }
+
+    .cabbage1, .cabbage2, .cabbage3, .cabbage4, .cabbage5, .cabbage6,
+    .cabbage7, .cabbage8, .cabbage9, .cabbage10, .cabbage11, .cabbage12,
+    .cabbage13, .cabbage14 {
+        display: none;
+    }
+  
+     .userExitContainer {
+        display: flex;
+        justify-content: flex-end; 
+        gap: 1px; 
+        position: relative;  
+        width: 100%; 
+        padding-right: 16px; 
+        align-items: center; 
+        height: 56px; 
+        background-color: white;
+    }
+
+    .userLogo {
+        width: 32px;
+        height: 32px;
+        background-color: rgba(245, 246, 250, 1);
+        color: rgba(82, 85, 95, 1);
+        font-weight: 700;
+        font-size: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        margin-right: 10px; 
+    }
+
+    .logout {
+        display: block;
+        width: 16px; 
+        height: 16px; 
+        position: relative; 
+        margin-left: 10px; 
+        align-self: center; 
+    }
+}
