@@ -29,7 +29,7 @@
 [data-theme="dark"] {
   --primay-color: #ff751d;
   --secondary-color: #f5f6fb;
-  --tertiary-color: #fed9bf;
+  --tertiary-color: black;
   --accent-color: #242424;
   --lighter-accent-color: #333333;
 }

@@ -12,10 +12,11 @@
   justify-content: center;
   align-items: center;
   background-color: Var(--accent-color);
-  transition: background-color 250ms ease-in-out, color 250ms ease-in-out;
+  transition: background-color 250ms ease-in-out;
 }
 .toogleTestTitle {
   color: Var(--primay-color);
+  transition: color 250ms ease-in-out;
 }
 .toogleTestBox {
   padding: 1em;
@@ -23,6 +24,7 @@
   border-radius: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   color: Var(--tertiary-color);
+  transition: color 250ms ease-in-out, background-color 250ms ease-in-out;
 }
 /* theme toogle test styles */
 
