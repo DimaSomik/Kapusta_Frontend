@@ -1,0 +1,27 @@
+.reports-expenses-income-switcher-main-container {
+  display: flex;
+  align-items: center;
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: rgba(82, 85, 95, 0.7);
+  user-select: none;
+  padding: 20px 0;
+}
+
+.reports-expenses-income-switcher-name {
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--text-dark-color);
+  min-width: 96px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.reports-expenses-income-switcher-arrow {
+  cursor: pointer;
+}
