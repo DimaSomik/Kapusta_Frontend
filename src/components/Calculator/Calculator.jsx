@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 import styles from "./Calculator.module.css";
 import sprite from "../assets/svgs-sprite.svg";
 
-
 const categories = [
   "Transport",
   "Products",
@@ -17,12 +16,12 @@ const categories = [
   "Other",
 ];
 
-
 const Calculator = () => {
   const [selectedCategory, setSelectedCategory] = useState("Product category");
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [productDescription, setProductDescription] = useState(""); 
+  const [amount, setAmount] = useState("0,00"); 
   const dropdownRef = useRef(null);
-
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -31,13 +30,17 @@ const Calculator = () => {
       }
     };
 
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
+  const handleClear = () => {
+    setProductDescription("");
+    setSelectedCategory("Product category");
+    setAmount("0,00");
+  };
 
   return (
     <div className={styles.container}>
@@ -48,14 +51,14 @@ const Calculator = () => {
         {new Date().toLocaleDateString("pl-PL")}
       </div>
 
-
       <div className={styles.inputGroup}>
         <input
           type="text"
           placeholder="Product description"
           className={styles.input}
+          value={productDescription} 
+          onChange={(e) => setProductDescription(e.target.value)} 
         />
-
 
         <div
           className={styles.selectWrapper}
@@ -69,7 +72,6 @@ const Calculator = () => {
           <svg className={styles.icon}>
             <use href={`${sprite}#icon-down-arrow`}></use>
           </svg>
-
 
           {dropdownOpen && (
             <ul className={styles.dropdown}>
@@ -90,12 +92,11 @@ const Calculator = () => {
           )}
         </div>
 
-
         <div className={styles.amount}>
           <input
             type="text"
-            value="0,00"
-            readOnly
+            value={amount} 
+            onChange={(e) => setAmount(e.target.value)} 
             className={styles.amountInput}
           />
           <svg className={styles.amountIcon}>
@@ -104,12 +105,10 @@ const Calculator = () => {
         </div>
       </div>
 
-
       <button className={styles.inputButton}>INPUT</button>
-      <button className={styles.clearButton}>CLEAR</button>
+      <button className={styles.clearButton} onClick={handleClear}>CLEAR</button> 
     </div>
   );
 };
-
 
 export default Calculator;
