@@ -8,7 +8,7 @@ export const ThemeToogler = ({ handleChange, isChecked }) => {
         id="check"
         className={css.toogle}
         onChange={handleChange}
-        checked={isChecked}
+        checked={isChecked ? isChecked : false}
       ></input>
       <label htmlFor="check"> </label>
     </div>
