@@ -1,0 +1,24 @@
+.reports-group-icons-main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 170px;
+  column-gap: 33px;
+  row-gap: 40px;
+  padding-bottom: 20px;
+}
+
+@media screen and (min-width: 772px) and (max-width: 1279px) {
+  .reports-group-icons-main-container {
+    margin: 0 40px;
+    column-gap: 18px;
+  }
+}
+
+@media screen and (max-width: 771px) {
+  .reports-group-icons-main-container {
+    margin: 0 20px;
+    column-gap: 13px;
+  }
+}

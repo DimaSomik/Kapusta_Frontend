@@ -1,0 +1,18 @@
+.reports-icon-main-container{
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-align: center;
+    color: #52555f;
+    height: 106px;
+    white-space: normal;
+}
+
+.reports-icon{
+  max-width: 56px;
+}
