@@ -6,7 +6,7 @@ const BalanceComponent = () => {
     <div className={styles.balanceContainer}>
       <span className={styles.balanceLabel}>Balance:</span>
       <div className={styles.balanceWrapper}>
-        <input type="text" className={styles.balanceInput} value="00.00 UAH" readOnly />
+        <input type="text" className={styles.balanceInput} value="00.00 $" readOnly />
         <button className={styles.confirmButton}>CONFIRM</button>
       </div>
     </div>

@@ -1,0 +1,56 @@
+.reports-expenses-income-row-main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 14px;
+  color: rgb(82, 85, 95);
+  letter-spacing: 0.04em;
+  background-color: rgb(255, 255, 255);
+  border-radius: 30px;
+  box-shadow: 0 10px 60px 0 rgba(170, 178, 197, 0.2);
+  margin-top: 32px;
+}
+
+.reports-expenses-income-row-container {
+  display: flex;
+  justify-content: center;
+  padding: 15px 20px;
+}
+
+.reports-value {
+  padding-left: 15px;
+}
+
+.reports-expenses-value {
+  color: rgb(229, 57, 53);
+}
+
+.reports-income-value {
+  color: rgb(64, 121, 70);
+}
+
+.reports-icon-divider {
+  width: 2px;
+  height: 36px;
+}
+
+@media screen and (max-width: 771px) {
+  .reports-expenses-income-row-container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .reports-value {
+    padding-left: 0;
+  }
+
+  .reports-icon-divider {
+    width: 2px;
+    height: 70px;
+  }
+}
