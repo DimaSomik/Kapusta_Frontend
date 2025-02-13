@@ -1,10 +1,32 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
+/* theme toogle test styles */
+.toogleTestMain {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: Var(--accent-color);
+  transition: background-color 250ms ease-in-out, color 250ms ease-in-out;
+}
+.toogleTestTitle {
+  color: Var(--primay-color);
+}
+.toogleTestBox {
+  padding: 1em;
+  background-color: Var(--secondary-color);
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  color: Var(--tertiary-color);
+}
+/* theme toogle test styles */
 
+/* 
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -39,4 +61,4 @@
 
 .read-the-docs {
   color: #888;
-}
+} */

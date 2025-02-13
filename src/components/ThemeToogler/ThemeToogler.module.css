@@ -1,0 +1,44 @@
+.toogle-container {
+  position: absolute;
+  top: 2em;
+  right: 2em;
+}
+.toogle {
+  visibility: hidden;
+}
+.toogle + label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: Var(--primay-color);
+}
+.toogle + label::before {
+  content: "";
+  width: 4em;
+  height: 2em;
+  background-color: var(--toogle-bg);
+  border-radius: 2em;
+  margin-right: 1em;
+  transition: background-color 250ms ease-in-out;
+}
+.toogle + label::after {
+  content: "";
+  width: 1.5em;
+  height: 1.5em;
+  background-color: var(--toogle-fg);
+  border-radius: 2em;
+  margin-right: 1em;
+  position: absolute;
+  left: 0.4em;
+  transition: background-color 250ms ease-in-out, transform 250ms ease-in-out;
+}
+
+.toogle:checked + label::before {
+  background-color: var(--toogle-fg);
+}
+
+.toogle:checked + label::after {
+  transform: translateX(122%);
+  background-color: var(--toogle-bg);
+}
