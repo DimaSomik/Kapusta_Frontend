@@ -10,7 +10,7 @@ export const ThemeToogler = ({ handleChange, isChecked }) => {
         onChange={handleChange}
         checked={isChecked}
       ></input>
-      <label htmlFor="check">{isChecked ? "Light Mode" : "Dark Mode"}</label>
+      <label htmlFor="check"> </label>
     </div>
   );
 };

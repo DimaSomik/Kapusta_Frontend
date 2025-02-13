@@ -1,9 +1,10 @@
 .toogle-container {
   position: absolute;
-  top: 2em;
-  right: 2em;
+  top: 1em;
+  right: 1.5em;
 }
 .toogle {
+  position: absolute;
   visibility: hidden;
 }
 .toogle + label {
@@ -13,16 +14,15 @@
   justify-content: center;
   color: Var(--primay-color);
 }
-.toogle + label::before {
+.toogle + label::after {
   content: "";
   width: 4em;
   height: 2em;
   background-color: var(--toogle-bg);
   border-radius: 2em;
-  margin-right: 1em;
   transition: background-color 250ms ease-in-out;
 }
-.toogle + label::after {
+.toogle + label::before {
   content: "";
   width: 1.5em;
   height: 1.5em;
@@ -30,15 +30,15 @@
   border-radius: 2em;
   margin-right: 1em;
   position: absolute;
-  left: 0.4em;
+  left: 0.51em;
   transition: background-color 250ms ease-in-out, transform 250ms ease-in-out;
 }
 
-.toogle:checked + label::before {
+.toogle:checked + label::after {
   background-color: var(--toogle-fg);
 }
 
-.toogle:checked + label::after {
-  transform: translateX(122%);
+.toogle:checked + label::before {
+  transform: translateX(100%);
   background-color: var(--toogle-bg);
 }
