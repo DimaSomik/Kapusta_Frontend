@@ -1,6 +1,8 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import css from "./AuthForm.module.css";
+import sprite from "../../assets/svgs-sprite.svg";
+import { useState } from "react";
 
 const initialValues = {
   email: "",
@@ -9,6 +11,8 @@ const initialValues = {
 };
 
 export function RegisterForm({ onToggleForm }) {
+  const [showHidePassword, setShowHidePassword] = useState(false);
+
   //   const dispatch = useDispatch();
 
   const registerSchema = Yup.object().shape({
@@ -109,14 +113,31 @@ export function RegisterForm({ onToggleForm }) {
                   Password:
                 </p>
               </label>
-              <Field
-                className={css.field}
-                type="password"
-                name="password"
-                id="password"
-                autoComplete="off"
-                placeholder="Password"
-              />
+              <div className={css.passwordWrapper}>
+                <Field
+                  className={css.field}
+                  type={showHidePassword ? "text" : "password"}
+                  name="password"
+                  id="password"
+                  autoComplete="off"
+                  placeholder="Password"
+                />
+                <button
+                  className={css.eyeBtn}
+                  onClick={() => setShowHidePassword(!showHidePassword)}
+                  type="button"
+                >
+                  <svg className={css.eyeBtnIcon}>
+                    <use
+                      href={
+                        showHidePassword
+                          ? `${sprite}#icon-eye`
+                          : `${sprite}#icon-eye-blocked`
+                      }
+                    />
+                  </svg>
+                </button>
+              </div>
               <div className={css.error}>
                 <ErrorMessage name="password" component="div" />
               </div>
