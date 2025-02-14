@@ -19,8 +19,9 @@ const categories = [
 const Calculator = () => {
   const [selectedCategory, setSelectedCategory] = useState("Product category");
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [productDescription, setProductDescription] = useState(""); 
-  const [amount, setAmount] = useState("0,00"); 
+  const [productDescription, setProductDescription] = useState("");
+  const [amount, setAmount] = useState("0,00");
+  const [entries, setEntries] = useState([]);
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -42,6 +43,38 @@ const Calculator = () => {
     setAmount("0,00");
   };
 
+  const handleSubmit = async () => {
+    if (!productDescription || selectedCategory === "Product category" || !amount) return;
+
+    const newEntry = {
+      description: productDescription,
+      category: selectedCategory,
+      amount,
+      date: new Date().toLocaleDateString("pl-PL"),
+    };
+
+    setEntries([...entries, newEntry]);
+    handleClear();
+
+    try {
+      await fetch("https://backend-apiExample.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newEntry),
+      });
+    } catch (error) {
+      console.error("Error sending data to backend:", error);
+    }
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleSubmit();
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.date}>
@@ -56,8 +89,9 @@ const Calculator = () => {
           type="text"
           placeholder="Product description"
           className={styles.input}
-          value={productDescription} 
-          onChange={(e) => setProductDescription(e.target.value)} 
+          value={productDescription}
+          onChange={(e) => setProductDescription(e.target.value)}
+          onKeyDown={handleKeyDown}
         />
 
         <div
@@ -95,9 +129,10 @@ const Calculator = () => {
         <div className={styles.amount}>
           <input
             type="text"
-            value={amount} 
-            onChange={(e) => setAmount(e.target.value)} 
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
             className={styles.amountInput}
+            onKeyDown={handleKeyDown}
           />
           <svg className={styles.amountIcon}>
             <use href={`${sprite}#icon-calculator`}></use>
@@ -105,8 +140,8 @@ const Calculator = () => {
         </div>
       </div>
 
-      <button className={styles.inputButton}>INPUT</button>
-      <button className={styles.clearButton} onClick={handleClear}>CLEAR</button> 
+      <button className={styles.inputButton} onClick={handleSubmit}>INPUT</button>
+      <button className={styles.clearButton} onClick={handleClear}>CLEAR</button>
     </div>
   );
 };

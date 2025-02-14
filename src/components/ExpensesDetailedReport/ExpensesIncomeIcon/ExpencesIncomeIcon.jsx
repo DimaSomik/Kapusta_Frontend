@@ -6,7 +6,9 @@ export const ExpensesIncomeIcon = ({ name, iconName, amount }) => {
 
   const formatCurrency = (value) => {
     const numericValue = typeof value === "number" ? value : parseFloat(value);
-    return numericValue.toLocaleString("fr-FR", {
+    const negativeValue = Math.abs(numericValue) * -1;
+    
+    return negativeValue.toLocaleString("fr-FR", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2
     }).replace(",", ".");
