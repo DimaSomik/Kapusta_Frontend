@@ -1,0 +1,40 @@
+.reports-calendar-month-container {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: rgba(82, 85, 95, 0.7);
+  transition: color .25s cubic-bezier(.4, 0, .2, 1);
+  user-select: none;
+}
+
+.reports-calendar-month-text {
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+}
+
+.reports-calendar-month-date-container {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.reports-calendar-month-name {
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #000;
+  min-width: 126px;
+}
+
+.reports-calendar-month-arrow {
+  cursor: pointer;
+}

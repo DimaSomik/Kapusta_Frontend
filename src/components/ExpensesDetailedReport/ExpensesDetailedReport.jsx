@@ -1,0 +1,52 @@
+import { useLocation, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { ExpensesIncomeSwitcher } from "./ExpensesIncomeSwitcher/ExpensesIncomeSwitcher";
+import { ExpensesIncomeGroupIcons } from "./ExpensesIncomeGroupIcons/ExpensesIncomeGroupIcons";
+import css from "./ExpensesDetailedReport.module.css";
+
+export const TRANSACTION = Object.freeze({
+  EXPENSES: "Expences",
+  INCOME: "Income",
+});
+
+const ROUTES = Object.freeze({
+  EXPENSES: "expense-categories",
+  INCOME: "income-categories",
+});
+
+export const ExpensesDetailedReport = () => {
+  const location = useLocation();
+  const lastSegmentPageUrl = location.pathname.split("/").filter(Boolean).pop();
+  const [expensesIncomeText, setExpensesIncomeText] = useState(
+    lastSegmentPageUrl === ROUTES.EXPENSES
+      ? TRANSACTION.EXPENSES
+      : TRANSACTION.INCOME
+  );
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setExpensesIncomeText(
+      lastSegmentPageUrl === ROUTES.EXPENSES
+        ? TRANSACTION.EXPENSES
+        : TRANSACTION.INCOME
+    );
+  }, [lastSegmentPageUrl]);
+
+  const toggleTransactionType = () => {
+    const isExpenses = expensesIncomeText === TRANSACTION.EXPENSES;
+    const newText = isExpenses ? TRANSACTION.INCOME : TRANSACTION.EXPENSES;
+    const newRoute = isExpenses ? ROUTES.INCOME : ROUTES.EXPENSES;
+
+    setExpensesIncomeText(newText);
+    navigate(`/transaction/${newRoute}`);
+  };
+
+
+  return (
+    <div className={css["reports-detailed-main-container"]}>
+      <ExpensesIncomeSwitcher expensesIncomeText={expensesIncomeText}
+        toggleTransactionType={toggleTransactionType} />
+      <ExpensesIncomeGroupIcons expensesIncomeText={expensesIncomeText} />
+    </div>
+  );
+};
