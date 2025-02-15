@@ -77,6 +77,7 @@ const Calculator = () => {
 
   return (
     <div className={styles.container}>
+      <div className={styles.topSection}>
       <div className={styles.date}>
         <svg className={styles.icon}>
           <use href={`${sprite}#icon-calendar`}></use>
@@ -129,8 +130,8 @@ const Calculator = () => {
         <div className={styles.amount}>
           <input
             type="text"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
+            value="0,00$"
+            readOnly
             className={styles.amountInput}
             onKeyDown={handleKeyDown}
           />
@@ -138,11 +139,14 @@ const Calculator = () => {
             <use href={`${sprite}#icon-calculator`}></use>
           </svg>
         </div>
-      </div>
+        </div>
+        </div>
 
-      <button className={styles.inputButton} onClick={handleSubmit}>INPUT</button>
-      <button className={styles.clearButton} onClick={handleClear}>CLEAR</button>
-    </div>
+          <div className={styles.buttons}>
+      <button className={styles.inputButton}>INPUT</button>
+      <button className={styles.clearButton}>CLEAR</button>
+      </div>
+      </div>
   );
 };
 
