@@ -1,0 +1,69 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+	background-color: white;
+	height: 150vh;
+	width: 100%;
+}
+
+.background {
+    background-color: white;
+    height: 150vh;
+    position: relative; 
+    width: 100vw;
+	display: flex;
+	align-items: center;
+	justify-content: center; 
+}
+
+.cabbageBackground {
+    position: absolute;
+    top: 56px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 526px;
+    background-color: rgba(245, 246, 251, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom-left-radius: 20%;
+    z-index: 1;
+    transition: top 1s ease-in-out;
+}
+
+.title {
+    width: 377px;
+    height: 139px;
+    font-size: 102px;
+    font-weight: 900;
+    position: absolute;
+    top: 264px; 
+    left: 229px; 
+    color: #000000;
+    text-shadow: 2px 2px 4px #000000;
+    text-transform: uppercase; 
+    letter-spacing: 2px;
+    z-index: 1000;
+}
+
+.moveDown .title {
+    opacity: 0; 
+    pointer-events: none;
+}
+
+.cabbageBottom {
+    width: 183px;
+    height: 142px;
+    top: 658px;
+    left: 230px;
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('../../public/kapusty.svg');
+}
