@@ -1,0 +1,95 @@
+.icon {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.tableWrapper {
+  width: 100%;
+  max-height: 300px;
+  overflow-y: auto;
+  background: var(--text-light-color);
+  border-radius: 20px 20px 0 0;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--accent-color);
+}
+
+.tableHeader {
+  text-align: left;
+  font-weight: bold;
+  padding: 15px 20px;
+  background: var(--accent-color);
+  color: var(--primary-color);
+  font-size: 12px;
+}
+
+.row {
+  border: 2px solid var(--accent-color);
+  height: 40px;
+}
+
+td {
+  padding: 0 15px;
+  text-align: left;
+  color: var(--primary-color);
+  background: var(--text-light-color);
+  font-size: 12px;
+}
+
+.sum {
+  color: var(--expences-color);
+  font-weight: bold;
+}
+
+button {
+  background: transparent;
+  border: none;
+  padding: 7px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: var(--accent-color);
+}
+
+.tableWrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+.tableWrapper::-webkit-scrollbar-thumb {
+  background-color: var(--secondary-color);
+  border-radius: 6px;
+}
+
+.tableWrapper::-webkit-scrollbar-track {
+  background-color: var(--text-light-color);
+  border-radius: 6px;
+}
+
+@media screen and (min-width: 768px) {
+  .tableWrapper {
+    max-width: 600px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .tableWrapper {
+    max-width: 750px;
+  }
+
+  .tableWrapper::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .tableWrapper::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+  }
+}
