@@ -1,0 +1,77 @@
+/* Navigation.module.css */
+.header {
+    width: 100%; 
+    height: 56px;
+    position: fixed;
+    top: 0;
+    left: 0; 
+    background-color: rgb(255, 255, 255);
+    display: flex; 
+    justify-content: space-between;
+    align-items: center; 
+    padding: 0 16px; 
+    z-index: 1000; 
+    box-shadow:  0px 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.logo {
+    font-family: 'Roboto Mono', monospace; 
+    font-weight: 700;
+    font-size: 28px;
+    color: #000000;
+    text-shadow: 2px 2px 4px #000000;
+    text-transform: uppercase; 
+    letter-spacing: 2px;
+    z-index: 1000;
+}
+
+.userInfo {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 5px 10px;
+border-radius: 8px;
+z-index: 100;
+gap: 10px;
+}
+
+.userLogo {
+width: 32px; 
+height: 32px; 
+color: rgba(82, 85, 95, 1);
+background-color: rgba(245, 246, 250, 1);
+font-weight: 700;
+font-size: 12px;
+margin-right: 10px; 
+display: flex; 
+align-items: center; 
+justify-content: center;
+border-radius: 50%;
+}
+
+.userName {
+font-weight: 400;
+font-size: 12px;
+color: rgba(82, 85, 95, 1);
+margin-right: 10px; 
+}
+
+.line {
+height: 36px;
+border-left: 1px solid rgba(224, 229, 235, 1); 
+margin-right: 10px; 
+}
+
+.logout {
+font-weight: 400;
+font-size: 12px;
+letter-spacing: 4%;
+text-decoration: underline;
+text-decoration-style: solid;
+cursor: pointer; 
+color: rgba(82, 85, 95, 1);
+}
+
+.logout:hover {
+color: darkred;
+}
