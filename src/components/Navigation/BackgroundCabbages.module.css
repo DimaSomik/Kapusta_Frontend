@@ -1,0 +1,49 @@
+.cabbage1, .cabbage2, .cabbage3, .cabbage4, .cabbage5, .cabbage6,
+.cabbage7, .cabbage8, .cabbage9, .cabbage10, .cabbage11, .cabbage12,
+.cabbage13, .cabbage14 {
+    width: 83px;
+    height: 89px;
+    background-image: url('../../public/kapusta.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    z-index: 2;
+}
+
+/* Pozycjonowanie kapust */
+.cabbage1 { top: 20%; left: 55%; }
+.cabbage2 { top: 20%; left: 80%; }
+.cabbage3 { top: 10%; left: 25%; }
+.cabbage4 { top: 6%; left: 35%; }
+.cabbage5 { top: 6%; left: 10%; }
+.cabbage6 { top: 6%; left: 50%; }
+.cabbage7 { top: 20%; left: 30%; }
+.cabbage8 { top: 20%; left: 15%; }
+.cabbage9 { top: 29%; left: 68%; }
+.cabbage10 { top: 20%; left: 3%; }
+.cabbage11 { top: 6%; left: 74%; }
+.cabbage12 { top: 19%; left: 45%; }
+.cabbage13 { top: 10%; left: 90%; }
+.cabbage14 { top: 6%; left: 62%; }
+
+.moveDown {
+    transform:translateY(580px); 
+    }
+
+/* KAPUSTY  - PRZED ZALOGOWANIEM */
+.cabbageBottom {
+    width: 183px;
+    height: 142px;
+    top: 658px;
+    left: 230px;
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('../../public/kapusty.svg');
+}
+
+/* PO ZALOGOWANIU - KAPUSTY NA DOLE ZNIKAJĄ */
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
