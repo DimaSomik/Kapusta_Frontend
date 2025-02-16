@@ -1,0 +1,37 @@
+.container {
+  position: relative;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  padding-inline: 2.4rem;
+  padding-block: 2rem;
+  gap: 2rem;
+  background-image: var(--modal-gradient);
+  border-radius: 30px;
+  color: var(--text-light-color);
+  box-shadow: 10px 10px 10px -11px rgba(0, 0, 0, 0.38);
+}
+
+.triangle {
+  position: absolute;
+  left: 65px;
+  top: -14px;
+  width: 30px;
+  height: 16px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background-color: rgba(24, 46, 96);
+  z-index: -1;
+}
+
+.title {
+  font-size: var(--bigger-font-size);
+  margin: 0;
+  padding: 0;
+}
+.text {
+  font-size: var(--default-font-size);
+  margin: 0;
+  padding: 0;
+}

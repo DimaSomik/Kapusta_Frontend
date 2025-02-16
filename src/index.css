@@ -1,5 +1,6 @@
 :root {
   font-family: "Roboto", sans-serif;
+  font-size: 62.5%;
 
   --primary-color: #52555f; /* orange in figma */
   --secondary-color: #ff751d; /* orange in figma */
@@ -23,6 +24,9 @@
   );
   --toogle-bg: #ff751d;
   --toogle-fg: #52555f;
+
+  --default-font-size: 1.2rem;
+  --bigger-font-size: 1.4rem;
 }
 
 /* kolory do dark mode do ustalenia */

@@ -1,108 +1,107 @@
 .balanceContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 16px;
 }
-
 
 .balanceLabel {
-    font-size: 12px;
-    font-weight: bold;
-    margin-bottom: 8px;
-    color: var(--primay-color);
-    transition: color 250ms ease-in-out, background-color 250ms ease-in-out;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: var(--primay-color);
+  transition: color 250ms ease-in-out, background-color 250ms ease-in-out;
 }
-
 
 .balanceWrapper {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 8px;
-    width: 100%;
-    border: 2px solid var(--accent-color);
-    width: 290px;
-    border-radius: 22px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  border: 2px solid var(--accent-color);
+  width: 290px;
+  border-radius: 22px;
+  position: relative;
 }
-
 
 .balanceInput {
-    width: 100%;
-    max-width: 280px;
-    padding: 10px;
-    font-size: 12px;
-    text-align: center;
-    border: none;
-    color: var(--text-dark-color);
-    transition: color 250ms ease-in-out, background-color 250ms ease-in-out;
+  width: 100%;
+  max-width: 280px;
+  padding: 10px;
+  font-size: 12px;
+  text-align: center;
+  border: none;
+  color: var(--text-dark-color);
+  transition: color 250ms ease-in-out, background-color 250ms ease-in-out;
 }
-
 
 .confirmButton {
-    width: 100%;
-    max-width: 180px;
-    padding: 10px;
-    font-size: 12px;
-    text-transform: uppercase;
-    border: none;
-    background-color: var(--button-color);
-    color: var(--primay-color);
-    cursor: pointer;
-    transition: background-color 0.3s;
-    transition: color 250ms ease-in-out, background-color 250ms ease-in-out;
+  width: 100%;
+  max-width: 180px;
+  padding: 10px;
+  font-size: 12px;
+  text-transform: uppercase;
+  border: none;
+  background-color: var(--button-color);
+  color: var(--primay-color);
+  cursor: pointer;
+  transition: background-color 0.3s;
+  transition: color 250ms ease-in-out, background-color 250ms ease-in-out;
 }
-
 
 .confirmButton:hover {
-    background-color: var(--button-hover-color);
-    transition: color 250ms ease-in-out, background-color 250ms ease-in-out;
+  background-color: var(--button-hover-color);
+  transition: color 250ms ease-in-out, background-color 250ms ease-in-out;
 }
 
-
+.balanceModal {
+  position: absolute;
+  top: 50px;
+  left: -12px;
+  z-index: 10;
+}
 
 @media (min-width: 768px) {
-    .balanceContainer {
-        flex-direction: row;
-        justify-content: left;
-        gap: 21px;
-    }
+  .balanceContainer {
+    flex-direction: row;
+    justify-content: left;
+    gap: 21px;
+  }
 
+  .balanceWrapper {
+    gap: 12px;
+    border: none;
+  }
 
-    .balanceWrapper {
-        gap: 12px;
-        border: none;
-    }
+  .balanceInput {
+    border: 2px solid var(--accent-color);
+    border-radius: 16px;
+  }
 
-
-    .balanceInput {
-        border: 2px solid var(--accent-color);
-        border-radius: 16px;
-    }
-
-
-    .confirmButton {
-        border: 2px solid var(--accent-color);
-        border-radius: 16px;
-    }
+  .confirmButton {
+    border: 2px solid var(--accent-color);
+    border-radius: 16px;
+  }
 }
 
-
 @media (min-width: 1280px) {
-    .balanceContainer {
-        justify-content: center;
-    }
+  .balanceContainer {
+    justify-content: center;
+  }
 
+  .balanceInput {
+    max-width: 320px;
+    padding: 14px;
+  }
 
-    .balanceInput {
-        max-width: 320px;
-        padding: 14px;
-    }
-
-
-    .confirmButton {
-        max-width: 200px;
-        padding: 14px;
-    }
+  .confirmButton {
+    max-width: 200px;
+    padding: 14px;
+  }
+  .balanceModal {
+    position: absolute;
+    top: 58px;
+  }
 }
