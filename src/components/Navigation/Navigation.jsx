@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styles from "./Navigation.module.css"; 
+import styles from "../Navigation/Navigation.module.css"; 
 import { useNavigate } from 'react-router-dom';
 
 const Navigation = ({ userName: propUserName, onLogout }) => {
@@ -25,7 +25,7 @@ const Navigation = ({ userName: propUserName, onLogout }) => {
 
     return (
         <header className={styles.header}>
-            <div className={styles.logo}>Survivor</div> 
+            <div className={styles.logo}>Kapu$ta</div> 
 
             {userName && (
                 <div className={styles.userInfo}>

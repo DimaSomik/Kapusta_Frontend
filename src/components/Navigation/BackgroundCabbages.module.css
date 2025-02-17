@@ -1,3 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: white;
+    height: 150vh;
+    max-width: 320px; 
+    margin: 0 auto;
+    overflow-x: hidden; 
+}
+
+.background {
+    background-color: white;
+    height: 100vh;
+    position: relative;
+    width: 320px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cabbage1, .cabbage2 {
+    width: 83px;
+    height: 89px;
+    background-image: url('../../public/kapusta.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    z-index: 2;
+}
+
+.hiddenMobile {
+    display: none 
+}
+
+.cabbage1 {
+    top: 15%; 
+    left: 73%;
+    transform: rotate(90deg);
+ }
+
+ .cabbage2 {
+    top: 250%;
+    left: 20%;
+    transform: rotate(-90deg);
+    position: fixed;  
+ }
+
+.cabbageBottom {
+   display: none;
+}
+
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* TABLET */
+
+@media (min-width: 768px) {
+    
+    body {
+        width: 200vw; 
+        min-height: 100vh;
+        height: 200vh;
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        justify-content: center;
+    }
+
+    .background {
+        width: 100%;
+        height: 150vh;
+        max-width: 1024px; 
+    }
+
+
+    .cabbage1, .cabbage2, .cabbage3, .cabbage4, .cabbage5, .cabbage6,
+    .cabbage7{
+        width: 83px;
+        height: 89px;
+        background-image: url('../../public/kapusta.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        z-index: 2;
+    }
+    
+    .cabbage1 { top: 20%; left: 55%; }
+    .cabbage2 { top: 30%; left: 80%; }
+    .cabbage3 { top: 10%; left: 15%; }
+    .cabbage4 { top: 50%; left: 35%; }
+    .cabbage5 { top: 6%; left: 89%; }
+    .cabbage6 { top: 6%; left: 70%; }
+    .cabbage7 { top: 20%; left: 30%; }
+
+    .cabbageBottom {
+        display: block;
+        width: 150px;
+        height: 120px;
+        bottom: 40px;
+        left:30%;
+        top: 100%;
+        transform: translateX(-50%);
+        position: absolute;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-image: url('../../public/kapusty.svg');
+        z-index: 100;
+    }
+
+    .hiddenTablet {
+        display: none;
+    }
+}
+
+/* DESKTOP */
+
+@media screen and (min-width: 1280px) {
+
+    body {
+        background-color: rgb(255, 255, 255);
+        height: 100vh;
+        width: 100%;
+        min-width: 100%;
+    }
+    
+    .background {
+        background-color: white;
+        height: 150vh;
+        position: relative; 
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center; 
+        min-width: 1280px;
+    }
+
 .cabbage1, .cabbage2, .cabbage3, .cabbage4, .cabbage5, .cabbage6,
 .cabbage7, .cabbage8, .cabbage9, .cabbage10, .cabbage11, .cabbage12,
 .cabbage13, .cabbage14 {
@@ -10,40 +152,26 @@
     z-index: 2;
 }
 
-/* Pozycjonowanie kapust */
-.cabbage1 { top: 20%; left: 55%; }
-.cabbage2 { top: 20%; left: 80%; }
-.cabbage3 { top: 10%; left: 25%; }
-.cabbage4 { top: 6%; left: 35%; }
-.cabbage5 { top: 6%; left: 10%; }
-.cabbage6 { top: 6%; left: 50%; }
-.cabbage7 { top: 20%; left: 30%; }
-.cabbage8 { top: 20%; left: 15%; }
+.cabbage1 { top: 15%; left: 55%; }
+.cabbage2 { top: 30%; left: 80%; }
+.cabbage3 { top: 20%; left: 25%; }
+.cabbage4 { top: 36%; left: 35%; }
+.cabbage5 { top: 9%; left: 10%; }
+.cabbage6 { top: 36%; left: 50%; }
+.cabbage7 { top: 8%; left: 30%; }
+.cabbage8 { top: 30%; left: 15%; }
 .cabbage9 { top: 29%; left: 68%; }
 .cabbage10 { top: 20%; left: 3%; }
-.cabbage11 { top: 6%; left: 74%; }
+.cabbage11 { top: 9%; left: 74%; }
 .cabbage12 { top: 19%; left: 45%; }
 .cabbage13 { top: 10%; left: 90%; }
-.cabbage14 { top: 6%; left: 62%; }
+.cabbage14 { top: 36%; left: 62%; }
 
 .moveDown {
-    transform:translateY(580px); 
-    }
-
-/* KAPUSTY  - PRZED ZALOGOWANIEM */
-.cabbageBottom {
-    width: 183px;
-    height: 142px;
-    top: 658px;
-    left: 230px;
-    position: absolute;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url('../../public/kapusty.svg');
+    transform:translateY(450px); 
 }
 
-/* PO ZALOGOWANIU - KAPUSTY NA DOLE ZNIKAJĄ */
-.hidden {
-    opacity: 0;
-    pointer-events: none;
+.hiddenTablet {
+    display: block;
+}
 }

@@ -1,9 +1,9 @@
 import React from "react";
-import styles from "./BackgroundCabbages.module.css";
+import styles from "./BackgroundCabbage.module.css";
 
 export default function BackgroundCabbages({ isLoggedIn }) {
     return (
-<div className={styles.cabbageContainer}> 
+<div className={`${styles.cabbageContainer} ${isLoggedIn ? styles.hiddenMobile : ""} ${isLoggedIn ? styles.hiddenTablet : ""}`}>
     <div className={`${styles.cabbage1} ${isLoggedIn ? styles.moveDown : ""}`}></div>
     <div className={`${styles.cabbage2} ${isLoggedIn ? styles.moveDown : ""}`}></div>
     <div className={`${styles.cabbage3} ${isLoggedIn ? styles.moveDown : ""}`}></div>
