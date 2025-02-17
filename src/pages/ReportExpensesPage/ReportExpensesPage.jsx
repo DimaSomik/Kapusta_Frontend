@@ -12,38 +12,37 @@ const ReportExpensesPage = () => {
   const [totalExpenses, setTotalExpenses] = useState(0);
   const [totalIncome, setTotalIncome] = useState(0);
 
-  useEffect(() => {
-    const fetchTransactionData = async () => {
-      try {
-        const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+  // useEffect(() => {
+  //   const fetchTransactionData = async () => {
+  //     try {
+  //       const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
 
-        // const response = await fetch(`http://localhost:3001/transaction/period-data?date=${formattedDate}`, {
-        const response = await fetch(`http://localhost:3001/transaction?date=${formattedDate}`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer token`,
-          },
-        });
-        if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.message || "Unknown error");
-        }
+  //       const response = await fetch(`http://localhost:3001/transaction/period-data?date=${formattedDate}`, {
+  //         method: "GET",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer token`,
+  //         },
+  //       });
+  //       if (!response.ok) {
+  //         const errorData = await response.json();
+  //         throw new Error(errorData.message || "Unknown error");
+  //       }
 
-        const data = await response.json();
-        const transaction = data[0]; //to delete
-        console.log({ transaction })
-        setTotalExpenses(transaction.expenses.total || 0); //need to change from transaction to data
-        setTotalIncome(transaction.incomes.total || 0);
-      } catch (error) {
-        console.error("Error fetching transaction data:", error);
-        setTotalExpenses(0);
-        setTotalIncome(0);
-      }
-    };
+  //       const data = await response.json();
+  //       const transaction = data[0]; //to delete
+  //       console.log({ transaction })
+  //       setTotalExpenses(transaction.expenses.total || 0); //need to change from transaction to data
+  //       setTotalIncome(transaction.incomes.total || 0);
+  //     } catch (error) {
+  //       console.error("Error fetching transaction data:", error);
+  //       setTotalExpenses(0);
+  //       setTotalIncome(0);
+  //     }
+  //   };
 
-    fetchTransactionData();
-  }, [date]);
+  //   fetchTransactionData();
+  // }, [date]);
 
   return (
     <div className={css["reports-page-main-container"]}>
