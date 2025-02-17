@@ -1,5 +1,3 @@
-import React from "react";
-
 import { useRef, useEffect } from "react";
 import styles from "./balance.module.css";
 import { BalanceModal } from "../BalanceModal/BalanceModal";
