@@ -1,7 +1,34 @@
+import { useState, useEffect } from "react";
 import styles from "./HistorySpreadsheet.module.css";
-import sprite from "../../assets/svgs-sprite.svg";
+
+const API_URL = "https://..."; // Podmienić na właściwy URL backendu
 
 const HistorySpreadsheet = () => {
+  const [records, setRecords] = useState([]);
+
+  useEffect(() => {
+    fetch(API_URL)
+      .then((res) => res.json())
+      .then((data) => setRecords(data))
+      .catch((err) => console.error("Błąd pobierania danych", err));
+  }, []);
+
+  const handleDelete = (id) => {
+    if (!window.confirm("Czy na pewno chcesz usunąć ten wiersz?")) return;
+
+    fetch(`${API_URL}/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("Błąd podczas usuwania");
+
+        setRecords((prevRecords) =>
+          prevRecords.filter((record) => record.id !== id)
+        );
+      })
+      .catch((err) => console.error("Błąd:", err));
+  };
+
   return (
     <div className={styles.tableWrapper}>
       <table className={styles.table}>
@@ -15,67 +42,28 @@ const HistorySpreadsheet = () => {
           </tr>
         </thead>
         <tbody>
-          <tr className={styles.row}>
-            <td>21.11.2019</td>
-            <td>Underground (Lorem ipsum dol...)</td>
-            <td>Transport</td>
-            <td className={styles.sum}>- 30.00 UAH.</td>
-            <td>
-              <button>
-                <svg className={styles.deleteBtn} width="18" height="18">
-                  <use href="/src/assets/svgs-sprite.svg#icon-bin" />
-                </svg>
-              </button>
-            </td>
-          </tr>
-          <tr className={styles.row}>
-            <td>21.11.2019</td>
-            <td>Bananas</td>
-            <td>Products</td>
-            <td className={styles.sum}>- 50.00 UAH.</td>
-            <td>
-              <button>
-                <svg className={styles.deleteBtn} width="18" height="18">
-                  <use href="/src/assets/svgs-sprite.svg#icon-bin" />
-                </svg>
-              </button>
-            </td>
-          </tr>
-          <tr className={styles.row}>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td className={styles.sum}></td>
-            <td></td>
-          </tr>
-          <tr className={styles.row}>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td className={styles.sum}></td>
-            <td></td>
-          </tr>
-          <tr className={styles.row}>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td className={styles.sum}></td>
-            <td></td>
-          </tr>
-          <tr className={styles.row}>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td className={styles.sum}></td>
-            <td></td>
-          </tr>
-          <tr className={styles.row}>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td className={styles.sum}></td>
-            <td></td>
-          </tr>
+          {records.map((record) => (
+            <tr key={record.id} className={styles.row}>
+              <td>{record.date}</td>
+              <td>{record.description}</td>
+              <td>{record.category}</td>
+              <td className={styles.sum}>{record.sum} UAH</td>
+              <td>
+                <button onClick={() => handleDelete(record.id)}>
+                  <svg className={styles.deleteBtn} width="18" height="18">
+                    <use href="/src/assets/svgs-sprite.svg#icon-bin" />
+                  </svg>
+                </button>
+              </td>
+            </tr>
+          ))}
+          {records.length === 0 && (
+            <tr>
+              <td colSpan="5" className={styles.emptyMessage}>
+                Brak danych
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>
