@@ -6,35 +6,178 @@
 }
 
 body {
-	background-color: white;
-	height: 150vh;
-	width: 100%;
+    background-color: white;
+    height: 150vh;
+    width: 100vw;
+    min-width: 100%; 
+    margin: 0 auto;
+    overflow-x: hidden;
 }
 
 .background {
     background-color: white;
+    height: 100vh;
+    position: relative;
+    width: 100vw;
+    width: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cabbageBackground {
+    position: absolute;
+    top: 40px; 
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 100%;
+    width: 100vw;
+    height: 250px;
+    background-color: rgba(245, 246, 251, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom-left-radius: 15%;
+    z-index: 1;
+}
+
+.title {
+    width: 90%;
+    max-width: 280px;
+    font-size: 35px; 
+    font-weight: 900;
+    position: absolute;
+    top: 50px;
+    left: 40px;
+    transform: translateX(-20%);
+    text-align: center;
+    color: #000000;
+    text-shadow: 1px 1px 4px #000000;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    z-index: 1000;
+}
+
+.finance {
+    font-family: Roboto;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 18%;
+    top: 484px;
+    left: 300px;
+    color: rgba(82, 85, 95, 1);
+}
+
+.moveDown .title {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.cabbageBottom {
+    display: none;
+}
+
+/* TABLETY */
+@media (min-width: 768px) {
+    
+    body {
+        width: 100vw;
+        min-width: 768px;
+        height: 200vh;
+        min-height: 100vh;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+    }
+    
+
+    .background {
+        width: 100vw;
+        height: 200vh;
+        overflow: visible;
+    }
+
+    .cabbageBackground {
+        height: 583px;
+        min-width: 768px;
+        border-bottom-left-radius: 10%;
+        width: 100vw; 
+    }
+
+    .title {
+        font-size: 60px;
+        width: 250px;
+        font-size: 60px;
+        top: 136px; 
+        left: 30%; 
+        transform: translateX(-50%);
+        text-align: center; 
+        position: absolute;
+    }
+
+    .finance {
+        font-family: Roboto;
+        font-weight: 700;
+        font-size: 16px;
+        letter-spacing: 18%;
+        top: 484px;
+        left: 300px;
+        color: rgba(82, 85, 95, 1);
+    }
+
+ .cabbageBottom {
+        display: block;
+        width: 183px;
+        height: 146px;
+        top: 808px;
+        left: 450px; 
+        position: absolute;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-image: url('/public/kapusty.svg'); 
+        z-index: 100; 
+    }
+
+    .isLoggedIn .cabbageBottom {
+        display: block ;
+    }
+}
+
+/*DESKTOP*/
+
+@media screen and (min-width: 1280px) {
+
+body {
+	background-color: white;
+	height: 100vh;
+	width: 100%;
+    min-width: 1280px;
+}
+
+.background {
+    background-color: rgb(255, 255, 255);
     height: 150vh;
     position: relative; 
-    width: 100vw;
+    width: 100%;
 	display: flex;
+    min-width: 1280px;
 	align-items: center;
 	justify-content: center; 
 }
 
 .cabbageBackground {
     position: absolute;
-    top: 56px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100vw;
-    height: 526px;
-    background-color: rgba(245, 246, 251, 1);
+    top: 0;
+    left: 50%; 
+    transform: translateX(-50%);  
+    max-width: 100vw; 
+    height: 490px;
+    background-color: rgb(240, 242, 249);
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom-left-radius: 20%;
+    border-bottom-left-radius: 10%;
     z-index: 1;
-    transition: top 1s ease-in-out;
 }
 
 .title {
@@ -52,18 +195,40 @@ body {
     z-index: 1000;
 }
 
+.finance {
+    font-family: Roboto;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 18%;
+    top: 484px;
+    left: 300px;
+    color: rgba(82, 85, 95, 1);
+}
+
 .moveDown .title {
     opacity: 0; 
     pointer-events: none;
 }
 
-.cabbageBottom {
-    width: 183px;
-    height: 142px;
-    top: 658px;
-    left: 230px;
-    position: absolute;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url('../../public/kapusty.svg');
+.isLoggedIn .cabbageBottom {
+    display: none;
 }
+
+.cabbageBottom {
+    display: block;
+        width: 183px;
+        height: 146px;
+        top: 550px;
+        left: 230px; 
+        position: absolute;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-image: url('/public/kapusty.svg'); 
+        z-index: 100;
+}
+
+.hideOnMobileAndDesktop {
+    display: none ;
+}
+}
+
