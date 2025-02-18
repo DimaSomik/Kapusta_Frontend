@@ -20,7 +20,8 @@
   height: 2em;
   background-color: var(--toogle-bg);
   border-radius: 2em;
-  transition: background-color 250ms ease-in-out;
+  transition: background-color var(--transition-time)
+    var(--transition-timing-function);
 }
 .toogle + label::before {
   content: "";
@@ -31,7 +32,9 @@
   margin-right: 1em;
   position: absolute;
   left: 0.51em;
-  transition: background-color 250ms ease-in-out, transform 250ms ease-in-out;
+  transition: background-color var(--transition-time)
+      var(--transition-timing-function),
+    transform var(--transition-time) var(--transition-timing-function);
 }
 
 .toogle:checked + label::after {

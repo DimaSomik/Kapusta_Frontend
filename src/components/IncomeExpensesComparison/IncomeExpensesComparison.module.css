@@ -4,8 +4,8 @@
   justify-content: center;
   font-family: inherit;
   font-weight: 700;
-  font-size: 14px;
-  color: rgb(82, 85, 95);
+  font-size: var(--default-font-size);
+  color: var(--primary-color);
   letter-spacing: 0.04em;
   background-color: rgb(255, 255, 255);
   border-radius: 30px;
@@ -15,42 +15,37 @@
 
 .reports-expenses-income-row-container {
   display: flex;
+  flex-flow: column nowrap;
   justify-content: center;
-  padding: 15px 20px;
+  align-items: center;
+  gap: 4px;
 }
 
 .reports-value {
-  padding-left: 15px;
+  padding-left: 0;
 }
 
 .reports-expenses-value {
-  color: rgb(229, 57, 53);
+  color: var(--expences-color);
 }
 
 .reports-income-value {
-  color: rgb(64, 121, 70);
+  color: var(--incomes-color);
 }
 
 .reports-icon-divider {
   width: 2px;
-  height: 36px;
+  height: 70px;
 }
 
-@media screen and (max-width: 771px) {
+@media screen and (min-width: 768px /*var(--brakpoint-medium)*/) {
   .reports-expenses-income-row-container {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-    gap: 4px;
+    padding: 15px 20px;
   }
-
   .reports-value {
-    padding-left: 0;
+    padding-left: 15px;
   }
-
   .reports-icon-divider {
-    width: 2px;
-    height: 70px;
+    height: 36px;
   }
 }

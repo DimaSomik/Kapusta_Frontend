@@ -1,12 +1,129 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .header {
-    width: 320px;
-    min-width: 100%;
+  width: 320px;
+  min-width: 100%;
+  height: 56px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12px;
+  z-index: 1000;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: rgb(0, 0, 0);
+  text-shadow: 2px 2px 4px #000000;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  z-index: 1000;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 8px;
+  border-radius: 8px;
+  z-index: 100;
+  gap: 6px;
+}
+
+.userLogo {
+  width: 24px;
+  height: 24px;
+  color: var(--primary-color);
+  background-color: rgba(245, 246, 250, 1);
+  font-weight: 700;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.userName {
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--primary-color);
+  margin-right: 6px;
+}
+
+.line {
+  height: 28px;
+  border-left: 1px solid rgba(224, 229, 235, 1);
+  margin-right: 6px;
+}
+
+.logout {
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 2%;
+  text-decoration: underline;
+  text-decoration-style: solid;
+  cursor: pointer;
+  color: var(--primary-color);
+}
+
+.logout:hover {
+  color: var(--secondary-color);
+}
+
+/* TABLET */
+
+@media screen and (min-width: 768px /*var(--brakpoint-medium)*/) {
+  .header {
+    width: 100vw;
+    min-width: 100vw;
+    height: 60px;
+    padding: 0 16px;
+  }
+
+  .logo {
+    font-size: 2.2rem;
+  }
+
+  .userInfo {
+    gap: 8px;
+  }
+
+  .userLogo {
+    width: 28px;
+    height: 28px;
+    font-size: var(--default-font-size);
+  }
+
+  .userName {
+    font-size: var(--default-font-size);
+  }
+
+  .line {
+    height: 30px;
+    margin-right: 8px;
+  }
+
+  .logout {
+    font-size: var(--default-font-size);
+  }
+}
+
+/* DESKTOP */
+
+@media screen and (min-width: 1280px /*var(--brakpoint-large)*/) {
+  .header {
+    width: 100vw;
+    min-width: 100vw;
     height: 56px;
     position: fixed;
     top: 0;
@@ -15,142 +132,22 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 12px;
+    padding: 0 16px;
     z-index: 1000;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
-}
+  }
 
-.logo {
-    font-family: 'Roboto Mono', monospace;
+  .logo {
     font-weight: 700;
-    font-size: 18px;
-    color: #000000;
+    font-size: 2.8rem;
+    color: rgb(0, 0, 0);
     text-shadow: 2px 2px 4px #000000;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     z-index: 1000;
-}
+  }
 
-.userInfo {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 5px 8px;
-    border-radius: 8px;
-    z-index: 100;
-    gap: 6px; 
-}
-
-.userLogo {
-    width: 24px; 
-    height: 24px; 
-    color: rgba(82, 85, 95, 1);
-    background-color: rgba(245, 246, 250, 1);
-    font-weight: 700;
-    font-size: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-}
-
-.userName {
-    font-weight: 400;
-    font-size: 10px;
-    color: rgba(82, 85, 95, 1);
-    margin-right: 6px; 
-}
-
-.line {
-    height: 28px;
-    border-left: 1px solid rgba(224, 229, 235, 1); 
-    margin-right: 6px; 
-}
-
-.logout {
-    font-weight: 400;
-    font-size: 10px;
-    letter-spacing: 2%;
-    text-decoration: underline;
-    text-decoration-style: solid;
-    cursor: pointer; 
-    color: rgba(82, 85, 95, 1);
-}
-
-.logout:hover {
-    color: darkred;
-}
-
-/* TABLET */
-
-@media (min-width: 768px) {
-    .header {
-        width: 100vw;
-        min-width: 100vw;
-        height: 60px;
-        padding: 0 16px;
-    }
-
-    .logo {
-        font-size: 22px;
-    }
-
-    .userInfo {
-        gap: 8px;
-    }
-
-    .userLogo {
-        width: 28px;
-        height: 28px;
-        font-size: 11px;
-    }
-
-    .userName {
-        font-size: 11px;
-    }
-
-    .line {
-        height: 30px;
-        margin-right: 8px;
-    }
-
-    .logout {
-        font-size: 11px;
-    }
-}
-
-/* DESKTOP */
-
-@media screen and (min-width: 1280px) {
-
-.header {
-        width: 100vw; 
-        min-width: 100vw;
-        height: 56px;
-        position: fixed;
-        top: 0;
-        left: 0; 
-        background-color: rgb(255, 255, 255);
-        display: flex; 
-        justify-content: space-between;
-        align-items: center; 
-        padding: 0 16px; 
-        z-index: 1000; 
-        box-shadow:  0px 4px 6px rgba(0, 0, 0, 0.15);
-    }
-
-    .logo {
-        font-family: 'Roboto Mono', monospace; 
-        font-weight: 700;
-        font-size: 28px;
-        color: #000000;
-        text-shadow: 2px 2px 4px #000000;
-        text-transform: uppercase; 
-        letter-spacing: 2px;
-        z-index: 1000;
-    }
-
-.userInfo {
+  .userInfo {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -158,47 +155,42 @@
     border-radius: 8px;
     z-index: 100;
     gap: 10px;
-}
+  }
 
-.userLogo {
-    width: 32px; 
-    height: 32px; 
-    color: rgba(82, 85, 95, 1);
+  .userLogo {
+    width: 32px;
+    height: 32px;
+    color: var(--primary-color);
     background-color: rgba(245, 246, 250, 1);
-    ;
     font-weight: 700;
-    font-size: 12px;
-    margin-right: 10px; 
-    display: flex; 
-    align-items: center; 
+    font-size: var(--default-font-size);
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
     justify-content: center;
     border-radius: 50%;
-}
+  }
 
-.userName {
+  .userName {
     font-weight: 400;
-    font-size: 12px;
-    color: rgba(82, 85, 95, 1);
-    margin-right: 10px; 
-}
+    font-size: var(--default-font-size);
+    color: var(--primary-color);
+    margin-right: 10px;
+  }
 
-.line {
+  .line {
     height: 36px;
-    border-left: 1px solid rgba(224, 229, 235, 1); 
-    margin-right: 10px; 
-}
+    border-left: 1px solid rgba(224, 229, 235, 1);
+    margin-right: 10px;
+  }
 
-.logout {
+  .logout {
     font-weight: 400;
-    font-size: 12px;
+    font-size: var(--default-font-size);
     letter-spacing: 4%;
     text-decoration: underline;
     text-decoration-style: solid;
-    cursor: pointer; 
-    color: rgba(82, 85, 95, 1);
-}
-
-.logout:hover {
-    color: darkred;
-}
+    cursor: pointer;
+    color: var(--primary-color);
+  }
 }

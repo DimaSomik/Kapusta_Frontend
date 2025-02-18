@@ -47,7 +47,7 @@ const HistorySpreadsheet = () => {
               <td>{record.date}</td>
               <td>{record.description}</td>
               <td>{record.category}</td>
-              <td className={styles.sum}>{record.sum} UAH</td>
+              <td className={styles.sum}>{record.sum} $</td>
               <td>
                 <button onClick={() => handleDelete(record.id)}>
                   <svg className={styles.deleteBtn} width="18" height="18">
@@ -60,7 +60,7 @@ const HistorySpreadsheet = () => {
           {records.length === 0 && (
             <tr>
               <td colSpan="5" className={styles.emptyMessage}>
-                Brak danych
+                No data
               </td>
             </tr>
           )}

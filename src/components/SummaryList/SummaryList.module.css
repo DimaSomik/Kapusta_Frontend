@@ -4,7 +4,7 @@
   border-radius: 20px 20px 20px 0;
   overflow: hidden;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: var(--default-font-size);
 }
 
 .tableHeader {
@@ -38,7 +38,7 @@ td:last-child {
 }
 
 /* For devices with a minimum width of 768px */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px /*var(--brakpoint-medium)*/) {
   .tableContainer {
     width: 230px;
     margin: 0 auto;
@@ -46,7 +46,7 @@ td:last-child {
 }
 
 /* For devices with a minimum width of 1280px */
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1280px /*var(--brakpoint-large)*/) {
   .tableContainer {
     width: 213px;
   }

@@ -1,42 +1,58 @@
 :root {
   font-family: "Roboto", sans-serif;
-  font-size: 62.5%;
   margin: 0 auto;
+  font-size: 62.5%;
 
-  --primary-color: #52555f; /* orange in figma */
-  --secondary-color: #ff751d; /* orange in figma */
-  --tertiary-color: #fed9bf; /* lighter orange in figma */
-  --accent-color: #f5f6fb; /* bacground, outline, placeholder, ect. */
-  --lighter-accent-color: #fafbfd; /* expenses/income tab bacground */
+  --default-font-size: 1.2rem;
+  --bigger-font-size: 1.4rem;
 
-  --text-light-color: white;
-  --text-dark-color: black;
-  --alert-color: #eb5757; /* login required */
+  --primary-color: rgb(82, 85, 95);
+  --secondary-color: rgb(255, 117, 29); /* orange in figma */
+  --tertiary-color: rgb(254, 217, 191); /* lighter orange in figma */
+  --accent-color: rgb(
+    245,
+    246,
+    251
+  ); /* bacground, outline, placeholder, ect. */
+  --lighter-accent-color: rgb(
+    250,
+    251,
+    253
+  ); /* expenses/income tab bacground */
 
-  --icon-fill-color: #071f41;
+  --text-light-color: rgb(255, 255, 255);
+  --text-dark-color: rgb(0, 0, 0);
+  --alert-color: rgb(235, 87, 87); /* login required */
 
-  --expences-color: #e53935;
-  --incomes-color: #407946;
+  --icon-fill-color: rgb(7, 31, 65);
+
+  --expences-color: rgb(229, 57, 53);
+  --incomes-color: rgb(64, 121, 70);
 
   --modal-gradient: linear-gradient(
     147deg,
     rgba(29, 52, 106, 1) 0%,
     rgba(3, 22, 52, 1) 100%
   );
-  --toogle-bg: #ff751d;
-  --toogle-fg: #52555f;
+  --toogle-bg: rgb(255, 117, 29);
+  --toogle-fg: rgb(82, 85, 95);
 
-  --default-font-size: 1.2rem;
-  --bigger-font-size: 1.4rem;
+  --transition-time: 250ms;
+  --transition-timing-function: ease-in-out;
+
+  /*breakpoints var are not working by now */
+  --brakpoint-small: 320px;
+  --brakpoint-medium: 768px;
+  --brakpoint-large: 1280px;
 }
 
 /* kolory do dark mode do ustalenia */
 [data-theme="dark"] {
-  --primay-color: #ff751d;
-  --secondary-color: #f5f6fb;
-  --tertiary-color: black;
-  --accent-color: #242424;
-  --lighter-accent-color: #333333;
+  --primay-color: rgb(255, 117, 29);
+  --secondary-color: rgb(245, 246, 251);
+  --tertiary-color: rgb(0, 0, 0);
+  --accent-color: rgb(36, 36, 36);
+  --lighter-accent-color: rgb(51, 51, 51);
 }
 
 h1,

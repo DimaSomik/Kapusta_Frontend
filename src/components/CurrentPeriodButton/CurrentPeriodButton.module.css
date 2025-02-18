@@ -4,10 +4,10 @@
   align-items: center;
   font-family: inherit;
   font-weight: 400;
-  font-size: 12px;
+  font-size: var(--default-font-size);
   letter-spacing: 0.04em;
-  color: rgba(82, 85, 95, 0.7);
-  transition: color .25s cubic-bezier(.4, 0, .2, 1);
+  color: var(--primary-color);
+  transition: color var(--transition-time) var(--transition-timing-function);
   user-select: none;
 }
 
@@ -27,11 +27,11 @@
 
 .reports-calendar-month-name {
   font-weight: 700;
-  font-size: 14px;
+  font-size: var(--bigger-font-size);
   letter-spacing: 0.02em;
   text-transform: uppercase;
   text-align: center;
-  color: #000;
+  color: var(--text-dark-color);
   min-width: 126px;
 }
 
