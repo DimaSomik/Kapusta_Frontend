@@ -1,14 +1,12 @@
 import PropTypes from "prop-types";
-import icon from "../../../assets/svgs-sprite.svg";
 import css from "./ExpencesIncomeIcon.module.css";
+import icon from "../../../assets/svgs-sprite.svg";
 
-export const ExpensesIncomeIcon = ({ name, iconName, amount }) => {
+export const ExpensesIncomeIcon = ({ name, iconName, amount, isSelected, onClick }) => {
 
   const formatCurrency = (value) => {
     const numericValue = typeof value === "number" ? value : parseFloat(value);
-    const negativeValue = Math.abs(numericValue) * -1;
-    
-    return negativeValue.toLocaleString("fr-FR", {
+    return numericValue.toLocaleString("fr-FR", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2
     }).replace(",", ".");
@@ -17,7 +15,9 @@ export const ExpensesIncomeIcon = ({ name, iconName, amount }) => {
   const splitName = name.split(" ");
 
   return (
-    <div className={css["reports-icon-main-container"]}>
+    <div className={`${css["reports-icon-main-container"]} ${isSelected ? css["selected"] : ""}`} onClick={() =>
+      onClick()
+    }>
       <p>{formatCurrency(amount)}</p>
       <svg
         className={css["reports-icon"]}>
@@ -35,9 +35,10 @@ export const ExpensesIncomeIcon = ({ name, iconName, amount }) => {
   );
 };
 
-//PropTypes from ExpensesIncomeGroupIcons
 ExpensesIncomeIcon.propTypes = {
   name: PropTypes.string.isRequired,
   iconName: PropTypes.string.isRequired,
   amount: PropTypes.number.isRequired,
+  isSelected: PropTypes.bool,
+  onClick: PropTypes.func.isRequired,
 };

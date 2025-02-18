@@ -1,18 +1,35 @@
-.reports-icon-main-container{
+.reports-icon-main-container {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-size: 12px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    text-align: center;
-    color: #52555f;
-    height: 106px;
-    white-space: normal;
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: center;
+  color: rgb(82, 85, 95);
+  height: 106px;
+  white-space: normal;
+  cursor: pointer;
 }
 
-.reports-icon{
+.reports-icon {
   max-width: 56px;
+}
+
+.reports-icon-main-container:hover .reports-icon {
+  --color12: rgba(255, 218, 192, 1);
+}
+
+.reports-icon-main-container.selected {
+  --color12: rgba(255, 218, 192, 1);
+}
+
+/* Tablety (768px+)  */
+@media (min-width: 768px) {
+}
+
+/* Desktopy (1280px+) */
+@media (min-width: 1280px) {
 }

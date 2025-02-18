@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { ExpensesIncomeSwitcher } from "./ExpensesIncomeSwitcher/ExpensesIncomeSwitcher";
 import { ExpensesIncomeGroupIcons } from "./ExpensesIncomeGroupIcons/ExpensesIncomeGroupIcons";
 import css from "./ExpensesDetailedReport.module.css";
@@ -14,7 +15,7 @@ const ROUTES = Object.freeze({
   INCOME: "income-categories",
 });
 
-export const ExpensesDetailedReport = () => {
+export const ExpensesDetailedReport = ({ transactionsData, selectedIcon, setSelectedIcon }) => {
   const location = useLocation();
   const lastSegmentPageUrl = location.pathname.split("/").filter(Boolean).pop();
   const [expensesIncomeText, setExpensesIncomeText] = useState(
@@ -46,7 +47,13 @@ export const ExpensesDetailedReport = () => {
     <div className={css["reports-detailed-main-container"]}>
       <ExpensesIncomeSwitcher expensesIncomeText={expensesIncomeText}
         toggleTransactionType={toggleTransactionType} />
-      <ExpensesIncomeGroupIcons expensesIncomeText={expensesIncomeText} />
+      <ExpensesIncomeGroupIcons transactionsData={transactionsData} selectedIcon={selectedIcon} setSelectedIcon={setSelectedIcon} />
     </div>
   );
+};
+
+ExpensesDetailedReport.propTypes = {
+  transactionsData: PropTypes.arrayOf(PropTypes.object),
+  selectedIcon: PropTypes.string,
+  setSelectedIcon: PropTypes.func.isRequired,
 };
