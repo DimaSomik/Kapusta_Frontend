@@ -23,6 +23,12 @@ const Calculator = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
+   const [selectedDate, setSelectedDate] = useState(
+    new Date().toISOString().split("T")[0]
+  );
+  const handleDateChange = (event) => {
+    setSelectedDate(event.target.value);
+  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -42,11 +48,22 @@ const Calculator = () => {
   return (
     <div className={styles.container}>
       <div className={styles.topSection}>
-      <div className={styles.date}>
+        <div className={styles.date}>
+          <label className={styles.dateLabel}>
+
         <svg className={styles.icon}>
           <use href={`${sprite}#icon-calendar`}></use>
-        </svg>
-        {new Date().toLocaleDateString("pl-PL")}
+            </svg>
+            
+            <input
+              type="date"
+              value={selectedDate}
+              onChange={handleDateChange}
+              className={styles.hiddenDatePicker}
+            />
+          </label>
+          
+          <span>{new Date(selectedDate).toLocaleDateString("pl-PL")}</span>
       </div>
 
 

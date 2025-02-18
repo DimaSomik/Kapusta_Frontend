@@ -172,6 +172,25 @@
     transition: background 0.3s ease-in-out;
 }
 
+.dateLabel {
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    gap: 8px;
+}
+
+
+.hiddenDatePicker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
 
 @media (min-width: 768px) {
     .container {
