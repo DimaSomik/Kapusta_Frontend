@@ -1,6 +1,8 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { lazy } from "react";
+import { PrivateRoute } from "./PrivateRoute";
+import { RestrictedRoute } from "./RestrictedRoute";
 
 const AuthPage = lazy(() => import("./pages/AuthPage/AuthPage"));
 const InputExpensesPage = lazy(() =>
@@ -20,17 +22,21 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<AuthPage />} />
-        <Route path="/transaction/expenses" element={<InputExpensesPage />} />
-        <Route path="/transaction/income" element={<InputIncomePage />} />
-        <Route
-          path="/transaction/expense-categories"
-          element={<ReportExpensesPage />}
-        />
-        <Route
-          path="/transaction/income-categories"
-          element={<ReportIncomePage />}
-        />
+        <Route path="/" element={
+          <RestrictedRoute redirectTo="/transaction/expenses" component={<AuthPage /> } />
+        }/>
+        <Route path="/transaction/expenses" element={
+          <PrivateRoute redirectTo="/" component={<InputExpensesPage />}/>
+        }/>
+        <Route path="/transaction/income" element={
+          <PrivateRoute redirectTo="/" component={<InputIncomePage />}/>
+        }/>
+        <Route path="/transaction/expense-categories" element={
+          <PrivateRoute redirectTo="/" component={<ReportExpensesPage />}/>
+        }/>
+        <Route path="/transaction/income-categories" element={
+          <PrivateRoute redirectTo="/" component={<ReportIncomePage />}/> 
+        }/>
       </Routes>
     </>
   );

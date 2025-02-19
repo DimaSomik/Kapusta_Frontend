@@ -1,34 +1,59 @@
 import styles from "./SummaryList.module.css";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getExpenses, getIncome } from "../../redux/controllers/userController";
+import { selectAccessToken } from "../../redux/slices/authSlice";
+import { selectUserMonthlyStats } from "../../redux/slices/userSlice";
+import { selectUserTransactions } from "../../redux/slices/userSlice";
 
-const SummaryList = () => {
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+const SummaryList = ({ isExpense }) => {
+  const dispatch = useDispatch();
+  const token = useSelector(selectAccessToken);
+  const data = useSelector(selectUserMonthlyStats);
+  const transactions = useSelector(selectUserTransactions);
+  const tableData = [];
+
+  useEffect(() => {
+    if (token && isExpense) {
+      dispatch(getExpenses());
+    } else if (token && !isExpense) {
+      dispatch(getIncome());
+    }
+  }, [token, transactions]) 
+
+  for (const sum in data) {
+    tableData.push(data[sum]);
+  };
+
   return (
     <div className={styles.tableContainer}>
       <div className={styles.tableHeader}>Summary</div>
       <table>
-        <tr>
-          <td>November</td>
-          <td>10 000.00</td>
-        </tr>
-        <tr>
-          <td>October</td>
-          <td>30 000.00</td>
-        </tr>
-        <tr>
-          <td>September</td>
-          <td>30 000.00</td>
-        </tr>
-        <tr>
-          <td>August</td>
-          <td>20 000.00</td>
-        </tr>
-        <tr>
-          <td>July</td>
-          <td>15 000.00</td>
-        </tr>
-        <tr>
-          <td>June</td>
-          <td>18 000.00</td>
-        </tr>
+        <tbody>
+          {months.map((month, index) => {
+            if (tableData[index] !== "N/A" && data) {
+              return <tr key={month}>
+                        <td>{month}</td>
+                        <td>{tableData[index]}</td>
+                     </tr>
+            }
+          })}
+        </tbody>
       </table>
     </div>
   );

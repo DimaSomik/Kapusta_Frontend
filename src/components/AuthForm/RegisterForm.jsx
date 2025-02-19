@@ -3,6 +3,8 @@ import * as Yup from "yup";
 import css from "./AuthForm.module.css";
 import sprite from "../../assets/svgs-sprite.svg";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { register } from "../../redux/controllers/authController";
 
 const initialValues = {
   email: "",
@@ -10,41 +12,32 @@ const initialValues = {
   name: "",
 };
 
+const registerSchema = Yup.object().shape({
+  email: Yup.string().email("Invalid email").required("Email is required"),
+  password: Yup.string()
+    .min(8, "Password must be at least 8 characters")
+    .required("Password is required"),
+  name: Yup.string()
+    .min(2, "Name is too short!")
+    .max(50, "Name is too long!")
+    .required("Name is required"),
+});
+
 export function RegisterForm({ onToggleForm }) {
   const [showHidePassword, setShowHidePassword] = useState(false);
-
-  //   const dispatch = useDispatch();
-
-  const registerSchema = Yup.object().shape({
-    email: Yup.string().email("Invalid email").required("Email is required"),
-    password: Yup.string()
-      .min(8, "Password must be at least 8 characters")
-      .required("Password is required"),
-    name: Yup.string()
-      .min(2, "Name is too short!")
-      .max(50, "Name is too long!")
-      .required("Name is required"),
-  });
+  const dispatch = useDispatch();
 
   const handleSubmit = async (values, actions) => {
     try {
-      //   await dispatch(register(values)).unwrap();
+      dispatch(register({
+        email: values.email,
+        password: values.password
+      }));
       actions.resetForm();
     } catch (error) {
-      console.error("Registration error:", error);
+      alert(error)
     }
   };
-
-  //  const handleSubmit = async (values, actions) => {
-  //    try {
-  //
-  //      await dispatch(register(values)).unwrap();
-
-  //      await dispatch(
-  //        logIn({ email: values.email, password: values.password })
-  //      ).unwrap();
-
-  //      actions.resetForm();
 
   return (
     <div className={css.form}>

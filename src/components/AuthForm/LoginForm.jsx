@@ -3,33 +3,40 @@ import css from "./AuthForm.module.css";
 import * as Yup from "yup";
 import sprite from "../../assets/svgs-sprite.svg";
 import { useState } from "react";
+import { logIn } from "../../redux/controllers/authController";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const initialValues = {
   email: "",
   password: "",
 };
 
+const loginSchema = Yup.object().shape({
+  email: Yup.string()
+    .email("Invalid email")
+    .required("This is a required field"),
+  password: Yup.string()
+    .min(6, "Password too short")
+    .max(50, "Password too long")
+    .required("This is a required field"),
+});
+
 const LoginForm = ({ onToggleForm }) => {
   const [showHidePassword, setShowHidePassword] = useState(false);
-
-  //   const dispatch = useDispatch();
-
-  const loginSchema = Yup.object().shape({
-    email: Yup.string()
-      .email("Invalid email")
-      .required("This is a required field"),
-    password: Yup.string()
-      .min(6, "Password too short")
-      .max(50, "Password too long")
-      .required("This is a required field"),
-  });
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = async (values, actions) => {
     try {
-      //   await dispatch(logIn(values)).unwrap();
+      dispatch(logIn({
+        email: values.email,
+        password: values.password
+      }));
+      navigate("/transaction/expenses");
       actions.resetForm();
     } catch (error) {
-      console.error("Login error:", error);
+      alert("Login error:", error);
     }
   };
 

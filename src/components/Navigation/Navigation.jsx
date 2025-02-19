@@ -1,36 +1,27 @@
-import { useState, useEffect } from 'react';
 import styles from "../Navigation/Navigation.module.css"; 
-import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { logOut } from "../../redux/controllers/authController";
+import { selectUserEmail } from "../../redux/slices/userSlice";
+import { useNavigate } from "react-router-dom";
 
-const Navigation = ({ userName: propUserName, onLogout }) => {
+const Navigation = () => {
+    const user = useSelector(selectUserEmail);
+    const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [userName, setUserName] = useState(null);
-
-    useEffect(() => {
-        setUserName(propUserName || JSON.parse(localStorage.getItem("user"))?.name || "");
-    }, [propUserName]);
 
     const handleLogout = () => {
-        localStorage.removeItem("token");
-        localStorage.removeItem("user");
-        localStorage.removeItem("user_id");
-
-    console.log("You are log out!");
-    if(onLogout ) {
-        onLogout();
-    }
-
-    navigate("/login");
-};
+        dispatch(logOut());
+        navigate("/");
+    };
 
     return (
         <header className={styles.header}>
             <div className={styles.logo}>Kapu$ta</div> 
 
-            {userName && (
+            {user && (
                 <div className={styles.userInfo}>
                     <div className={styles.userLogo}>U</div>
-                    <span className={styles.userName}>{userName}</span>
+                    <span className={styles.userName}>{user}</span>
                     <span className={styles.line}></span>
                     <div onClick={handleLogout} className={styles.logout}>Exit</div>
                 </div>

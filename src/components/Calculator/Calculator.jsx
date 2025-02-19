@@ -1,28 +1,35 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import styles from "./Calculator.module.css";
-import sprite from "../assets/svgs-sprite.svg";
+import sprite from "../../assets/svgs-sprite.svg";
+import { useDispatch } from "react-redux";
+import { addExpense, addIncome } from "../../redux/controllers/userController";
 
 const categories = [
-  "Transport",
-  "Products",
-  "Health",
+  "Groceries",
   "Alcohol",
   "Entertainment",
-  "Housing",
-  "Technique",
-  "Communal, communication",
-  "Sports, hobbies",
+  "Health",
+  "Transport",
+  "Household items",
+  "Electronics",
+  "Utilities and communication",
+  "Sports and hobbies",
   "Education",
   "Other",
 ];
 
-const Calculator = () => {
+const incomeCategories = [
+  "Salary",
+  "Additional income",
+]
+
+const Calculator = ({ isExpense }) => {
   const [selectedCategory, setSelectedCategory] = useState("Product category");
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [productDescription, setProductDescription] = useState("");
-  const [amount, setAmount] = useState("0,00");
-  const [entries, setEntries] = useState([]);
+  const [amount, setAmount] = useState(0);
   const dropdownRef = useRef(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -40,7 +47,7 @@ const Calculator = () => {
   const handleClear = () => {
     setProductDescription("");
     setSelectedCategory("Product category");
-    setAmount("0,00");
+    setAmount(0);
   };
 
   const handleSubmit = async () => {
@@ -49,23 +56,16 @@ const Calculator = () => {
     const newEntry = {
       description: productDescription,
       category: selectedCategory,
-      amount,
-      date: new Date().toLocaleDateString("pl-PL"),
+      amount: Number(amount),
+      date: new Date().toISOString().split("T")[0]
     };
 
-    setEntries([...entries, newEntry]);
     handleClear();
 
-    try {
-      await fetch("https://backend-apiExample.com", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newEntry),
-      });
-    } catch (error) {
-      console.error("Error sending data to backend:", error);
+    if (isExpense) {
+      dispatch(addExpense(newEntry));
+    } else if (!isExpense) {
+      dispatch(addIncome(newEntry));
     }
   };
 
@@ -108,32 +108,48 @@ const Calculator = () => {
             <use href={`${sprite}#icon-down-arrow`}></use>
           </svg>
 
-          {dropdownOpen && (
+          {dropdownOpen && isExpense ? (
             <ul className={styles.dropdown}>
-              {categories.map((category, index) => (
-                <li
-                  key={index}
-                  className={styles.dropdownItem}
-                  onMouseDown={(e) => {
-                    e.stopPropagation();
-                    setSelectedCategory(category);
-                    setDropdownOpen(false);
-                  }}
-                >
-                  {category}
-                </li>
-              ))}
+                {categories.map((category, index) => {
+                  return <li
+                    key={index}
+                    className={styles.dropdownItem}
+                    onMouseDown={(e) => {
+                      e.stopPropagation();
+                      setSelectedCategory(category);
+                      setDropdownOpen(false);
+                    }}
+                  >
+                    {category}
+                  </li>
+                })}
+            </ul>
+          ) : dropdownOpen && (
+            <ul className={styles.dropdown}>
+                {incomeCategories.map((category, index) => {
+                  return <li
+                    key={index}
+                    className={styles.dropdownItem}
+                    onMouseDown={(e) => {
+                      e.stopPropagation();
+                      setSelectedCategory(category);
+                      setDropdownOpen(false);
+                    }}
+                  >
+                    {category}
+                  </li>
+                })}
             </ul>
           )}
         </div>
 
         <div className={styles.amount}>
           <input
-            type="text"
-            value="0,00$"
-            readOnly
+            type="number"
+            value={amount}
             className={styles.amountInput}
             onKeyDown={handleKeyDown}
+            onChange={(e) => {setAmount(e.target.value)}}
           />
           <svg className={styles.amountIcon}>
             <use href={`${sprite}#icon-calculator`}></use>
@@ -143,8 +159,8 @@ const Calculator = () => {
         </div>
 
           <div className={styles.buttons}>
-      <button className={styles.inputButton}>INPUT</button>
-      <button className={styles.clearButton}>CLEAR</button>
+      <button className={styles.inputButton} onClick={handleSubmit}>INPUT</button>
+      <button className={styles.clearButton} onClick={handleClear}>CLEAR</button>
       </div>
       </div>
   );
