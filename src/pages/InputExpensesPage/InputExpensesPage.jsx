@@ -8,15 +8,16 @@ import ReportsButton from "../../components/ReportsButton/ReportsButton";
 
 const InputExpensesPage = () => {
   return (
-    <div>
+    <div className={css.mainContainer}>
+      <div className={css.background}></div>
       <Main />
       <BalanceComponent />
-      <ReportsButton />
-      <Calculator isExpense={true} />
-      <div className={css.mainContainer}>
+      <div className={css.wrapper}>
+        <Calculator isExpense={true} />
+
         <HistorySpreadsheet isExpense={true} />
-        <SummaryList isExpense={true} />
       </div>
+      <SummaryList isExpense={true} />
     </div>
   );
 };
