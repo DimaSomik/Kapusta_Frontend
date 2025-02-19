@@ -5,7 +5,7 @@ import css from "./ExpensesIncomeGroupIcons.module.css";
 
 const dataToGroupIconsExpenses = [
   {
-    name: "Products",
+    name: "Groceries",
     iconName: "icon-icon-products",
   },
   {
@@ -25,19 +25,19 @@ const dataToGroupIconsExpenses = [
     iconName: "icon-icon-transport",
   },
   {
-    name: "Housing",
+    name: "Household items",
     iconName: "icon-icon-housing",
   },
   {
-    name: "Technique",
+    name: "Electronics",
     iconName: "icon-icon-technique",
   },
   {
-    name: "Communal, Communnication",
+    name: "Utilities and communication",
     iconName: "icon-icon-communal",
   },
   {
-    name: "Sports, Hobbies",
+    name: "Sports and hobbies",
     iconName: "icon-icon-sport",
   },
   {
@@ -55,7 +55,7 @@ export const ExpensesIncomeGroupIcons = ({ transactionsData, selectedIcon, setSe
 
   const dataIcons = mapExpensesData(
     dataToGroupIconsExpenses,
-    transactionsData.expenses.expensesData
+    transactionsData
   );
 
   const handleIconClick = (name) => {

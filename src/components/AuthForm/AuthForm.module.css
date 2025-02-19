@@ -1,8 +1,8 @@
 .form {
   position: absolute;
-  left: 75%;
+  left: 50%;
   transform: translateX(-50%);
-  top: 255px;
+  top: 199px;
   /* margin: 0 20px 40px 20px; */
   display: flex;
   flex-direction: column;
@@ -199,7 +199,8 @@
 
 @media screen and (min-width: 1280px /*var(--brakpoint-large)*/) {
   .form {
-    top: 110px;
+    top: 173px;
+    left: 75%;
     /* left: 763px; */
   }
 }

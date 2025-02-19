@@ -31,8 +31,8 @@ const Calculator = ({ isExpense }) => {
     new Date().toISOString().split("T")[0]
   );
   const handleDateChange = (event) => {
-    setSelectedDate(event.target.value);
-  };
+    setSelectedDate(event.target.value);};
+  const [activeTab, setActiveTab] = useState("expenses");
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -85,6 +85,22 @@ const Calculator = ({ isExpense }) => {
 
   return (
     <div className={styles.container}>
+      <div className={styles.navigation}>
+        <button
+          className={`${styles.expensesButton} ${
+            activeTab === "expenses" ? styles.activeExpenses : ""}`}
+          onClick={() => setActiveTab("expenses")}
+        >
+          EXPENSES
+        </button>
+        <button
+          className={`${styles.incomeButton} ${
+            activeTab === "income" ? styles.activeIncome : ""}`}
+          onClick={() => setActiveTab("income")}
+        >
+          INCOME
+        </button>
+      </div>
       <div className={styles.topSection}>
         <div className={styles.topSectionPart}>
           <div className={styles.date}>
@@ -124,89 +140,75 @@ const Calculator = ({ isExpense }) => {
             <svg className={styles.icon}>
               <use href={`${sprite}#icon-calendar`}></use>
             </svg>
-            {new Date().toLocaleDateString("pl-PL")}
-          </div> */}
 
-            <div className={styles.inputGroup}>
-              <input
-                type="text"
-                placeholder="Product description"
-                className={styles.input}
-                value={productDescription}
-                onChange={(e) => setProductDescription(e.target.value)}
-                onKeyDown={handleKeyDown}
-              />
+            {dropdownOpen && isExpense ? (
+              <ul className={styles.dropdown}>
+                {categories.map((category, index) => {
+                  return (
+                    <li
+                      key={index}
+                      className={styles.dropdownItem}
+                      onMouseDown={(e) => {
+                        e.stopPropagation();
+                        setSelectedCategory(category);
+                        setDropdownOpen(false);
+                      }}
+                    >
+                      {category}
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              dropdownOpen && (
+                <ul className={styles.dropdown}>
+                  {incomeCategories.map((category, index) => {
+                    return (
+                      <li
+                        key={index}
+                        className={styles.dropdownItem}
+                        onMouseDown={(e) => {
+                          e.stopPropagation();
+                          setSelectedCategory(category);
+                          setDropdownOpen(false);
+                        }}
+                      >
+                        {category}
+                      </li>
+                    );
+                  })}
+                </ul>
+              )
+            )}
+          </div>
 
-              <div
-                className={styles.selectWrapper}
-                ref={dropdownRef}
-                onMouseDown={(event) => {
-                  event.stopPropagation();
-                  setDropdownOpen((prev) => !prev);
+          <div className={styles.amount}>
+            <input
+              type="text"
+              value={amount}
+              className={styles.amountInput}
+                onKeyDown={(e) => {
+                  if (!/[0-9]/.test(e.key) &&
+                    ![
+                    'Backspace',
+                    'Delete',
+                    'ArrowLeft',
+                    'ArrowRight',
+                    'Tab'
+                  ].includes(e.key)) {
+                  e.preventDefault();
+                  }
                 }}
-              >
-                <div className={styles.selected}>{selectedCategory}</div>
-                <svg className={styles.icon}>
-                  <use href={`${sprite}#icon-down-arrow`}></use>
-                </svg>
-
-                {dropdownOpen && isExpense ? (
-                  <ul className={styles.dropdown}>
-                    {categories.map((category, index) => {
-                      return (
-                        <li
-                          key={index}
-                          className={styles.dropdownItem}
-                          onMouseDown={(e) => {
-                            e.stopPropagation();
-                            setSelectedCategory(category);
-                            setDropdownOpen(false);
-                          }}
-                        >
-                          {category}
-                        </li>
-                      );
-                    })}
-                  </ul>
-                ) : (
-                  dropdownOpen && (
-                    <ul className={styles.dropdown}>
-                      {incomeCategories.map((category, index) => {
-                        return (
-                          <li
-                            key={index}
-                            className={styles.dropdownItem}
-                            onMouseDown={(e) => {
-                              e.stopPropagation();
-                              setSelectedCategory(category);
-                              setDropdownOpen(false);
-                            }}
-                          >
-                            {category}
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  )
-                )}
-              </div>
-
-              <div className={styles.amount}>
-                <input
-                  type="number"
-                  value={amount}
-                  className={styles.amountInput}
-                  onKeyDown={handleKeyDown}
-                  onChange={(e) => {
-                    setAmount(e.target.value);
-                  }}
-                />
-                <div className={styles.iconWrapper}>
-                  <svg className={styles.amountIcon}>
-                    <use href={`${sprite}#icon-calculator`}></use>
-                  </svg>
-                </div>
-              </div>
+                onChange={(e) => {
+                  const numericValue = e.target.value.replace(/\D/g, '');
+                  setAmount(numericValue);
+                }}
+              />
+              
+            <div className={styles.iconWrapper}>
+              <svg className={styles.amountIcon}>
+                <use href={`${sprite}#icon-calculator`}></use>
+              </svg>
             </div>
           </div>
         </div>
@@ -221,6 +223,7 @@ const Calculator = ({ isExpense }) => {
         </div>
       </div>
     </div>
+  </div>
   );
 };
 

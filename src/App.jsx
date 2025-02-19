@@ -22,13 +22,8 @@ function App() {
   return (
     <>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <RestrictedRoute
-              redirectTo="/transaction/expenses"
-              component={<AuthPage />}
-            />
+        <Route path="/" element={
+            <RestrictedRoute redirectTo="/transaction/expense-categories" component={<AuthPage />}/>
           }
         />
         <Route

@@ -25,8 +25,6 @@ export const IncomeChart = ({ income }) => {
     maxAmount = Math.max(...Object.values(income));
   }
 
-  console.log("IncomeChart: income", income)
-
   return (
     <div className={css["chart-main-container"]}>
       <div className={css["chart-container"]}>

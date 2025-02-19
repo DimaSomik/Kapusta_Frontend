@@ -6,45 +6,20 @@ import { IncomeExpensesComparison } from "../../components/IncomeExpensesCompari
 import { IncomeDetailedReport } from "../../components/IncomeDetailedReport/IncomeDetailedReport";
 import { IncomeChart } from "../../components/IncomeChart/IncomeChart";
 import css from "./ReportIncomePage.module.css";
-
-const dataFromDB = //format danych z backendu - do usunięcia
-{
-  "incomes": {
-    "total": 18000,
-    "incomesData": {
-      "Salary": {
-        "total": 12000,
-        "Awans": 5000,
-        "Pensja": 7000
-      },
-      "Add. Income": {
-        "total": 6000,
-        "Umowa": 4500,
-        "Wynajem": 1500
-      }
-    }
-  },
-  "expenses": {
-    "total": 5200,
-    "expensesData": {
-      "Transport": {
-        "total": 4000,
-        "Wyjazd": 3500,
-        "Przyjazd": 500
-      },
-      "Alcohol": {
-        "total": 1200,
-        "Piwo": 150,
-        "Drink": 1050
-      }
-    }
-  }
-}
+import { useDispatch, useSelector } from "react-redux";
+import { getDataForPeriod } from "../../redux/controllers/userController";
+import { selectUserCurrentExpenses, selectUserCurrentIncome, selectUserIncomeData } from "../../redux/slices/userSlice";
+import { selectAccessToken } from "../../redux/slices/authSlice";
 
 const ReportIncomePage = () => {
   const [date, setDate] = useState(new Date());
   const [selectedIcon, setSelectedIcon] = useState(null);
   const [selectedIncome, setSelectedIncome] = useState(null);
+  const dispatch = useDispatch();
+  const currentIncome = useSelector(selectUserCurrentIncome);
+  const currentExpenses = useSelector(selectUserCurrentExpenses);
+  const incomeData = useSelector(selectUserIncomeData);
+  const token = useSelector(selectAccessToken);
 
   const getSelectedExpenses = (selectedIcon, incomesData) => {
     if (selectedIcon && incomesData[selectedIcon]) {
@@ -56,13 +31,14 @@ const ReportIncomePage = () => {
   };
 
   useEffect(() => {
-    if (dataFromDB && dataFromDB.incomes.incomesData) {
-      const selected = getSelectedExpenses(selectedIcon, dataFromDB.incomes.incomesData);
+    if (token) dispatch(getDataForPeriod(String(date.getFullYear()) + "-" + String(date.getMonth() + 1).padStart(2, "0")));
+
+    if (incomeData) {
+      const selected = getSelectedExpenses(selectedIcon, incomeData);
 
       setSelectedIncome(selected);
-      console.log("Income Zaznaczona ikona:", selectedIcon, "Dane:", selected, "dataFromDB: ", dataFromDB.incomes.incomesData);
     }
-  }, [selectedIcon]);
+  }, [selectedIcon, date, token]);
 
 
   return (
@@ -74,10 +50,10 @@ const ReportIncomePage = () => {
       </div>
 
       <div className={css["reports-page-second-container"]}>
-        <IncomeExpensesComparison expenses={dataFromDB.expenses.total} income={dataFromDB.incomes.total} />
+        <IncomeExpensesComparison expenses={currentExpenses} income={currentIncome} />
       </div>
       <div className={css["reports-page-third-container"]}>
-        <IncomeDetailedReport transactionsData={dataFromDB} selectedIcon={selectedIcon} setSelectedIcon={setSelectedIcon} />
+        <IncomeDetailedReport transactionsData={incomeData} selectedIcon={selectedIcon} setSelectedIcon={setSelectedIcon} />
       </div>
       <div className={css["reports-page-fourth-container"]}>
         <IncomeChart income={selectedIncome} />

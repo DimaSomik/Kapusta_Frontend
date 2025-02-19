@@ -9,7 +9,7 @@ const dataToGroupIconsIncome = [
     iconName: "icon-icon-additional-income",
   },
   {
-    name: "Add. Income",
+    name: "Additional income",
     iconName: "icon-icon-salary",
   },
 ]
@@ -18,7 +18,7 @@ export const ExpensesIncomeGroupIcons = ({ transactionsData, selectedIcon, setSe
 
   const dataIcons = mapExpensesData(
     dataToGroupIconsIncome,
-    transactionsData.incomes.incomesData
+    transactionsData
   );
 
   const handleIconClick = (name) => {
