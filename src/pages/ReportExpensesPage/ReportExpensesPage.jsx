@@ -7,39 +7,40 @@ import { ExpensesDetailedReport } from "../../components/ExpensesDetailedReport/
 import { ExpensesChart } from "../../components/ExpensesChart/ExpensesChart";
 import css from "./ReportExpensesPage.module.css";
 
-const dataFromDB = //format danych z backendu - do usunięcia
-{
-  "incomes": {
-    "total": 18000,
-    "incomesData": {
-      "Salary": {
-        "total": 12000,
-        "Awans": 5000,
-        "Pensja": 7000
+const dataFromDB =
+  //format danych z backendu - do usunięcia
+  {
+    incomes: {
+      total: 18000,
+      incomesData: {
+        Salary: {
+          total: 12000,
+          Awans: 5000,
+          Pensja: 7000,
+        },
+        "Add. Income": {
+          total: 6000,
+          Umowa: 4500,
+          Wynajem: 1500,
+        },
       },
-      "Add. Income": {
-        "total": 6000,
-        "Umowa": 4500,
-        "Wynajem": 1500
-      }
-    }
-  },
-  "expenses": {
-    "total": 5200,
-    "expensesData": {
-      "Transport": {
-        "total": 4000,
-        "Wyjazd": 3500,
-        "Przyjazd": 500
+    },
+    expenses: {
+      total: 5200,
+      expensesData: {
+        Transport: {
+          total: 4000,
+          Wyjazd: 3500,
+          Przyjazd: 500,
+        },
+        Alcohol: {
+          total: 1200,
+          Piwo: 150,
+          Drink: 1050,
+        },
       },
-      "Alcohol": {
-        "total": 1200,
-        "Piwo": 150,
-        "Drink": 1050
-      }
-    }
-  }
-}
+    },
+  };
 
 const ReportExpensesPage = () => {
   const [date, setDate] = useState(new Date());
@@ -57,12 +58,14 @@ const ReportExpensesPage = () => {
 
   useEffect(() => {
     if (dataFromDB && dataFromDB.expenses.expensesData) {
-      const selected = getSelectedExpenses(selectedIcon, dataFromDB.expenses.expensesData);
+      const selected = getSelectedExpenses(
+        selectedIcon,
+        dataFromDB.expenses.expensesData
+      );
       setSelectedExpense(selected);
       console.log("Zaznaczona ikona:", selectedIcon, "Dane:", selected);
     }
   }, [selectedIcon]);
-
 
   return (
     <div className={css["reports-page-main-container"]}>
@@ -73,10 +76,17 @@ const ReportExpensesPage = () => {
       </div>
 
       <div className={css["reports-page-second-container"]}>
-        <IncomeExpensesComparison expenses={dataFromDB.expenses.total} income={dataFromDB.incomes.total} />
+        <IncomeExpensesComparison
+          expenses={dataFromDB.expenses.total}
+          income={dataFromDB.incomes.total}
+        />
       </div>
       <div className={css["reports-page-third-container"]}>
-        <ExpensesDetailedReport transactionsData={dataFromDB} selectedIcon={selectedIcon} setSelectedIcon={setSelectedIcon} />
+        <ExpensesDetailedReport
+          transactionsData={dataFromDB}
+          selectedIcon={selectedIcon}
+          setSelectedIcon={setSelectedIcon}
+        />
       </div>
       <div className={css["reports-page-fourth-container"]}>
         <ExpensesChart expenses={selectedExpense} />
