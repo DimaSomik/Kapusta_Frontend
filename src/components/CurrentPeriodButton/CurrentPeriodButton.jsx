@@ -3,7 +3,7 @@ import icon from "../../assets/svgs-sprite.svg";
 import css from "./CurrentPeriodButton.module.css";
 
 export const CurrentPeriodButton = ({ date, setDate }) => {
-
+    
   const handlePrevMonth = () => {
     setDate(
       (prevDate) => new Date(prevDate.getFullYear(), prevDate.getMonth() - 1)

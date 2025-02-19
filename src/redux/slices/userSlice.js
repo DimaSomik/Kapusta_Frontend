@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { logIn, logOut } from "../controllers/authController";
-import { updateBalance, deleteTransaction, getExpenses, addExpense, getIncome, addIncome } from "../controllers/userController";
+import { updateBalance, deleteTransaction, getExpenses, addExpense, getIncome, addIncome, getDataForPeriod } from "../controllers/userController";
 
 export const userSlice = createSlice({
     name: "user",
@@ -9,7 +9,11 @@ export const userSlice = createSlice({
         balance: 0,
         id: null,
         transactions: [],
-        montlyStats: null
+        montlyStats: null,
+        currentIncome: 0,
+        currentExpenses: 0,
+        expenseData: null,
+        incomeData: null
     },
     extraReducers: (builder) => {
         builder
@@ -51,6 +55,12 @@ export const userSlice = createSlice({
                 state.transactions.push(action.payload.transaction)
                 state.balance = action.payload.newBalance
             })
+            .addCase(getDataForPeriod.fulfilled, (state, action) => {
+                state.incomeData = action.payload.incomes.data
+                state.expenseData = action.payload.expenses.data
+                state.currentIncome = action.payload.incomes.total
+                state.currentExpenses = action.payload.expenses.total
+            })
     },
     selectors: {
         selectUserEmail: (state) => state.email,
@@ -58,6 +68,10 @@ export const userSlice = createSlice({
         selectUserID: (state) => state.id,
         selectUserTransactions: (state) => state.transactions,
         selectUserMonthlyStats: (state) => state.montlyStats,
+        selectUserCurrentIncome: (state) => state.currentIncome,
+        selectUserCurrentExpenses: (state) => state.currentExpenses,
+        selectUserExpenseData: (state) => state.expenseData,
+        selectUserIncomeData: (state) => state.incomeData,
     }
 });
 
@@ -66,4 +80,8 @@ export const {
     selectUserBalance, 
     selectUserID, 
     selectUserTransactions, 
-    selectUserMonthlyStats } = userSlice.selectors;
+    selectUserMonthlyStats,
+    selectUserCurrentIncome,
+    selectUserCurrentExpenses,
+    selectUserIncomeData,
+    selectUserExpenseData} = userSlice.selectors;
