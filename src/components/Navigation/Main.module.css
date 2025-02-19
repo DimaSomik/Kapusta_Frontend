@@ -41,7 +41,7 @@ body {
 .logo {
   font-weight: 700;
   font-size: 1.8rem;
-  color: rgb(0, 0, 0);
+  color: var(--text-dark-color);
   text-shadow: 2px 2px 4px #000000;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -50,7 +50,7 @@ body {
 .title {
   width: 183px;
   height: auto;
-  color: rgb(0, 0, 0);
+  color: var(--text-dark-color);
   font-size: 3.8rem;
   font-weight: 900;
   position: absolute;
@@ -71,13 +71,13 @@ body {
 
   .background {
     width: 100vw;
-    max-width: 768px;
+    min-width: 768px;
     height: 100vh;
   }
 
   .header {
     width: 100%;
-    max-width: 768px;
+    min-width: 768px;
     padding: 0 16px;
   }
 
@@ -117,7 +117,7 @@ body {
   .logo {
     font-weight: 700;
     font-size: 2.8rem;
-    color: #000000;
+    color: var(--text-dark-color);
     text-shadow: 2px 2px 4px #000000;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -131,7 +131,7 @@ body {
     position: absolute;
     top: 264px;
     left: 229px;
-    color: rgb(0, 0, 0);
+    color: var(--text-dark-color);
     text-shadow: 2px 2px 4px #000000;
     text-transform: uppercase;
     letter-spacing: 2px;

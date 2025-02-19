@@ -4,6 +4,7 @@ import { BalanceComponent } from "../../components/Balance/Balance";
 import Calculator from "../../components/Calculator/Calculator";
 import HistorySpreadsheet from "../../components/HistorySpreadsheet/HistorySpreadsheet";
 import SummaryList from "../../components/SummaryList/SummaryList";
+import ReportsButton from "../../components/ReportsButton/ReportsButton";
 
 const InputExpensesPage = () => {
   return (

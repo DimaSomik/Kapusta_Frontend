@@ -27,6 +27,10 @@ const Calculator = ({ isExpense }) => {
   const [amount, setAmount] = useState(0);
   const dropdownRef = useRef(null);
   const dispatch = useDispatch();
+   const [selectedDate, setSelectedDate] = useState(
+    new Date().toISOString().split("T")[0]);
+  const handleDateChange = (event) => {
+    setSelectedDate(event.target.value);};
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -81,6 +85,39 @@ const Calculator = ({ isExpense }) => {
     <div className={styles.container}>
       <div className={styles.topSection}>
         <div className={styles.date}>
+          <label className={styles.dateLabel}>
+        <svg className={styles.icon}>
+          <use href={`${sprite}#icon-calendar`}></use>
+            </svg>
+            <input
+              type="date"
+              value={selectedDate}
+              onChange={handleDateChange}
+              className={styles.hiddenDatePicker}
+            />
+            </label>
+       <span>{new Date(selectedDate).toLocaleDateString("pl-PL")}</span>
+      </div>
+
+      <div className={styles.inputGroup}>
+        <input
+          type="text"
+          placeholder="Product description"
+          className={styles.input}
+          value={productDescription}
+          onChange={(e) => setProductDescription(e.target.value)}
+          onKeyDown={handleKeyDown}
+        />
+
+        <div
+          className={styles.selectWrapper}
+          ref={dropdownRef}
+          onMouseDown={(event) => {
+            event.stopPropagation();
+            setDropdownOpen((prev) => !prev);
+          }}
+        >
+          <div className={styles.selected}>{selectedCategory}</div>
           <svg className={styles.icon}>
             <use href={`${sprite}#icon-calendar`}></use>
           </svg>

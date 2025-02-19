@@ -22,14 +22,12 @@ body {
     justify-content: center;
 }
 
-.cabbage1, .cabbage2 {
-    width: 83px;
-    height: 89px;
-    background-image: url('../../public/kapusta.svg');
+.cabbage1 {
+    width: 50px;
+    height: 50px;
     background-size: contain;
     background-repeat: no-repeat;
     position: absolute;
-    z-index: 2;
 }
 
 .hiddenMobile {
@@ -79,24 +77,15 @@ body {
     }
 
 
-    .cabbage1, .cabbage2, .cabbage3, .cabbage4, .cabbage5, .cabbage6,
-    .cabbage7{
-        width: 83px;
-        height: 89px;
-        background-image: url('../../public/kapusta.svg');
+    .cabbage1 {
+        width: 763px;
+        height: 150px;
+        left: 5px;
         background-size: contain;
         background-repeat: no-repeat;
         position: absolute;
-        z-index: 2;
+        transform: rotate(0deg);
     }
-    
-    .cabbage1 { top: 20%; left: 55%; }
-    .cabbage2 { top: 30%; left: 80%; }
-    .cabbage3 { top: 10%; left: 15%; }
-    .cabbage4 { top: 50%; left: 35%; }
-    .cabbage5 { top: 6%; left: 89%; }
-    .cabbage6 { top: 6%; left: 70%; }
-    .cabbage7 { top: 20%; left: 30%; }
 
     .cabbageBottom {
         display: block;
@@ -109,7 +98,6 @@ body {
         position: absolute;
         background-size: contain;
         background-repeat: no-repeat;
-        background-image: url('../../public/kapusty.svg');
         z-index: 100;
     }
 
@@ -140,35 +128,19 @@ body {
         min-width: 1280px;
     }
 
-.cabbage1, .cabbage2, .cabbage3, .cabbage4, .cabbage5, .cabbage6,
-.cabbage7, .cabbage8, .cabbage9, .cabbage10, .cabbage11, .cabbage12,
-.cabbage13, .cabbage14 {
-    width: 83px;
-    height: 89px;
-    background-image: url('../../public/kapusta.svg');
+.cabbage1 {
+    width: 1335px;
+    height: 232px;
     background-size: contain;
     background-repeat: no-repeat;
     position: absolute;
-    z-index: 2;
+    left: 10px;
+    top: 84px;
+    transform: rotate(0deg);
 }
 
-.cabbage1 { top: 15%; left: 55%; }
-.cabbage2 { top: 30%; left: 80%; }
-.cabbage3 { top: 20%; left: 25%; }
-.cabbage4 { top: 36%; left: 35%; }
-.cabbage5 { top: 9%; left: 10%; }
-.cabbage6 { top: 36%; left: 50%; }
-.cabbage7 { top: 8%; left: 30%; }
-.cabbage8 { top: 30%; left: 15%; }
-.cabbage9 { top: 29%; left: 68%; }
-.cabbage10 { top: 20%; left: 3%; }
-.cabbage11 { top: 9%; left: 74%; }
-.cabbage12 { top: 19%; left: 45%; }
-.cabbage13 { top: 10%; left: 90%; }
-.cabbage14 { top: 36%; left: 62%; }
-
 .moveDown {
-    transform:translateY(450px); 
+    transform: translateY(450px) translateX(65px);
 }
 
 .hiddenTablet {

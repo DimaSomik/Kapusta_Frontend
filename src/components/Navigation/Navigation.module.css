@@ -23,11 +23,38 @@
 .logo {
   font-weight: 700;
   font-size: 1.8rem;
-  color: rgb(0, 0, 0);
+  color: var(--text-dark-color);
   text-shadow: 2px 2px 4px #000000;
   text-transform: uppercase;
   letter-spacing: 1px;
   z-index: 1000;
+}
+
+.logoWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.firstLogoBackground {
+  position: absolute;
+  top: -3px;
+  left: 3px;
+  width: 37px;
+  height: 36px;
+  background-color: orange; 
+  border-radius: 8px;
+  z-index: -1 
+}
+
+.secondLogoBackground {
+  position: absolute;
+  top: -10px;
+  left: -5px;
+  width: 40px;
+  height: 33px;
+  background-color: rgba(251, 124, 47, 0.2);
+  border-radius: 8px;
+  z-index: -2
 }
 
 .userInfo {
@@ -80,12 +107,23 @@
   color: var(--secondary-color);
 }
 
+.userName, .logout {
+  display: none; 
+}
+.mobileLogout {
+  display: block; 
+}
+
+.mobileLogout svg {
+  width: 15px;   
+  height: 15px;  
+}
+
 /* TABLET */
 
 @media screen and (min-width: 768px /*var(--brakpoint-medium)*/) {
   .header {
     width: 100vw;
-    min-width: 100vw;
     height: 60px;
     padding: 0 16px;
   }
@@ -106,6 +144,7 @@
 
   .userName {
     font-size: var(--default-font-size);
+    display: inline-block;
   }
 
   .line {
@@ -115,6 +154,11 @@
 
   .logout {
     font-size: var(--default-font-size);
+    display: inline-block;
+  }
+
+  .mobileLogout {
+    display: none;
   }
 }
 
@@ -140,7 +184,7 @@
   .logo {
     font-weight: 700;
     font-size: 2.8rem;
-    color: rgb(0, 0, 0);
+    color: var(--text-dark-color);
     text-shadow: 2px 2px 4px #000000;
     text-transform: uppercase;
     letter-spacing: 2px;
