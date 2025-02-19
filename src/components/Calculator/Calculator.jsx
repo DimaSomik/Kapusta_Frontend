@@ -215,6 +215,7 @@ const Calculator = ({ isExpense }) => {
           CLEAR
         </button>
       </div>
+      </div>
     </div>
   );
 };
