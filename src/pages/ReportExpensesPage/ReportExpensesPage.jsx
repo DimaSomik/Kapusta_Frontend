@@ -6,46 +6,20 @@ import { IncomeExpensesComparison } from "../../components/IncomeExpensesCompari
 import { ExpensesDetailedReport } from "../../components/ExpensesDetailedReport/ExpensesDetailedReport";
 import { ExpensesChart } from "../../components/ExpensesChart/ExpensesChart";
 import css from "./ReportExpensesPage.module.css";
-
-const dataFromDB =
-  //format danych z backendu - do usunięcia
-  {
-    incomes: {
-      total: 18000,
-      incomesData: {
-        Salary: {
-          total: 12000,
-          Awans: 5000,
-          Pensja: 7000,
-        },
-        "Add. Income": {
-          total: 6000,
-          Umowa: 4500,
-          Wynajem: 1500,
-        },
-      },
-    },
-    expenses: {
-      total: 5200,
-      expensesData: {
-        Transport: {
-          total: 4000,
-          Wyjazd: 3500,
-          Przyjazd: 500,
-        },
-        Alcohol: {
-          total: 1200,
-          Piwo: 150,
-          Drink: 1050,
-        },
-      },
-    },
-  };
+import { useDispatch, useSelector } from "react-redux";
+import { getDataForPeriod } from "../../redux/controllers/userController";
+import { selectUserCurrentExpenses, selectUserCurrentIncome, selectUserExpenseData } from "../../redux/slices/userSlice";
+import { selectAccessToken } from "../../redux/slices/authSlice";
 
 const ReportExpensesPage = () => {
   const [date, setDate] = useState(new Date());
   const [selectedIcon, setSelectedIcon] = useState(null);
   const [selectedExpense, setSelectedExpense] = useState(null);
+  const dispatch = useDispatch();
+  const currentIncome = useSelector(selectUserCurrentIncome);
+  const currentExpenses = useSelector(selectUserCurrentExpenses);
+  const expenseData = useSelector(selectUserExpenseData);
+  const token = useSelector(selectAccessToken);
 
   const getSelectedExpenses = (selectedIcon, expensesData) => {
     if (selectedIcon && expensesData[selectedIcon]) {
@@ -57,15 +31,16 @@ const ReportExpensesPage = () => {
   };
 
   useEffect(() => {
-    if (dataFromDB && dataFromDB.expenses.expensesData) {
+    if (token) dispatch(getDataForPeriod(String(date.getFullYear()) + "-" + String(date.getMonth() + 1).padStart(2, "0")));
+
+    if (expenseData) {
       const selected = getSelectedExpenses(
         selectedIcon,
-        dataFromDB.expenses.expensesData
+        expenseData
       );
       setSelectedExpense(selected);
-      console.log("Zaznaczona ikona:", selectedIcon, "Dane:", selected);
     }
-  }, [selectedIcon]);
+  }, [selectedIcon, date, token]);
 
   return (
     <div className={css["reports-page-main-container"]}>
@@ -77,13 +52,13 @@ const ReportExpensesPage = () => {
 
       <div className={css["reports-page-second-container"]}>
         <IncomeExpensesComparison
-          expenses={dataFromDB.expenses.total}
-          income={dataFromDB.incomes.total}
+          expenses={currentExpenses}
+          income={currentIncome}
         />
       </div>
       <div className={css["reports-page-third-container"]}>
         <ExpensesDetailedReport
-          transactionsData={dataFromDB}
+          transactionsData={expenseData}
           selectedIcon={selectedIcon}
           setSelectedIcon={setSelectedIcon}
         />
