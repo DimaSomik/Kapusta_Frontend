@@ -1,0 +1,15 @@
+.link {
+  font-family: inherit;
+  font-size: var(--default-font-size);
+  color: var(--primary-color);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.link svg {
+  width: 2.4rem;
+  height: 2.4rem;
+  fill: var(--icon-fill-color);
+  margin-left: 1.4rem;
+}

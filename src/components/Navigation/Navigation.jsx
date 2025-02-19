@@ -1,4 +1,4 @@
-import styles from "../Navigation/Navigation.module.css"; 
+import styles from "../Navigation/Navigation.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../redux/controllers/authController";
 import { selectUserEmail } from "../../redux/slices/userSlice";
@@ -12,11 +12,10 @@ const Navigation = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const handleLogout = () => {
-        dispatch(logOut());
-        navigate("/");
-    };
-
+  const handleLogout = () => {
+    dispatch(logOut());
+    navigate("/");
+  };
     return (
         <header className={styles.header}>
             <div className={styles.logoWrapper}>

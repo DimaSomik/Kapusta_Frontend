@@ -34,23 +34,25 @@ const SummaryList = ({ isExpense }) => {
     } else if (token && !isExpense) {
       dispatch(getIncome());
     }
-  }, [token, transactions]) 
+  }, [token, transactions]);
 
   for (const sum in data) {
     tableData.push(data[sum]);
-  };
+  }
 
   return (
     <div className={styles.tableContainer}>
       <div className={styles.tableHeader}>Summary</div>
-      <table>
+      <table className={styles.table}>
         <tbody>
           {months.map((month, index) => {
             if (tableData[index] !== "N/A" && data) {
-              return <tr key={month}>
-                        <td>{month}</td>
-                        <td>{tableData[index]}</td>
-                     </tr>
+              return (
+                <tr className={styles.tr} key={month}>
+                  <td className={styles.td}>{month}</td>
+                  <td className={styles.td}>{tableData[index]}</td>
+                </tr>
+              );
             }
           })}
         </tbody>
