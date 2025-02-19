@@ -12,6 +12,8 @@
   overflow-y: auto;
   background: var(--text-light-color);
   border-radius: 20px 20px 0 0;
+  margin-top: 30px;
+  margin-left: 110px;
 }
 
 .table {
@@ -44,6 +46,11 @@ td {
 
 .sum {
   color: var(--expences-color);
+  font-weight: bold;
+}
+
+.sumIncome {
+  color: var(--incomes-color);
   font-weight: bold;
 }
 

@@ -1,17 +1,22 @@
-import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleIsLogin } from "../../redux/slices/authSlice";
+import { selectIsLogin } from "../../redux/slices/authSlice";
+import css from "./AuthPage.module.css";
 import LoginForm from "../../components/AuthForm/LoginForm";
 import RegisterForm from "../../components/AuthForm/RegisterForm";
-import css from "./AuthPage.module.css";
+import Main from "../../components/Navigation/Main";
 
 const AuthPage = () => {
-  const [isLogin, setIsLogin] = useState(true);
+  let isLogin = useSelector(selectIsLogin);
+  const dispatch = useDispatch();
 
   const toggleForm = () => {
-    setIsLogin((prev) => !prev);
+    dispatch(toggleIsLogin());
   };
 
   return (
     <div className={css.section}>
+      <Main />
       {isLogin ? (
         <LoginForm onToggleForm={toggleForm} />
       ) : (
