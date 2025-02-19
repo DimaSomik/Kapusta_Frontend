@@ -15,7 +15,7 @@
   font-size: var(--default-font-size);
   border: 1px solid var(--accent-color);
   border-radius: 8px;
-  color: var(--accent-color);
+  color: var(--text-dark-color);
   transition: color var(--transition-time) var(--transition-timing-function);
 }
 

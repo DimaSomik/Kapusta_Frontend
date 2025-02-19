@@ -41,7 +41,8 @@ td:last-child {
 @media screen and (min-width: 768px /*var(--brakpoint-medium)*/) {
   .tableContainer {
     width: 230px;
-    margin: 0 auto;
+    margin-top: 30px;
+    /* margin: 0 auto; */
   }
 }
 

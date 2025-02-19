@@ -1,32 +1,29 @@
 import { useState, useEffect } from "react";
 import styles from "./HistorySpreadsheet.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { selectUserTransactions } from "../../redux/slices/userSlice";
+import { deleteTransaction } from "../../redux/controllers/userController";
 
-const API_URL = "https://..."; // Podmienić na właściwy URL backendu
-
-const HistorySpreadsheet = () => {
+const HistorySpreadsheet = ({ isExpense }) => {
   const [records, setRecords] = useState([]);
+  const dispatch = useDispatch();
+  const transactions = useSelector(selectUserTransactions);
 
   useEffect(() => {
-    fetch(API_URL)
-      .then((res) => res.json())
-      .then((data) => setRecords(data))
-      .catch((err) => console.error("Błąd pobierania danych", err));
-  }, []);
+      setRecords(transactions)
+  }, [transactions])
 
   const handleDelete = (id) => {
-    if (!window.confirm("Czy na pewno chcesz usunąć ten wiersz?")) return;
+    if (!window.confirm("Are you sure you want to delete this record?")) return;
 
-    fetch(`${API_URL}/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => {
-        if (!res.ok) throw new Error("Błąd podczas usuwania");
+    dispatch(deleteTransaction(id));
 
-        setRecords((prevRecords) =>
-          prevRecords.filter((record) => record.id !== id)
-        );
-      })
-      .catch((err) => console.error("Błąd:", err));
+    const newRecords = [...records];
+    const index = records.findIndex((record) => record._id === id);
+    if (index !== -1) {
+      newRecords.splice(index, 1);
+    };
+    setRecords(newRecords);
   };
 
   return (
@@ -42,25 +39,45 @@ const HistorySpreadsheet = () => {
           </tr>
         </thead>
         <tbody>
-          {records.map((record) => (
-            <tr key={record.id} className={styles.row}>
-              <td>{record.date}</td>
-              <td>{record.description}</td>
-              <td>{record.category}</td>
-              <td className={styles.sum}>{record.sum} $</td>
-              <td>
-                <button onClick={() => handleDelete(record.id)}>
-                  <svg className={styles.deleteBtn} width="18" height="18">
-                    <use href="/src/assets/svgs-sprite.svg#icon-bin" />
-                  </svg>
-                </button>
-              </td>
-            </tr>
-          ))}
+          {records.map((record) => {
+            if (isExpense) {
+              if (record.category !== "Salary" && record.category !== "Additional income") {
+                return <tr key={record._id} className={styles.row}>
+                  <td>{record.date}</td>
+                  <td>{record.description}</td>
+                  <td>{record.category}</td>
+                  <td className={styles.sum}>{record.amount} $</td>
+                  <td>
+                    <button onClick={() => handleDelete(record._id)}>
+                      <svg className={styles.deleteBtn} width="18" height="18">
+                        <use href="/src/assets/svgs-sprite.svg#icon-bin" />
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+              }
+            } else if (!isExpense) {
+              if (record.category == "Salary" || record.category == "Additional income") {
+                return <tr key={record._id} className={styles.row}>
+                  <td>{record.date}</td>
+                  <td>{record.description}</td>
+                  <td>{record.category}</td>
+                  <td className={styles.sumIncome}>{record.amount} $</td>
+                  <td>
+                    <button onClick={() => handleDelete(record._id)}>
+                      <svg className={styles.deleteBtn} width="18" height="18">
+                        <use href="/src/assets/svgs-sprite.svg#icon-bin" />
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+              }
+            }
+          })}
           {records.length === 0 && (
             <tr>
               <td colSpan="5" className={styles.emptyMessage}>
-                No data
+                There are no transactions yet.
               </td>
             </tr>
           )}

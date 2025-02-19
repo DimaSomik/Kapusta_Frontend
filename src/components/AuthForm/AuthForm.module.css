@@ -1,6 +1,6 @@
 .form {
   position: absolute;
-  left: 50%;
+  left: 75%;
   transform: translateX(-50%);
   top: 255px;
   /* margin: 0 20px 40px 20px; */
@@ -199,8 +199,8 @@
 
 @media screen and (min-width: 1280px /*var(--brakpoint-large)*/) {
   .form {
-    top: 174px;
-    left: 763px;
+    top: 110px;
+    /* left: 763px; */
   }
 }
 

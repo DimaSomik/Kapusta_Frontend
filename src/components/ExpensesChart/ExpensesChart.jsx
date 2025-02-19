@@ -1,31 +1,8 @@
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import css from "./ExpensesChart.module.css";
 
-const dataToChartExpenses = [//to delete
-  { name: "Pork", amount: 1000 },
-  { name: "Beef", amount: 1000 },
-  { name: "Chiken", amount: 500 },
-  { name: "Fish", amount: 800 },
-  { name: "Panini", amount: 420 },
-  { name: "Coffee", amount: 350 },
-  { name: "Spaghetti", amount: 630 },
-  { name: "Chocolate", amount: 700 },
-  { name: "Olives", amount: 333 },
-  { name: "Greensd", amount: 300 },
-];
-
-// const dataToChartIncome = [ //to delete
-//   {
-//     name: "My",
-//     amount: "25000"
-//   },
-//   {
-//     name: "Wife",
-//     amount: "20000"
-//   },
-// ]
-
-export const ExpensesChart = () => {
+export const ExpensesChart = ({ expenses }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
@@ -34,7 +11,6 @@ export const ExpensesChart = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const maxAmount = Math.max(...dataToChartExpenses.map((item) => item.amount));
 
   const formatCurrency = (value) => {
     const numericValue = typeof value === "number" ? value : parseFloat(value);
@@ -44,28 +20,33 @@ export const ExpensesChart = () => {
     }).replace(",", ".");
   };
 
+  let maxAmount = 0;
+  if (expenses && Object.keys(expenses).length > 0) {
+    maxAmount = Math.max(...Object.values(expenses));
+  }
+
   return (
     <div className={css["chart-main-container"]}>
       <div className={css["chart-container"]}>
-
-        {dataToChartExpenses.map((item, index) => (
-          <div
-            key={index}
-            className={css["bar-container"]}
-            style={{
-              width: isMobile && `${(item.amount / maxAmount) * 100}%`,
-              height: !isMobile && `${(item.amount / maxAmount) * 100}% `,
-            }}
-          >
-            <span className={css["label"]} >
-              {item.name}
-            </span>
-            <span className={css["amount"]}>{formatCurrency(item.amount)} $</span>
-          </div>
-        ))}
+        {expenses && Object.keys(expenses).length > 0 &&
+          Object.entries(expenses).map(([name, amount], index) => (
+            <div
+              key={index}
+              className={css["bar-container"]}
+              style={{
+                width: isMobile ? `${(amount / maxAmount) * 100}%` : undefined,
+                height: !isMobile ? `${(amount / maxAmount) * 100}%` : undefined,
+              }}
+            >
+              <span className={css["label"]}>{name}</span>
+              <span className={css["amount"]}>{formatCurrency(amount)} $</span>
+            </div>
+          ))
+        }
       </div>
-    </div >
+    </div>
   );
 };
-
-
+ExpensesChart.propTypes = {
+  expenses: PropTypes.objectOf(PropTypes.number).isRequired,
+};
