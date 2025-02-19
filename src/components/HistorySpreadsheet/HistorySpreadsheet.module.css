@@ -12,6 +12,8 @@
   overflow-y: auto;
   background: var(--text-light-color);
   border-radius: 20px 20px 0 0;
+  margin-top: 30px;
+  margin-left: 110px;
 }
 
 .table {
@@ -26,7 +28,7 @@
   padding: 15px 20px;
   background: var(--accent-color);
   color: var(--primary-color);
-  font-size: 12px;
+  font-size: var(--default-font-size);
 }
 
 .row {
@@ -39,7 +41,7 @@ td {
   text-align: left;
   color: var(--primary-color);
   background: var(--text-light-color);
-  font-size: 12px;
+  font-size: var(--default-font-size);
 }
 
 .sum {
@@ -47,13 +49,18 @@ td {
   font-weight: bold;
 }
 
+.sumIncome {
+  color: var(--incomes-color);
+  font-weight: bold;
+}
+
 button {
-  background: transparent;
+  background-color: transparent;
   border: none;
   padding: 7px;
   cursor: pointer;
   border-radius: 50%;
-  transition: background 0.3s;
+  transition: background-color 0.3s;
 }
 
 button:hover {
@@ -74,13 +81,13 @@ button:hover {
   border-radius: 6px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px /*var(--brakpoint-medium)*/) {
   .tableWrapper {
     max-width: 600px;
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1280px /*var(--brakpoint-large)*/) {
   .tableWrapper {
     max-width: 750px;
   }

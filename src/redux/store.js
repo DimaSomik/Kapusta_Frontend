@@ -22,8 +22,8 @@ const authPersistConfig = {
 };
 
 const rootReducers = combineReducers({
-    transactions: transactionSlice.reducer,
-    users: userSlice.reducer,
+    transaction: transactionSlice.reducer,
+    user: userSlice.reducer,
     auth: persistReducer(authPersistConfig, authSlice.reducer),
 });
 

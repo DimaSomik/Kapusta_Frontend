@@ -1,6 +1,6 @@
 .form {
   position: absolute;
-  left: 50%;
+  left: 75%;
   transform: translateX(-50%);
   top: 255px;
   /* margin: 0 20px 40px 20px; */
@@ -19,7 +19,7 @@
 .loginGoogle {
   margin: 0 10px 16px 10px;
   font-weight: 400;
-  font-size: 12px;
+  font-size: var(--default-font-size);
   letter-spacing: 0.04em;
   text-align: center;
   color: var(--primay-color);
@@ -28,7 +28,7 @@
 .textRegister {
   margin: 0 10px 16px 10px;
   font-weight: 400;
-  font-size: 12px;
+  font-size: var(--default-font-size);
   letter-spacing: 0.04em;
   text-align: center;
   color: var(--primay-color);
@@ -41,20 +41,22 @@
   width: 122px;
   height: 40px;
   margin: 0 auto 32px;
-  background-color: #f6f7fb;
+  background-color: var(--accent-color);
   border: none;
   border-radius: 26px;
   box-shadow: 1px 2px 3px 0 rgba(170, 178, 197, 0.2);
   font-weight: 500;
-  font-size: 14px;
+  font-size: var(--bigger-font-size);
   letter-spacing: 0.02em;
   color: var(--text-dark-color);
   cursor: pointer;
+  transition: color var(--transition-time) var(--transition-timing-function),
+    background-color var(--transition-time) var(--transition-timing-function);
 }
 
 .googleBtn:hover {
-  transform: scale(0.9);
-  transition: all 300ms linear;
+  color: var(--text-light-color);
+  background-color: var(--secondary-color);
 }
 
 .icon {
@@ -69,7 +71,7 @@
   margin-bottom: 16px;
   margin-top: 0;
   font-weight: 400;
-  font-size: 12px;
+  font-size: var(--default-font-size);
   letter-spacing: 0.04em;
   color: var(--primay-color);
 }
@@ -87,8 +89,8 @@
   width: 100%;
   font-style: normal;
   font-weight: 400;
-  font-size: 10px;
-  line-height: 12px;
+  font-size: 1rem;
+  line-height: var(--default-font-size);
   color: var(--text-dark-color);
   text-align: left;
 }
@@ -97,25 +99,28 @@
   outline: none;
   border: none;
   border-radius: 30px;
-  background-color: #f6f7fb;
+  background-color: var(--accent-color);
   width: 240px;
   height: 52px;
   padding: 17px 19px;
   font-weight: 400;
-  font-size: 14px;
+  font-size: var(--bigger-font-size);
   letter-spacing: 0.04em;
+  transition: background-color var(--transition-time)
+      var(--transition-timing-function),
+    box-shadow var(--transition-time) var(--transition-timing-function);
 }
 
 .field:hover,
 .field:focus {
-  background-color: #fff;
-  box-shadow: 1px 3px 5px 0 rgba(82, 85, 95, 0.15);
+  background-color: var(--tertiary-color);
+  box-shadow: 1px 3px 5px 0 rgba(255, 230, 213, 0.35);
   outline: none;
 }
 
 .error {
   font-weight: 400;
-  font-size: 10px;
+  font-size: 1rem;
   letter-spacing: 0.04em;
   text-align: left;
   color: var(--alert-color);
@@ -123,7 +128,7 @@
 
 .errorStar {
   color: var(--alert-color);
-  font-size: 12px;
+  font-size: var(--default-font-size);
   align-items: start;
 }
 
@@ -141,23 +146,25 @@
   border: none;
   padding: 0;
   font-weight: 700;
-  font-size: 12px;
+  font-size: var(--default-font-size);
   letter-spacing: 0.02em;
   text-transform: uppercase;
   text-align: center;
   color: var(--primay-color);
   box-shadow: 1px 3px 5px 0 rgba(82, 85, 95, 0.15);
   cursor: pointer;
+  transition: color var(--transition-time) var(--transition-timing-function),
+    background-color var(--transition-time) var(--transition-timing-function),
+    box-shadow var(--transition-time) var(--transition-timing-function);
 }
 
 .button:hover {
   background: var(--secondary-color);
   color: var(--text-light-color);
   box-shadow: 1px 3px 5px 0 rgba(255, 107, 8, 0.35);
-  transition: 0.5s linear;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px /*var(--brakpoint-medium)*/) {
   .form {
     width: 426px;
     height: 552px;
@@ -178,7 +185,7 @@
   }
 
   .labelText {
-    font-size: 12px;
+    font-size: var(--default-font-size);
   }
 
   .formLabel {
@@ -190,10 +197,10 @@
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1280px /*var(--brakpoint-large)*/) {
   .form {
-    top: 174px;
-    left: 763px;
+    top: 110px;
+    /* left: 763px; */
   }
 }
 
@@ -219,7 +226,7 @@
 }
 
 .eyeBtn:hover .eyeBtnIcon {
-  fill: var(--primay-color);
+  fill: var(--icon-fill-color);
 }
 
 .eyeBtnIcon {
@@ -228,4 +235,5 @@
   fill: #a6abb9;
   display: inline-block;
   stroke-width: 0;
+  transition: fill var(--transition-time) var(--transition-timing-function);
 }

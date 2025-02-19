@@ -1,8 +1,7 @@
 .chart-main-container {
-  font-size: var(--font-size-10);
   letter-spacing: var(--letter-spacing);
-  background-color: var(--reports-page-bgcolor);
-  color: var(--font-color-gray);
+  background-color: rgb(255, 255, 255);
+  color: var(--primary-color);
   font-weight: 400;
   padding: 40px 30px 52px 20px;
 }
@@ -20,12 +19,12 @@
   align-items: center;
   justify-content: space-between;
   height: 15px;
-  background-color: var(--bar-color-primary);
+  background-color: var(--secondary-color);
   border-radius: 0 10px 10px 0;
 }
 
 .bar-container:nth-child(3n + 1) {
-  background-color: var(--bar-color-second);
+  background-color: var(--tertiary-color);
 }
 
 .label {
@@ -44,9 +43,9 @@
 }
 
 /* Tablety (768px+) */
-@media (min-width: 768px) {
+@media screen and (min-width: 768px /*var(--brakpoint-medium)*/) {
   .chart-main-container {
-    font-size: var(--font-size-12);
+    font-size: var(--default-font-size);
     padding: 50px 30px 44px 20px;
     margin: 40px 0 80px;
     border-radius: 30px;
@@ -95,8 +94,7 @@
   }
 }
 
-/* Desktopy (1280px+) */
-@media (min-width: 1280px) {
+@media screen and (min-width: 1280px /*var(--brakpoint-large)*/) {
   .chart-container {
     margin: 0 138px;
   }

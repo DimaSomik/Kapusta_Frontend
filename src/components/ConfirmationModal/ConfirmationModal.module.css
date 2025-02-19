@@ -25,8 +25,8 @@
 
 .paragraph {
   font-weight: 500;
-  font-size: 14px;
-  color: rgba(82, 85, 95, 1);
+  font-size: var(--bigger-font-size);
+  color: var(--primary-color);
   text-align: center;
   line-height: 16.41px;
 }
@@ -44,7 +44,7 @@
   border: 2px solid rgba(245, 246, 251, 1);
   border-radius: 16px;
   font-weight: 700;
-  font-size: 12px;
+  font-size: var(--default-font-size);
   text-align: center;
   padding: 12px 25px;
   line-height: 14.06px;
@@ -57,7 +57,7 @@
   color: var(--text-light-color);
 }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px /*var(--brakpoint-medium)*/) {
   .modalContent {
     width: 380px;
   }
