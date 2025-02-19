@@ -2,17 +2,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  justify-content: center;
   padding: 16px;
   margin-top: 90px;
 }
 
 .balanceLabel {
-  font-size: 12px;
+  font-size: var(--default-font-size);
   font-weight: bold;
   margin-bottom: 8px;
   color: var(--primay-color);
-  transition: color 250ms ease-in-out, background-color 250ms ease-in-out;
+  transition: color var(--transition-time) var(--transition-timing-function);
 }
 
 .balanceWrapper {
@@ -31,30 +31,28 @@
   width: 100%;
   max-width: 280px;
   padding: 10px;
-  font-size: 12px;
+  font-size: var(--default-font-size);
   text-align: center;
   border: none;
+  border-inline: 2px solid var(--accent-color);
+  border-top-left-radius: 22px;
+  border-bottom-left-radius: 22px;
+  background-color: transparent;
+  outline: none;
   color: var(--text-dark-color);
-  transition: color 250ms ease-in-out, background-color 250ms ease-in-out;
+  transition: color var(--transition-time) var(--transition-timing-function);
 }
 
 .confirmButton {
   width: 100%;
   max-width: 180px;
   padding: 10px;
-  font-size: 12px;
+  font-size: var(--default-font-size);
   text-transform: uppercase;
   border: none;
-  background-color: var(--button-color);
+  background-color: transparent;
   color: var(--primay-color);
   cursor: pointer;
-  transition: background-color 0.3s;
-  transition: color 250ms ease-in-out, background-color 250ms ease-in-out;
-}
-
-.confirmButton:hover {
-  background-color: var(--button-hover-color);
-  transition: color 250ms ease-in-out, background-color 250ms ease-in-out;
 }
 
 .balanceModal {
@@ -64,11 +62,13 @@
   z-index: 10;
 }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px /*var(--brakpoint-medium)*/) {
   .balanceContainer {
     flex-direction: row;
-    justify-content: left;
     gap: 21px;
+  }
+  .balanceLabel {
+    margin-bottom: 0px;
   }
 
   .balanceWrapper {
@@ -84,14 +84,17 @@
   .confirmButton {
     border: 2px solid var(--accent-color);
     border-radius: 16px;
+    transition: background-color var(--transition-time)
+        var(--transition-timing-function),
+      color var(--transition-time) var(--transition-timing-function);
+  }
+  .confirmButton:hover {
+    color: var(--text-light-color);
+    background-color: var(--secondary-color);
   }
 }
 
-@media (min-width: 1280px) {
-  .balanceContainer {
-    justify-content: center;
-  }
-
+@media screen and (min-width: 1280px /*var(--brakpoint-large)*/) {
   .balanceInput {
     max-width: 320px;
     padding: 14px;

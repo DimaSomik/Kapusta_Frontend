@@ -3,22 +3,22 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 0 170px;
-  column-gap: 33px;
+  margin: 0 20px;
+  column-gap: 13px;
   row-gap: 40px;
   padding-bottom: 20px;
 }
 
-@media screen and (min-width: 772px) and (max-width: 1279px) {
+@media screen and (min-width: 768px /*var(--brakpoint-medium)*/) {
   .reports-group-icons-main-container {
     margin: 0 40px;
     column-gap: 18px;
   }
 }
 
-@media screen and (max-width: 771px) {
+@media screen and (min-width: 1280px /*var(--brakpoint-large)*/) {
   .reports-group-icons-main-container {
-    margin: 0 20px;
-    column-gap: 13px;
+    margin: 0 170px;
+    column-gap: 33px;
   }
 }
