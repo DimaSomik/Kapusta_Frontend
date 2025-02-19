@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import styles from "./balance.module.css";
+import styles from "./Balance.module.css";
 // import { BalanceModal } from "../BalanceModal/BalanceModal";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
