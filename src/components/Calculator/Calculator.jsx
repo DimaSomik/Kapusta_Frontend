@@ -31,6 +31,7 @@ const Calculator = ({ isExpense }) => {
     new Date().toISOString().split("T")[0]);
   const handleDateChange = (event) => {
     setSelectedDate(event.target.value);};
+  const [activeTab, setActiveTab] = useState("expenses");
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -83,6 +84,22 @@ const Calculator = ({ isExpense }) => {
 
   return (
     <div className={styles.container}>
+      <div className={styles.navigation}>
+        <button
+          className={`${styles.expensesButton} ${
+            activeTab === "expenses" ? styles.activeExpenses : ""}`}
+          onClick={() => setActiveTab("expenses")}
+        >
+          EXPENSES
+        </button>
+        <button
+          className={`${styles.incomeButton} ${
+            activeTab === "income" ? styles.activeIncome : ""}`}
+          onClick={() => setActiveTab("income")}
+        >
+          INCOME
+        </button>
+      </div>
       <div className={styles.topSection}>
         <div className={styles.date}>
           <label className={styles.dateLabel}>
@@ -190,14 +207,27 @@ const Calculator = ({ isExpense }) => {
 
           <div className={styles.amount}>
             <input
-              type="number"
+              type="text"
               value={amount}
               className={styles.amountInput}
-              onKeyDown={handleKeyDown}
-              onChange={(e) => {
-                setAmount(e.target.value);
-              }}
-            />
+                onKeyDown={(e) => {
+                  if (!/[0-9]/.test(e.key) &&
+                    ![
+                    'Backspace',
+                    'Delete',
+                    'ArrowLeft',
+                    'ArrowRight',
+                    'Tab'
+                  ].includes(e.key)) {
+                  e.preventDefault();
+                  }
+                }}
+                onChange={(e) => {
+                  const numericValue = e.target.value.replace(/\D/g, '');
+                  setAmount(numericValue);
+                }}
+              />
+              
             <div className={styles.iconWrapper}>
               <svg className={styles.amountIcon}>
                 <use href={`${sprite}#icon-calculator`}></use>
@@ -216,6 +246,7 @@ const Calculator = ({ isExpense }) => {
         </button>
       </div>
     </div>
+  </div>
   );
 };
 
