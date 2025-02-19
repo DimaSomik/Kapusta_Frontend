@@ -4,13 +4,13 @@
   align-items: center;
   background-color: var(--text-light-color);
   box-shadow: 0 10px 60px 0 rgba(170, 178, 197, 0.2);
-  margin-top: 32px;
 }
 
 /* Tablety (768px+)  */
 @media (min-width: 768px) {
   .reports-detailed-main-container {
     border-radius: 30px;
+    margin-top: 32px;
   }
 }
 
