@@ -27,17 +27,14 @@ body {
 .cabbageBackground {
     position: absolute;
     top: 40px; 
-    left: 50%;
-    transform: translateX(-50%);
-    min-width: 100%;
-    width: 100vw;
+    left: 0;
+    width: 120vw;
     height: 250px;
     background-color: rgba(245, 246, 251, 1);
     display: flex;
     align-items: center;
     justify-content: center;
     border-bottom-left-radius: 15%;
-    /* z-index: 1; */
 }
 
 .title {
@@ -54,7 +51,7 @@ body {
   text-shadow: 1px 1px 4px #000000;
   text-transform: uppercase;
   letter-spacing: 2px;
-  z-index: 1000;
+  z-index: 10;
 }
 
 .finance {
@@ -94,7 +91,12 @@ body {
     height: 583px;
     min-width: 768px;
     border-bottom-left-radius: 10%;
-    width: 100vw;
+    width: 110vw;
+  }
+
+  .isLoggedIn .cabbageBottom {
+    right: 0; 
+    left: auto; 
   }
 
   .title {
@@ -105,6 +107,7 @@ body {
     transform: translateX(-50%);
     text-align: center;
     position: absolute;
+    z-index: 10;
   }
 
   .finance {
@@ -121,12 +124,15 @@ body {
     width: 183px;
     height: 146px;
     top: 808px;
-    left: 450px;
+    left: 103px;
     position: absolute;
     background-size: contain;
     background-repeat: no-repeat;
-    background-image: url("/public/kapusty.svg");
-    z-index: 100;
+  }
+
+  .cabbageBottom svg {
+    width: 183px;
+    height: 189px;
   }
 
   .isLoggedIn .cabbageBottom {
@@ -165,11 +171,14 @@ body {
     position: absolute;
     top: 264px; 
     left: 339px; 
-    color: #000000;
+    color: var(--text-dark-color);
     text-shadow: 2px 2px 4px #000000;
     text-transform: uppercase;
     letter-spacing: 2px;
-    z-index: 1000;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .finance {
@@ -191,19 +200,20 @@ body {
   }
 
   .cabbageBottom {
-    display: block;
     width: 183px;
-    height: 146px;
-    top: 550px;
+    height: 142px;
+    top: 520px;
     left: 230px;
     position: absolute;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url("/public/kapusty.svg");
     z-index: 100;
+  }
+
+  .cabbageBottom svg {
+    width: 183px;
+    height: 189px;
   }
 
   .hideOnMobileAndDesktop {
     display: none;
-  }
+}
 }
