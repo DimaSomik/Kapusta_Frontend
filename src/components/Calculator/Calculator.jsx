@@ -27,8 +27,9 @@ const Calculator = ({ isExpense }) => {
   const [amount, setAmount] = useState(0);
   const dropdownRef = useRef(null);
   const dispatch = useDispatch();
-   const [selectedDate, setSelectedDate] = useState(
-    new Date().toISOString().split("T")[0]);
+  const [selectedDate, setSelectedDate] = useState(
+    new Date().toISOString().split("T")[0]
+  );
   const handleDateChange = (event) => {
     setSelectedDate(event.target.value);};
   const [activeTab, setActiveTab] = useState("expenses");
@@ -101,57 +102,33 @@ const Calculator = ({ isExpense }) => {
         </button>
       </div>
       <div className={styles.topSection}>
-        <div className={styles.date}>
-          <label className={styles.dateLabel}>
-        <svg className={styles.icon}>
-          <use href={`${sprite}#icon-calendar`}></use>
-            </svg>
-            <input
-              type="date"
-              value={selectedDate}
-              onChange={handleDateChange}
-              className={styles.hiddenDatePicker}
-            />
+        <div className={styles.topSectionPart}>
+          <div className={styles.date}>
+            <label className={styles.dateLabel}>
+              <svg className={styles.icon}>
+                <use href={`${sprite}#icon-calendar`}></use>
+              </svg>
+              <input
+                type="date"
+                value={selectedDate}
+                onChange={handleDateChange}
+                className={styles.hiddenDatePicker}
+              />
             </label>
-       <span>{new Date(selectedDate).toLocaleDateString("pl-PL")}</span>
-      </div>
+            <span>{new Date(selectedDate).toLocaleDateString("pl-PL")}</span>
+          </div>
 
-      <div className={styles.inputGroup}>
-        <input
-          type="text"
-          placeholder="Product description"
-          className={styles.input}
-          value={productDescription}
-          onChange={(e) => setProductDescription(e.target.value)}
-          onKeyDown={handleKeyDown}
-        />
-
-        <div
-          className={styles.selectWrapper}
-          ref={dropdownRef}
-          onMouseDown={(event) => {
-            event.stopPropagation();
-            setDropdownOpen((prev) => !prev);
-          }}
-        >
-          <div className={styles.selected}>{selectedCategory}</div>
-          <svg className={styles.icon}>
-            <use href={`${sprite}#icon-calendar`}></use>
-          </svg>
-          {new Date().toLocaleDateString("pl-PL")}
-        </div>
-
-        <div className={styles.inputGroup}>
-          <input
+          <div className={styles.inputGroup}>
+            {/* <input
             type="text"
             placeholder="Product description"
             className={styles.input}
             value={productDescription}
             onChange={(e) => setProductDescription(e.target.value)}
             onKeyDown={handleKeyDown}
-          />
+          /> */}
 
-          <div
+            {/* <div
             className={styles.selectWrapper}
             ref={dropdownRef}
             onMouseDown={(event) => {
@@ -161,7 +138,7 @@ const Calculator = ({ isExpense }) => {
           >
             <div className={styles.selected}>{selectedCategory}</div>
             <svg className={styles.icon}>
-              <use href={`${sprite}#icon-down-arrow`}></use>
+              <use href={`${sprite}#icon-calendar`}></use>
             </svg>
 
             {dropdownOpen && isExpense ? (
@@ -235,16 +212,15 @@ const Calculator = ({ isExpense }) => {
             </div>
           </div>
         </div>
-      </div>
 
-      <div className={styles.buttons}>
-        <button className={styles.inputButton} onClick={handleSubmit}>
-          INPUT
-        </button>
-        <button className={styles.clearButton} onClick={handleClear}>
-          CLEAR
-        </button>
-      </div>
+        <div className={styles.buttons}>
+          <button className={styles.inputButton} onClick={handleSubmit}>
+            INPUT
+          </button>
+          <button className={styles.clearButton} onClick={handleClear}>
+            CLEAR
+          </button>
+        </div>
       </div>
     </div>
   </div>

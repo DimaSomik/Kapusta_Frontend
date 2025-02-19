@@ -6,7 +6,7 @@ function ReportsButton() {
     <>
       <Link className={styles.link} to="/transaction/expense-categories">
         Reports
-        <svg>
+        <svg className={styles.icon}>
           <use href="/src/assets/svgs-sprite.svg#icon-bar_chart" />
         </svg>
       </Link>

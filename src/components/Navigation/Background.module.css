@@ -6,7 +6,7 @@
 
 body {
   background-color: rgb(255, 255, 255);
-  height: 150vh;
+  /* height: 150vh; */
   width: 100vw;
   min-width: 100%;
   margin: 0 auto;
@@ -25,16 +25,16 @@ body {
 }
 
 .cabbageBackground {
-    position: absolute;
-    top: 40px; 
-    left: 0;
-    width: 120vw;
-    height: 250px;
-    background-color: rgba(245, 246, 251, 1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-bottom-left-radius: 15%;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 120vw;
+  height: 250px;
+  background-color: rgba(245, 246, 251, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom-left-radius: 15%;
 }
 
 .title {
@@ -76,7 +76,7 @@ body {
 @media screen and (min-width: 768px /*var(--brakpoint-medium)*/) {
   body {
     min-width: 768px;
-    height: 200vh;
+    /* height: 200vh; */
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -95,8 +95,8 @@ body {
   }
 
   .isLoggedIn .cabbageBottom {
-    right: 0; 
-    left: auto; 
+    right: 0;
+    left: auto;
   }
 
   .title {
@@ -144,7 +144,7 @@ body {
 
 @media screen and (min-width: 1280px /*var(--brakpoint-large)*/) {
   body {
-    height: 100vh;
+    /* height: 100vh; */
     min-width: 1280px;
   }
 
@@ -161,7 +161,7 @@ body {
     background-color: rgb(240, 242, 249);
     border-bottom-left-radius: 10%;
     /* z-index: 1; */
-}
+  }
 
   .title {
     width: 377px;
@@ -169,8 +169,8 @@ body {
     font-size: 10.2rem;
     font-weight: 900;
     position: absolute;
-    top: 264px; 
-    left: 339px; 
+    top: 264px;
+    left: 339px;
     color: var(--text-dark-color);
     text-shadow: 2px 2px 4px #000000;
     text-transform: uppercase;
@@ -215,5 +215,5 @@ body {
 
   .hideOnMobileAndDesktop {
     display: none;
-}
+  }
 }
