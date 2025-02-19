@@ -30,7 +30,7 @@ const HistorySpreadsheet = ({ isExpense }) => {
     <div className={styles.tableWrapper}>
       <table className={styles.table}>
         <thead>
-          <tr>
+          <tr className={styles.tableHeaderWrapper}>
             <th className={styles.tableHeader}>DATE</th>
             <th className={styles.tableHeader}>DESCRIPTION</th>
             <th className={styles.tableHeader}>CATEGORY</th>
@@ -50,7 +50,7 @@ const HistorySpreadsheet = ({ isExpense }) => {
                     <td className={`${styles.date}`}>{record.date}</td>
                     <td className={`${styles.desc}`}>{record.description}</td>
                     <td className={`${styles.category}`}>{record.category}</td>
-                    <td className={`${styles.sum}`}>{record.amount} $</td>
+                    <td className={`${styles.sum}`}>-{record.amount} $</td>
                     <td className={`${styles.bin}`}>
                       <button
                         className={styles.button}

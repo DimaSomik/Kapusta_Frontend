@@ -1,10 +1,5 @@
 .tableContainer {
-  width: 100%;
-  background: var(--lighter-accent-color);
-  border-radius: 20px 20px 20px 0;
-  overflow: hidden;
-  text-transform: uppercase;
-  font-size: var(--default-font-size);
+  display: none;
 }
 
 .tableHeader {
@@ -40,15 +35,22 @@
 /* For devices with a minimum width of 768px */
 @media screen and (min-width: 768px /*var(--brakpoint-medium)*/) {
   .tableContainer {
+    display: block;
+    align-self: start;
     width: 230px;
-    margin-top: 30px;
-    /* margin: 0 auto; */
+    margin-top: 15px;
+    background: var(--lighter-accent-color);
+    border-radius: 20px 20px 20px 0;
+    overflow: hidden;
+    text-transform: uppercase;
+    font-size: var(--default-font-size);
   }
 }
 
 /* For devices with a minimum width of 1280px */
 @media screen and (min-width: 1280px /*var(--brakpoint-large)*/) {
   .tableContainer {
-    width: 213px;
+    width: 238px;
+    margin-top: 0;
   }
 }

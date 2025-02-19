@@ -7,18 +7,42 @@ import SummaryList from "../../components/SummaryList/SummaryList";
 import ReportsButton from "../../components/ReportsButton/ReportsButton";
 
 const InputExpensesPage = () => {
-  return (
-    <div className={css.mainContainer}>
-      <div className={css.background}></div>
-      <Main />
-      <BalanceComponent />
-      <div className={css.wrapper}>
-        <Calculator isExpense={true} />
+  //not working while resizing window
+  const displayingSummaryIn = () => {
+    if (window.innerWidth > 1280) {
+      return <SummaryList isExpense={true} />;
+    }
+  };
+  const displayingSummaryOut = () => {
+    if (window.innerWidth < 1280) {
+      return <SummaryList isExpense={true} />;
+    }
+  };
 
-        <HistorySpreadsheet isExpense={true} />
+  return (
+    <>
+      <div className={css.mainContainer}>
+        <div className={css.background}></div>
+        <Main />
+        <div className={css.upperWrapper}>
+          <div className={css.a}>
+            <ReportsButton />
+          </div>
+          <div className={css.b}>
+            <BalanceComponent />
+          </div>
+        </div>
+
+        <div className={css.wrapper}>
+          <Calculator isExpense={true} />
+          <div className={css.desktopWrapper}>
+            <HistorySpreadsheet isExpense={true} />
+            {displayingSummaryIn()}
+          </div>
+        </div>
+        {displayingSummaryOut()}
       </div>
-      <SummaryList isExpense={true} />
-    </div>
+    </>
   );
 };
 
