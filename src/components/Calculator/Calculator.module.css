@@ -161,6 +161,24 @@
   background-color: var(--lighter-accent-color);
 }
 
+.dateLabel {
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  gap: 8px;
+}
+
+.hiddenDatePicker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
 @media screen and (min-width: 768px /*var(--brakpoint-medium)*/) {
   .container {
     max-width: 950px;
