@@ -22,21 +22,39 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={
-          <RestrictedRoute redirectTo="/transaction/expenses" component={<AuthPage /> } />
-        }/>
-        <Route path="/transaction/expenses" element={
-          <PrivateRoute redirectTo="/" component={<InputExpensesPage />}/>
-        }/>
-        <Route path="/transaction/income" element={
-          <PrivateRoute redirectTo="/" component={<InputIncomePage />}/>
-        }/>
-        <Route path="/transaction/expense-categories" element={
-          <PrivateRoute redirectTo="/" component={<ReportExpensesPage />}/>
-        }/>
-        <Route path="/transaction/income-categories" element={
-          <PrivateRoute redirectTo="/" component={<ReportIncomePage />}/> 
-        }/>
+        <Route
+          path="/"
+          element={
+            <RestrictedRoute
+              redirectTo="/transaction/expenses"
+              component={<AuthPage />}
+            />
+          }
+        />
+        <Route
+          path="/transaction/expenses"
+          element={
+            <PrivateRoute redirectTo="/" component={<InputExpensesPage />} />
+          }
+        />
+        <Route
+          path="/transaction/income"
+          element={
+            <PrivateRoute redirectTo="/" component={<InputIncomePage />} />
+          }
+        />
+        <Route
+          path="/transaction/expense-categories"
+          element={
+            <PrivateRoute redirectTo="/" component={<ReportExpensesPage />} />
+          }
+        />
+        <Route
+          path="/transaction/income-categories"
+          element={
+            <PrivateRoute redirectTo="/" component={<ReportIncomePage />} />
+          }
+        />
       </Routes>
     </>
   );
