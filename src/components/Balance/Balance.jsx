@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 import styles from "./Balance.module.css";
-// import { BalanceModal } from "../BalanceModal/BalanceModal";
+import { BalanceModal } from "../BalanceModal/BalanceModal";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { updateBalance } from "../../redux/controllers/userController";
 import { selectUserBalance } from "../../redux/slices/userSlice";
 
-export const BalanceComponent = () => { 
+export const BalanceComponent = () => {
   const userBalance = useSelector(selectUserBalance);
   const dispatch = useDispatch();
   const [newBalance, setNewBalance] = useState(userBalance);
 
   useEffect(() => {
     const modal = document.querySelector("#modal");
-    setNewBalance(userBalance)
+    setNewBalance(userBalance);
 
     if (userBalance !== 0) {
       modal.style.display = "none";
@@ -21,9 +21,11 @@ export const BalanceComponent = () => {
   }, [userBalance]);
 
   const handleSubmit = () => {
-    dispatch(updateBalance({
-      newBalance: Number(newBalance)
-    }))
+    dispatch(
+      updateBalance({
+        newBalance: Number(newBalance),
+      })
+    );
   };
 
   return (
@@ -37,12 +39,16 @@ export const BalanceComponent = () => {
             type="number"
             className={styles.balanceInput}
             value={newBalance}
-            onChange={(e) => {setNewBalance(e.target.value)}}
+            onChange={(e) => {
+              setNewBalance(e.target.value);
+            }}
           />
           <div id="modal" className={styles.balanceModal}>
-            {/* <BalanceModal /> */}
+            {<BalanceModal />}
           </div>
-          <button className={styles.confirmButton} onClick={handleSubmit}>CONFIRM</button>
+          <button className={styles.confirmButton} onClick={handleSubmit}>
+            CONFIRM
+          </button>
         </div>
       </div>
     </>

@@ -6,17 +6,19 @@ import HistorySpreadsheet from "../../components/HistorySpreadsheet/HistorySprea
 import SummaryList from "../../components/SummaryList/SummaryList";
 
 const InputExpensesPage = () => {
-    return (
-        <div>
-            <Main />
-            <BalanceComponent />
-            <Calculator isExpense={true}/>
-            <div className={css.mainContainer}>
-            <HistorySpreadsheet isExpense={true}/>
-            <SummaryList isExpense={true}/>
-            </div>
-        </div>
-    );
-}
+  return (
+    <div className={css.mainContainer}>
+      <div className={css.background}></div>
+      <Main />
+      <BalanceComponent />
+      <div className={css.wrapper}>
+        <Calculator isExpense={true} />
+
+        <HistorySpreadsheet isExpense={true} />
+      </div>
+      <SummaryList isExpense={true} />
+    </div>
+  );
+};
 
 export default InputExpensesPage;

@@ -10,8 +10,8 @@ const HistorySpreadsheet = ({ isExpense }) => {
   const transactions = useSelector(selectUserTransactions);
 
   useEffect(() => {
-      setRecords(transactions)
-  }, [transactions])
+    setRecords(transactions);
+  }, [transactions]);
 
   const handleDelete = (id) => {
     if (!window.confirm("Are you sure you want to delete this record?")) return;
@@ -22,7 +22,7 @@ const HistorySpreadsheet = ({ isExpense }) => {
     const index = records.findIndex((record) => record._id === id);
     if (index !== -1) {
       newRecords.splice(index, 1);
-    };
+    }
     setRecords(newRecords);
   };
 
@@ -41,36 +41,60 @@ const HistorySpreadsheet = ({ isExpense }) => {
         <tbody>
           {records.map((record) => {
             if (isExpense) {
-              if (record.category !== "Salary" && record.category !== "Additional income") {
-                return <tr key={record._id} className={styles.row}>
-                  <td>{record.date}</td>
-                  <td>{record.description}</td>
-                  <td>{record.category}</td>
-                  <td className={styles.sum}>{record.amount} $</td>
-                  <td>
-                    <button onClick={() => handleDelete(record._id)}>
-                      <svg className={styles.deleteBtn} width="18" height="18">
-                        <use href="/src/assets/svgs-sprite.svg#icon-bin" />
-                      </svg>
-                    </button>
-                  </td>
-                </tr>
+              if (
+                record.category !== "Salary" &&
+                record.category !== "Additional income"
+              ) {
+                return (
+                  <tr key={record._id} className={styles.row}>
+                    <td className={`${styles.date}`}>{record.date}</td>
+                    <td className={`${styles.desc}`}>{record.description}</td>
+                    <td className={`${styles.category}`}>{record.category}</td>
+                    <td className={`${styles.sum}`}>{record.amount} $</td>
+                    <td className={`${styles.bin}`}>
+                      <button
+                        className={styles.button}
+                        onClick={() => handleDelete(record._id)}
+                      >
+                        <svg
+                          className={styles.deleteBtn}
+                          width="18"
+                          height="18"
+                        >
+                          <use href="/src/assets/svgs-sprite.svg#icon-bin" />
+                        </svg>
+                      </button>
+                    </td>
+                  </tr>
+                );
               }
             } else if (!isExpense) {
-              if (record.category == "Salary" || record.category == "Additional income") {
-                return <tr key={record._id} className={styles.row}>
-                  <td>{record.date}</td>
-                  <td>{record.description}</td>
-                  <td>{record.category}</td>
-                  <td className={styles.sumIncome}>{record.amount} $</td>
-                  <td>
-                    <button onClick={() => handleDelete(record._id)}>
-                      <svg className={styles.deleteBtn} width="18" height="18">
-                        <use href="/src/assets/svgs-sprite.svg#icon-bin" />
-                      </svg>
-                    </button>
-                  </td>
-                </tr>
+              if (
+                record.category == "Salary" ||
+                record.category == "Additional income"
+              ) {
+                return (
+                  <tr key={record._id} className={styles.row}>
+                    <td className={`${styles.date}`}>{record.date}</td>
+                    <td className={`${styles.desc}`}>{record.description}</td>
+                    <td className={`${styles.category}`}>{record.category}</td>
+                    <td className={`${styles.sumIncome}`}>{record.amount} $</td>
+                    <td className={`${styles.bin}`}>
+                      <button
+                        className={styles.button}
+                        onClick={() => handleDelete(record._id)}
+                      >
+                        <svg
+                          className={styles.deleteBtn}
+                          width="18"
+                          height="18"
+                        >
+                          <use href="/src/assets/svgs-sprite.svg#icon-bin" />
+                        </svg>
+                      </button>
+                    </td>
+                  </tr>
+                );
               }
             }
           })}
