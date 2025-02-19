@@ -8,9 +8,6 @@ const Background = () => {
   const isLoginPage = true; 
   const isLoggedIn = useSelector(selectIsLoggedIn); 
 
-  console.log("isLoginPage:", isLoginPage); 
-  console.log("isLoggedIn:", isLoggedIn);
-
   return (
     <>
       <div className={styles.cabbageBackground}> 
