@@ -3,9 +3,12 @@ import styles from "./HistorySpreadsheet.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUserTransactions } from "../../redux/slices/userSlice";
 import { deleteTransaction } from "../../redux/controllers/userController";
+import { ConfirmationModal } from "../ConfirmationModal/ConfirmationModal";
 
 const HistorySpreadsheet = ({ isExpense }) => {
   const [records, setRecords] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedId, setSelectedId] = useState(null);
   const dispatch = useDispatch();
   const transactions = useSelector(selectUserTransactions);
 
@@ -14,17 +17,34 @@ const HistorySpreadsheet = ({ isExpense }) => {
   }, [transactions]);
 
   const handleDelete = (id) => {
-    if (!window.confirm("Are you sure you want to delete this record?")) return;
-
-    dispatch(deleteTransaction(id));
-
-    const newRecords = [...records];
-    const index = records.findIndex((record) => record._id === id);
-    if (index !== -1) {
-      newRecords.splice(index, 1);
-    }
-    setRecords(newRecords);
+    setSelectedId(id); // Zapisujemy ID do usunięcia
+    setShowModal(true); // Otwieramy modal
   };
+
+  const confirmDelete = () => {
+    if (!selectedId) return;
+
+    dispatch(deleteTransaction(selectedId));
+
+    const newRecords = records.filter((record) => record._id !== selectedId);
+    setRecords(newRecords);
+
+    setShowModal(false);
+    setSelectedId(null);
+  };
+
+  // const handleDelete = (id) => {
+  //   if (!window.confirm("Are you sure you want to delete this record?")) return;
+
+  //   dispatch(deleteTransaction(id));
+
+  //   const newRecords = [...records];
+  //   const index = records.findIndex((record) => record._id === id);
+  //   if (index !== -1) {
+  //     newRecords.splice(index, 1);
+  //   }
+  //   setRecords(newRecords);
+  // };
 
   return (
     <div className={styles.tableWrapper}>
@@ -107,6 +127,13 @@ const HistorySpreadsheet = ({ isExpense }) => {
           )}
         </tbody>
       </table>
+      {showModal && (
+        <ConfirmationModal
+          message="Are you sure you want to delete this record?"
+          onConfirm={confirmDelete}
+          onCancel={() => setShowModal(false)}
+        />
+      )}
     </div>
   );
 };
