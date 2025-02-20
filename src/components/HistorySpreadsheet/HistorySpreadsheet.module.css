@@ -21,6 +21,11 @@
 .table {
   border-radius: 12px;
 }
+.tableBody {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
 .row {
   position: relative;
@@ -95,6 +100,11 @@
 @media screen and (min-width: 768px /*var(--brakpoint-medium)*/) {
   .tableWrapper {
     max-width: 600px;
+  }
+  .tableBody {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
   }
   .tableHeaderWrapper {
     display: flex;
