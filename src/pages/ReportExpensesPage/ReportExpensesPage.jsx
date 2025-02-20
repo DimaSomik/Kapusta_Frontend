@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Main from "../../components/Navigation/Main";
 import { MainPageButton } from "../../components/MainPageButton/MainPageButton";
 import { BalanceComponent } from "../../components/Balance/Balance";
 import { CurrentPeriodButton } from "../../components/CurrentPeriodButton/CurrentPeriodButton";
@@ -43,6 +44,8 @@ const ReportExpensesPage = () => {
   }, [selectedIcon, date, token]);
 
   return (
+    <>
+    <Main></Main>
     <div className={css["reports-page-main-container"]}>
       <div className={css["reports-page-first-container"]}>
         <MainPageButton />
@@ -67,6 +70,7 @@ const ReportExpensesPage = () => {
         <ExpensesChart expenses={selectedExpense} />
       </div>
     </div>
+    </>
   );
 };
 

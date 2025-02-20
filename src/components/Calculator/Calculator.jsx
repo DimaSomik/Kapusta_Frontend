@@ -3,6 +3,7 @@ import styles from "./Calculator.module.css";
 import sprite from "../../assets/svgs-sprite.svg";
 import { useDispatch } from "react-redux";
 import { addExpense, addIncome } from "../../redux/controllers/userController";
+import { useNavigate } from "react-router-dom";
 
 const categories = [
   "Groceries",
@@ -27,12 +28,11 @@ const Calculator = ({ isExpense }) => {
   const [amount, setAmount] = useState(0);
   const dropdownRef = useRef(null);
   const dispatch = useDispatch();
-  const [selectedDate, setSelectedDate] = useState(
-    new Date().toISOString().split("T")[0]
-  );
+  const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split("T")[0]);
+  const navigate = useNavigate();
+  
   const handleDateChange = (event) => {
     setSelectedDate(event.target.value);};
-  const [activeTab, setActiveTab] = useState("expenses");
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -83,20 +83,22 @@ const Calculator = ({ isExpense }) => {
     }
   };
 
+  const handleNavigate = (page) => {
+    navigate(`/transaction/${page}`);
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.navigation}>
         <button
-          className={`${styles.expensesButton} ${
-            activeTab === "expenses" ? styles.activeExpenses : ""}`}
-          onClick={() => setActiveTab("expenses")}
+          className={`${styles.expensesButton}`}
+          onClick={() => handleNavigate("expenses")}
         >
           EXPENSES
         </button>
         <button
-          className={`${styles.incomeButton} ${
-            activeTab === "income" ? styles.activeIncome : ""}`}
-          onClick={() => setActiveTab("income")}
+          className={`${styles.incomeButton}`}
+          onClick={() => handleNavigate("income")}
         >
           INCOME
         </button>
@@ -119,16 +121,16 @@ const Calculator = ({ isExpense }) => {
           </div>
 
           <div className={styles.inputGroup}>
-            {/* <input
+            <input
             type="text"
             placeholder="Product description"
             className={styles.input}
             value={productDescription}
             onChange={(e) => setProductDescription(e.target.value)}
             onKeyDown={handleKeyDown}
-          /> */}
+          />
 
-            {/* <div
+            <div
             className={styles.selectWrapper}
             ref={dropdownRef}
             onMouseDown={(event) => {

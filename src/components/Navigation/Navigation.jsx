@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { selectIsLoggedIn } from "../../redux/slices/authSlice";
 import icon from "../../assets/svgs-sprite.svg";
 import { ConfirmationModal } from "../ConfirmationModal/ConfirmationModal";
+import { useState } from "react";
 
 const Navigation = () => {
   const user = useSelector(selectUserEmail);

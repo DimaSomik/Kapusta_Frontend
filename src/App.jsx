@@ -23,7 +23,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={
-            <RestrictedRoute redirectTo="/transaction/expense-categories" component={<AuthPage />}/>
+            <RestrictedRoute redirectTo="/transaction/expenses" component={<AuthPage />}/>
           }
         />
         <Route

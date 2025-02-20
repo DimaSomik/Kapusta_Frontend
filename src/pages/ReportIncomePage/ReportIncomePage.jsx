@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Main from "../../components/Navigation/Main";
 import { MainPageButton } from "../../components/MainPageButton/MainPageButton";
 import { BalanceComponent } from "../../components/Balance/Balance";
 import { CurrentPeriodButton } from "../../components/CurrentPeriodButton/CurrentPeriodButton";
@@ -42,6 +43,8 @@ const ReportIncomePage = () => {
 
 
   return (
+    <>
+    <Main></Main>
     <div className={css["reports-page-main-container"]}>
       <div className={css["reports-page-first-container"]}>
         <MainPageButton />
@@ -59,6 +62,7 @@ const ReportIncomePage = () => {
         <IncomeChart income={selectedIncome} />
       </div>
     </div>
+    </>
   );
 };
 
