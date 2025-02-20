@@ -33,6 +33,7 @@
   top: -15px;
   width: 100%;
   text-align: left;
+  white-space: nowrap;
 }
 
 .amount {

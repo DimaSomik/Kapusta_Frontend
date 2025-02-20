@@ -38,7 +38,7 @@
   border-top-left-radius: 22px;
   border-bottom-left-radius: 22px;
   border-radius: 22px;
-  background-color: transparent;
+  background-color: var(--accent-color);
   outline: none;
   color: var(--text-dark-color);
   transition: color var(--transition-time) var(--transition-timing-function);
@@ -54,7 +54,7 @@
   border-left: none;
   border-top-right-radius: 22px;
   border-bottom-right-radius: 22px;
-  background-color: transparent;
+  background-color: var(--accent-color);
   color: var(--primay-color);
   cursor: pointer;
 }
@@ -72,6 +72,10 @@
     gap: 21px;
     margin-top: 0px;
     padding: 16px;
+    margin-bottom: 20px;
+    background-color: white;
+    border-radius: 20px;
+    border-bottom-left-radius: 0;
   }
   .balanceLabel {
     margin-bottom: 0px;

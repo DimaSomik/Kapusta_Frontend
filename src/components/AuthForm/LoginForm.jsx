@@ -30,10 +30,12 @@ const LoginForm = ({ onToggleForm }) => {
 
   const handleSubmit = async (values, actions) => {
     try {
-      dispatch(logIn({
-        email: values.email,
-        password: values.password
-      }));
+      dispatch(
+        logIn({
+          email: values.email,
+          password: values.password,
+        })
+      );
       navigate("/transaction/expenses");
       actions.resetForm();
     } catch (error) {
@@ -55,7 +57,11 @@ const LoginForm = ({ onToggleForm }) => {
       <p className={css.loginGoogle}>
         You can log in with your Google Account:
       </p>
-      <button type="button" className={css.googleBtn} onClick={handleGoogleLogin}>
+      <button
+        type="button"
+        className={css.googleBtn}
+        onClick={handleGoogleLogin}
+      >
         <svg className={css.icon}>
           <use href={`${sprite}#icon-google-symbol-1`}></use>
         </svg>

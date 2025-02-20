@@ -30,29 +30,32 @@ export function RegisterForm({ onToggleForm }) {
 
   const handleSubmit = async (values, actions) => {
     try {
-      dispatch(register({
-        email: values.email,
-        password: values.password
-      }));
+      dispatch(
+        register({
+          email: values.email,
+          password: values.password,
+        })
+      );
       actions.resetForm();
     } catch (error) {
       if (error?.response?.data?.message) {
-      setRegisterError(error.response.data.message); 
-    } else {
-      setRegisterError("An unknown error occurred. Please try again.");
-    }
+        setRegisterError(error.response.data.message);
+      } else {
+        setRegisterError("An unknown error occurred. Please try again.");
+      }
     }
   };
 
-    /** Kod obsługujący część logowania przez google */
+  /** Kod obsługujący część logowania przez google */
   const handleGoogleLogin = () => {
     window.location.href = `https://kapusta-fnr2.onrender.com/auth/google`;
   };
 
   return (
-    <div className={css.form}>
+    <div className={`${css.form} ${css.registerForm}`}>
       <p className={css.textRegister}>To register, complete the fields:</p>
       {registerError && <div className={css.error}>{registerError}</div>}
+
       <Formik
         initialValues={initialValues}
         validationSchema={registerSchema}
@@ -161,15 +164,17 @@ export function RegisterForm({ onToggleForm }) {
           </Form>
         )}
       </Formik>
-            <p className={css.loginGoogle}>
-              Or sign up with your Google account
-            </p>
-            <button type="button" className={css.googleBtn} onClick={handleGoogleLogin}>
-              <svg className={css.icon}>
-                <use href={`${sprite}#icon-google-symbol-1`}></use>
-              </svg>
-              Google
-            </button>
+      <p className={css.loginGoogle}>Or sign up with your Google account</p>
+      <button
+        type="button"
+        className={css.googleBtn}
+        onClick={handleGoogleLogin}
+      >
+        <svg className={css.icon}>
+          <use href={`${sprite}#icon-google-symbol-1`}></use>
+        </svg>
+        Google
+      </button>
     </div>
   );
 }

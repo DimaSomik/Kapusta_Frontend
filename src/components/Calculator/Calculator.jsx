@@ -22,17 +22,21 @@ const categories = [
 const incomeCategories = ["Salary", "Additional income"];
 
 const Calculator = ({ isExpense }) => {
+  const [activeTab, setActiveTab] = useState(isExpense ? "expenses" : "income");
   const [selectedCategory, setSelectedCategory] = useState("Product category");
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [productDescription, setProductDescription] = useState("");
   const [amount, setAmount] = useState(0);
   const dropdownRef = useRef(null);
   const dispatch = useDispatch();
-  const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split("T")[0]);
+  const [selectedDate, setSelectedDate] = useState(
+    new Date().toISOString().split("T")[0]
+  );
   const navigate = useNavigate();
-  
+
   const handleDateChange = (event) => {
-    setSelectedDate(event.target.value);};
+    setSelectedDate(event.target.value);
+  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -84,6 +88,7 @@ const Calculator = ({ isExpense }) => {
   };
 
   const handleNavigate = (page) => {
+    setActiveTab(page);
     navigate(`/transaction/${page}`);
   };
 
@@ -91,13 +96,13 @@ const Calculator = ({ isExpense }) => {
     <div className={styles.container}>
       <div className={styles.navigation}>
         <button
-          className={`${styles.expensesButton}`}
+          className={`${styles.expensesButton} ${activeTab === "expenses" ? styles.isActive : ""}`}
           onClick={() => handleNavigate("expenses")}
         >
           EXPENSES
         </button>
         <button
-          className={`${styles.incomeButton}`}
+          className={`${styles.incomeButton} ${activeTab === "income" ? styles.isActive : ""}`}
           onClick={() => handleNavigate("income")}
         >
           INCOME
@@ -122,49 +127,27 @@ const Calculator = ({ isExpense }) => {
 
           <div className={styles.inputGroup}>
             <input
-            type="text"
-            placeholder="Product description"
-            className={styles.input}
-            value={productDescription}
-            onChange={(e) => setProductDescription(e.target.value)}
-            onKeyDown={handleKeyDown}
-          />
+              type="text"
+              placeholder="Product description"
+              className={styles.input}
+              value={productDescription}
+              onChange={(e) => setProductDescription(e.target.value)}
+              onKeyDown={handleKeyDown}
+            />
 
             <div
-            className={styles.selectWrapper}
-            ref={dropdownRef}
-            onMouseDown={(event) => {
-              event.stopPropagation();
-              setDropdownOpen((prev) => !prev);
-            }}
-          >
-            <div className={styles.selected}>{selectedCategory}</div>
-            <svg className={styles.icon}>
-              <use href={`${sprite}#icon-calendar`}></use>
-            </svg>
+              className={styles.selectWrapper}
+              ref={dropdownRef}
+              onMouseDown={(event) => {
+                event.stopPropagation();
+                setDropdownOpen((prev) => !prev);
+              }}
+            >
+              <div className={styles.selected}>{selectedCategory}</div>
 
-            {dropdownOpen && isExpense ? (
-              <ul className={styles.dropdown}>
-                {categories.map((category, index) => {
-                  return (
-                    <li
-                      key={index}
-                      className={styles.dropdownItem}
-                      onMouseDown={(e) => {
-                        e.stopPropagation();
-                        setSelectedCategory(category);
-                        setDropdownOpen(false);
-                      }}
-                    >
-                      {category}
-                    </li>
-                  );
-                })}
-              </ul>
-            ) : (
-              dropdownOpen && (
+              {dropdownOpen && isExpense ? (
                 <ul className={styles.dropdown}>
-                  {incomeCategories.map((category, index) => {
+                  {categories.map((category, index) => {
                     return (
                       <li
                         key={index}
@@ -180,41 +163,62 @@ const Calculator = ({ isExpense }) => {
                     );
                   })}
                 </ul>
-              )
-            )}
-          </div>
+              ) : (
+                dropdownOpen && (
+                  <ul className={styles.dropdown}>
+                    {incomeCategories.map((category, index) => {
+                      return (
+                        <li
+                          key={index}
+                          className={styles.dropdownItem}
+                          onMouseDown={(e) => {
+                            e.stopPropagation();
+                            setSelectedCategory(category);
+                            setDropdownOpen(false);
+                          }}
+                        >
+                          {category}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )
+              )}
+            </div>
 
-          <div className={styles.amount}>
-            <input
-              type="text"
-              value={amount}
-              className={styles.amountInput}
+            <div className={styles.amount}>
+              <input
+                type="text"
+                value={amount}
+                className={styles.amountInput}
                 onKeyDown={(e) => {
-                  if (!/[0-9]/.test(e.key) &&
+                  if (
+                    !/[0-9]/.test(e.key) &&
                     ![
-                    'Backspace',
-                    'Delete',
-                    'ArrowLeft',
-                    'ArrowRight',
-                    'Tab'
-                  ].includes(e.key)) {
-                  e.preventDefault();
+                      "Backspace",
+                      "Delete",
+                      "ArrowLeft",
+                      "ArrowRight",
+                      "Tab",
+                    ].includes(e.key)
+                  ) {
+                    e.preventDefault();
                   }
                 }}
                 onChange={(e) => {
-                  const numericValue = e.target.value.replace(/\D/g, '');
+                  const numericValue = e.target.value.replace(/\D/g, "");
                   setAmount(numericValue);
                 }}
               />
-              
-            <div className={styles.iconWrapper}>
-              <svg className={styles.amountIcon}>
-                <use href={`${sprite}#icon-calculator`}></use>
-              </svg>
+
+              <div className={styles.iconWrapper}>
+                <svg className={styles.amountIcon}>
+                  <use href={`${sprite}#icon-calculator`}></use>
+                </svg>
+              </div>
             </div>
           </div>
         </div>
-
         <div className={styles.buttons}>
           <button className={styles.inputButton} onClick={handleSubmit}>
             INPUT
@@ -225,7 +229,6 @@ const Calculator = ({ isExpense }) => {
         </div>
       </div>
     </div>
-  </div>
   );
 };
 

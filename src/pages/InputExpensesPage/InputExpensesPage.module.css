@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 25px;
+  gap: 30px;
 }
 
 .background {
@@ -16,17 +16,49 @@
   border-bottom-left-radius: 150px;
 }
 
+.top {
+  position: absolute;
+  top: 200px;
+  right: -155px;
+}
+.bottom {
+  position: absolute;
+  top: 730px;
+  left: 5%;
+}
+.kapustas {
+  display: none;
+}
 .wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: baseline;
   gap: 35px;
 }
 
 @media screen and (min-width: 768px /*var(--brakpoint-medium)*/) {
   .background {
-    height: 550px;
+    position: fixed;
+    height: 600px;
+    width: 100vw;
+  }
+
+  .top {
+    display: none;
+  }
+  .bottom {
+    top: 850px;
+    left: 60%;
+  }
+  .kapustas {
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: 200px;
+    width: 80%;
+    height: 400px;
+    scale: 160%;
   }
   .upperWrapper {
     display: flex;
@@ -50,6 +82,7 @@
     padding-top: 24px;
     padding-bottom: 42px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+    height: 50vh;
   }
 }
 @media screen and (min-width: 1280px /*var(--brakpoint-large)*/) {
@@ -58,11 +91,22 @@
   }
 
   .wrapper {
-    justify-content: center;
+    justify-content: baseline;
     align-items: center;
+    height: 70vh;
   }
   .desktopWrapper {
     display: flex;
     gap: 60px;
+  }
+
+  .kapustas {
+    top: 100px;
+    left: -1000px;
+    height: 110px;
+    width: 200vw;
+  }
+  .bottom {
+    display: none;
   }
 }

@@ -16,6 +16,8 @@
   grid-template-columns: repeat(1, 1fr);
   column-gap: 20px;
   padding-bottom: 52px;
+  margin-top: 72px;
+  margin-left: 20px;
 }
 
 body {
@@ -40,6 +42,8 @@ body {
 @media (min-width: 768px) {
   .reports-page-main-container {
     max-width: 704px;
+    margin-top: 40px;
+    margin-left: 0px;
   }
 
   .reports-page-first-container {
