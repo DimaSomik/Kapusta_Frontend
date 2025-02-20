@@ -6,14 +6,15 @@
   letter-spacing: 0.04em;
   color: var(--primary-color);
   user-select: none;
+  text-decoration: none;
 }
 
 .reports-backlink-text {
-  display: none;
+  display: inline-block;
 }
 
 @media screen and (min-width: 768px /*var(--brakpoint-medium)*/) {
   .reports-backlink-text {
-    padding: 5px 0 5px 16px;
+    padding: 6px 0 5px 10px;
   }
 }
