@@ -89,7 +89,6 @@ const Calculator = ({ isExpense }) => {
 
   const handleNavigate = (page) => {
     setActiveTab(page);
-    console.log(activeTab)
     navigate(`/transaction/${page}`);
   };
 
