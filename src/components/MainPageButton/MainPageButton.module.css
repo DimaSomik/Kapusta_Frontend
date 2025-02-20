@@ -16,9 +16,6 @@
 @media screen and (min-width: 768px /*var(--brakpoint-medium)*/) {
   .reports-backlink-text {
     padding: 6px 0 5px 10px;
-  }
-
-  .reports-backlink-text {
     display: inline-block;
   }
 }
