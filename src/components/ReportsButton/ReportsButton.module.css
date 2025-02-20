@@ -16,3 +16,20 @@
   margin-left: 1.4rem;
   transition: fill var(--transition-time) var(--transition-timing-function);
 }
+
+@media screen and (min-width: 768px /*var(--brakpoint-medium)*/) {
+  .link {
+    padding: 10px;
+    margin-top: 80px;
+    font-size: var(--bigger-font-size);
+    background-color: white;
+    border-radius: 20px;
+    border-bottom-left-radius: 0;
+    box-shadow: none;
+    transition: box-shadow var(--transition-time)
+      var(--transition-timing-function);
+  }
+  .link:hover {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+  }
+}
