@@ -134,42 +134,42 @@ After launching the application, you can:
   <tr>
     <td align="center">
       <a href="https://github.com/DimaSomik">
-        <img src="https://github.com/DimaSomik.png?size=100" width="100px;" style="border-radius: 50%;" alt="Dima Somik"/>
+        <img src="https://github.com/DimaSomik.png?size=50" width="50px;" style="border-radius: 50%;" alt="Dima Somik"/>
         <br /><b>Dima Somik</b>
       </a>
       <br />Team Leader
     </td>
     <td align="center">
       <a href="https://github.com/annienf17">
-        <img src="https://github.com/annienf17.png?size=100" width="100px;" style="border-radius: 50%;" alt="annienf17"/>
+        <img src="https://github.com/annienf17.png?size=50" width="50px;" style="border-radius: 50%;" alt="annienf17"/>
         <br /><b>annienf17</b>
       </a>
       <br />Scrum Master
     </td>
     <td align="center">
       <a href="https://github.com/KonradKinok">
-        <img src="https://github.com/KonradKinok.png?size=100" width="100px;" style="border-radius: 50%;" alt="Konrad Kinok"/>
+        <img src="https://github.com/KonradKinok.png?size=50" width="50px;" style="border-radius: 50%;" alt="Konrad Kinok"/>
         <br /><b>Konrad Kinok</b>
       </a>
       <br />Front-End Developer
     </td>
     <td align="center">
       <a href="https://github.com/OstTomasz">
-        <img src="https://github.com/OstTomasz.png?size=100" width="100px;" style="border-radius: 50%;" alt="Tomasz Ost"/>
+        <img src="https://github.com/OstTomasz.png?size=50" width="50px;" style="border-radius: 50%;" alt="Tomasz Ost"/>
         <br /><b>Tomasz Ost</b>
       </a>
       <br />Front-End Developer
     </td>
     <td align="center">
       <a href="https://github.com/Grzesiek1982">
-        <img src="https://github.com/Grzesiek1982.png?size=100" width="100px;" style="border-radius: 50%;" alt="Grzegorz 1982"/>
+        <img src="https://github.com/Grzesiek1982.png?size=50" width="50px;" style="border-radius: 50%;" alt="Grzegorz 1982"/>
         <br /><b>Grzegorz 1982</b>
       </a>
       <br />Front-End Developer
     </td>
     <td align="center">
       <a href="https://github.com/WeronikaMisiowska">
-        <img src="https://github.com/WeronikaMisiowska.png?size=100" width="100px;" style="border-radius: 50%;" alt="Weronika Misiowska"/>
+        <img src="https://github.com/WeronikaMisiowska.png?size=50" width="50px;" style="border-radius: 50%;" alt="Weronika Misiowska"/>
         <br /><b>Weronika Misiowska</b>
       </a>
       <br />Front-End Developer
@@ -178,35 +178,35 @@ After launching the application, you can:
   <tr>
     <td align="center">
       <a href="https://github.com/MagdaLiskiewicz">
-        <img src="https://github.com/MagdaLiskiewicz.png?size=100" width="100px;" style="border-radius: 50%;" alt="Magda Liskiewicz"/>
+        <img src="https://github.com/MagdaLiskiewicz.png?size=50" width="50px;" style="border-radius: 50%;" alt="Magda Liskiewicz"/>
         <br /><b>Magda Liskiewicz</b>
       </a>
       <br />Front-End Developer
     </td>
     <td align="center">
       <a href="https://github.com/juliasobocinska">
-        <img src="https://github.com/juliasobocinska.png?size=100" width="100px;" style="border-radius: 50%;" alt="Julia Sobocinska"/>
+        <img src="https://github.com/juliasobocinska.png?size=50" width="50px;" style="border-radius: 50%;" alt="Julia Sobocinska"/>
         <br /><b>Julia Sobocinska</b>
       </a>
       <br />Front-End Developer
     </td>
     <td align="center">
       <a href="https://github.com/Kodiisek">
-        <img src="https://github.com/Kodiisek.png?size=100" width="100px;" style="border-radius: 50%;" alt="Kodiisek"/>
+        <img src="https://github.com/Kodiisek.png?size=50" width="50px;" style="border-radius: 50%;" alt="Kodiisek"/>
         <br /><b>Kodiisek</b>
       </a>
       <br />Front-End Developer
     </td>
     <td align="center">
       <a href="https://github.com/Anastasiya-Shtukar">
-        <img src="https://github.com/Anastasiya-Shtukar.png?size=100" width="100px;" style="border-radius: 50%;" alt="Anastasiya Shtukar"/>
+        <img src="https://github.com/Anastasiya-Shtukar.png?size=50" width="50px;" style="border-radius: 50%;" alt="Anastasiya Shtukar"/>
         <br /><b>Anastasiya Shtukar</b>
       </a>
       <br />Front-End Developer
     </td>
     <td align="center">
       <a href="https://github.com/Kasia24">
-        <img src="https://github.com/Kasia24.png?size=100" width="100px;" style="border-radius: 50%;" alt="Kasia 24"/>
+        <img src="https://github.com/Kasia24.png?size=50" width="50px;" style="border-radius: 50%;" alt="Kasia 24"/>
         <br /><b>Kasia 24</b>
       </a>
       <br />Front-End Developer
@@ -214,7 +214,7 @@ After launching the application, you can:
 
  <td align="center">
       <a href="https://github.com/MagdalenaSiniawska">
-        <img src="https://github.com/MagdalenaSiniawska.png?size=100" width="100px;" style="border-radius: 50%;" alt="MagdalenaSiniawska"/>
+        <img src="https://github.com/MagdalenaSiniawska.png?size=50" width="50px;" style="border-radius: 50%;" alt="MagdalenaSiniawska"/>
         <br /><b>MagdalenaSiniawska</b>
       </a>
       <br />Front-End Developer
