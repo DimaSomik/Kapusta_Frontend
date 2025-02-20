@@ -29,19 +29,21 @@ export const ExpensesChart = ({ expenses }) => {
     <div className={css["chart-main-container"]}>
       <div className={css["chart-container"]}>
         {expenses && Object.keys(expenses).length > 0 &&
-          Object.entries(expenses).map(([name, amount], index) => (
-            <div
-              key={index}
-              className={css["bar-container"]}
-              style={{
-                width: isMobile ? `${(amount / maxAmount) * 100}%` : undefined,
-                height: !isMobile ? `${(amount / maxAmount) * 100}%` : undefined,
-              }}
-            >
-              <span className={css["label"]}>{name}</span>
-              <span className={css["amount"]}>{formatCurrency(amount)} $</span>
-            </div>
-          ))
+          Object.entries(expenses)
+            .sort(([, amountA], [, amountB]) => amountB - amountA)
+            .map(([name, amount], index) => (
+              <div
+                key={index}
+                className={css["bar-container"]}
+                style={{
+                  width: isMobile ? `${(amount / maxAmount) * 100}%` : undefined,
+                  height: !isMobile ? `${(amount / maxAmount) * 100}%` : undefined,
+                }}
+              >
+                <span className={css["label"]}>{name}</span>
+                <span className={css["amount"]}>{formatCurrency(amount)} $</span>
+              </div>
+            ))
         }
       </div>
     </div>
