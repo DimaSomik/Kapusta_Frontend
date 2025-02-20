@@ -25,6 +25,7 @@ const registerSchema = Yup.object().shape({
 
 export function RegisterForm({ onToggleForm }) {
   const [showHidePassword, setShowHidePassword] = useState(false);
+  const [registerError, setRegisterError] = useState("");
   const dispatch = useDispatch();
 
   const handleSubmit = async (values, actions) => {
@@ -35,13 +36,23 @@ export function RegisterForm({ onToggleForm }) {
       }));
       actions.resetForm();
     } catch (error) {
-      alert(error)
+      if (error?.response?.data?.message) {
+      setRegisterError(error.response.data.message); 
+    } else {
+      setRegisterError("An unknown error occurred. Please try again.");
     }
+    }
+  };
+
+    /** Kod obsługujący część logowania przez google */
+  const handleGoogleLogin = () => {
+    window.location.href = `https://kapusta-fnr2.onrender.com/auth/google`;
   };
 
   return (
     <div className={css.form}>
       <p className={css.textRegister}>To register, complete the fields:</p>
+      {registerError && <div className={css.error}>{registerError}</div>}
       <Formik
         initialValues={initialValues}
         validationSchema={registerSchema}
@@ -150,6 +161,15 @@ export function RegisterForm({ onToggleForm }) {
           </Form>
         )}
       </Formik>
+            <p className={css.loginGoogle}>
+              Or sign up with your Google account
+            </p>
+            <button type="button" className={css.googleBtn} onClick={handleGoogleLogin}>
+              <svg className={css.icon}>
+                <use href={`${sprite}#icon-google-symbol-1`}></use>
+              </svg>
+              Google
+            </button>
     </div>
   );
 }

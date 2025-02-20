@@ -24,6 +24,7 @@ const loginSchema = Yup.object().shape({
 
 const LoginForm = ({ onToggleForm }) => {
   const [showHidePassword, setShowHidePassword] = useState(false);
+  const [loginError, setLoginError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -36,8 +37,17 @@ const LoginForm = ({ onToggleForm }) => {
       navigate("/transaction/expenses");
       actions.resetForm();
     } catch (error) {
-      alert("Login error:", error);
+      if (error?.response?.data?.message) {
+        setLoginError(error.response.data.message);
+      } else {
+        setLoginError("An unknown error occurred. Please try again.");
+      }
     }
+  };
+
+  /** Kod obsługujący część logowania przez google */
+  const handleGoogleLogin = () => {
+    window.location.href = `https://kapusta-fnr2.onrender.com/auth/google`;
   };
 
   return (
@@ -45,7 +55,7 @@ const LoginForm = ({ onToggleForm }) => {
       <p className={css.loginGoogle}>
         You can log in with your Google Account:
       </p>
-      <button type="submit" className={css.googleBtn}>
+      <button type="button" className={css.googleBtn} onClick={handleGoogleLogin}>
         <svg className={css.icon}>
           <use href={`${sprite}#icon-google-symbol-1`}></use>
         </svg>
@@ -54,6 +64,7 @@ const LoginForm = ({ onToggleForm }) => {
       <p className={css.text}>
         Or log in using an email and password, after registering:
       </p>
+      {loginError && <div className={css.error}>{loginError}</div>}
       <Formik
         initialValues={initialValues}
         validationSchema={loginSchema}
