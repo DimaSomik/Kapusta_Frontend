@@ -218,11 +218,11 @@ input::placeholder {
 .expensesButton {
   width: 49.5%;
   height: 53px;
-  background-color: var(--secondary-color);
+  background-color: var(--accent-color);
   border: none;
   font-size: var(--bigger-font-size);
   font-weight: bold;
-  color: var(--text-light-color);
+  color: var(--text-dark-color);
   cursor: pointer;
 }
 
@@ -235,6 +235,11 @@ input::placeholder {
   font-weight: bold;
   color: var(--text-dark-color);
   cursor: pointer;
+}
+
+.isActive {
+  color: var(--text-light-color);
+  background-color: var(--secondary-color);
 }
 
 @media screen and (min-width: 768px /*var(--brakpoint-medium)*/) {
@@ -346,6 +351,10 @@ input::placeholder {
     transition: color var(--transition-time) var(--transition-timing-function);
   }
   .incomeButton:hover {
+    color: var(--secondary-color);
+  }
+
+  .isActive {
     color: var(--secondary-color);
   }
 }

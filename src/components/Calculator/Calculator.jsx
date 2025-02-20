@@ -22,6 +22,7 @@ const categories = [
 const incomeCategories = ["Salary", "Additional income"];
 
 const Calculator = ({ isExpense }) => {
+  const [activeTab, setActiveTab] = useState(isExpense ? "expenses" : "income");
   const [selectedCategory, setSelectedCategory] = useState("Product category");
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [productDescription, setProductDescription] = useState("");
@@ -87,6 +88,8 @@ const Calculator = ({ isExpense }) => {
   };
 
   const handleNavigate = (page) => {
+    setActiveTab(page);
+    console.log(activeTab)
     navigate(`/transaction/${page}`);
   };
 
@@ -94,13 +97,13 @@ const Calculator = ({ isExpense }) => {
     <div className={styles.container}>
       <div className={styles.navigation}>
         <button
-          className={`${styles.expensesButton}`}
+          className={`${styles.expensesButton} ${activeTab === "expenses" ? styles.isActive : ""}`}
           onClick={() => handleNavigate("expenses")}
         >
           EXPENSES
         </button>
         <button
-          className={`${styles.incomeButton}`}
+          className={`${styles.incomeButton} ${activeTab === "income" ? styles.isActive : ""}`}
           onClick={() => handleNavigate("income")}
         >
           INCOME
