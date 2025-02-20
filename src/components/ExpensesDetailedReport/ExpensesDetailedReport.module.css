@@ -16,4 +16,7 @@
 
 /* Desktopy (1280px+) */
 @media (min-width: 1280px) {
+  .reports-detailed-main-container {
+    gap: 10px;
+  }
 }

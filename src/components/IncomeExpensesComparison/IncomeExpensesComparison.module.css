@@ -1,7 +1,7 @@
 .reports-expenses-income-row-main-container {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   font-family: inherit;
   font-weight: 700;
   font-size: var(--default-font-size);
@@ -39,13 +39,24 @@
 }
 
 @media screen and (min-width: 768px /*var(--brakpoint-medium)*/) {
+  .reports-expenses-income-row-main-container { 
+    justify-content: center;
+  }
+
   .reports-expenses-income-row-container {
     padding: 15px 20px;
+    flex-flow: nowrap;
   }
   .reports-value {
     padding-left: 15px;
   }
   .reports-icon-divider {
     height: 36px;
+  }
+}
+
+@media screen and (min-width: 1280px /*var(--brakpoint-medium)*/) {
+  .reports-expenses-income-row-container {
+    flex-flow: nowrap;
   }
 }
