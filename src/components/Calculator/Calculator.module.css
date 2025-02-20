@@ -5,6 +5,45 @@
   max-width: 100%;
 }
 
+.expensesButton {
+  width: 100px;
+  height: 32px;
+  background-color: #FEFEFE;
+  border: transparent;
+  color: var(--text-dark-color);
+  top: 161px;
+  border-top-left-radius: 15%;
+  border-top-right-radius: 15%;
+  position: absolute;
+}
+
+.expensesButton:hover {
+  color: #FF751D;
+  background-color: #f0efef;
+  transition: color var(--transition-time) var(--transition-timing-function),
+    background-color var(--transition-time) var(--transition-timing-function);
+}
+
+.incomeButton {
+  width: 100px;
+  height: 32px;
+  background-color: #FEFEFE;
+  border: transparent;
+  color: var(--text-dark-color);
+  top: 161px;
+  left: 280px;
+  border-top-left-radius: 15%;
+  border-top-right-radius: 15%;
+  position: absolute;
+}
+
+.incomeButton:hover {
+  color: #FF751D;
+  background-color: #f0efef;
+  transition: color var(--transition-time) var(--transition-timing-function),
+    background-color var(--transition-time) var(--transition-timing-function);
+}
+
 .date {
   display: flex;
   align-items: center;
