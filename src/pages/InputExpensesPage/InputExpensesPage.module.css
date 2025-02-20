@@ -82,7 +82,7 @@
     padding-top: 24px;
     padding-bottom: 42px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
-    height: 50vh;
+    height: 40vh;
   }
 }
 @media screen and (min-width: 1280px /*var(--brakpoint-large)*/) {
@@ -93,7 +93,7 @@
   .wrapper {
     justify-content: baseline;
     align-items: center;
-    height: 70vh;
+    height: 50vh;
   }
   .desktopWrapper {
     display: flex;
@@ -101,10 +101,10 @@
   }
 
   .kapustas {
-    top: 100px;
-    left: -1000px;
+    top: 160px;
+    left: -20%;
     height: 110px;
-    width: 200vw;
+    scale: 270%;
   }
   .bottom {
     display: none;

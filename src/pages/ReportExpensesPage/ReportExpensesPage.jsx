@@ -9,8 +9,13 @@ import { ExpensesChart } from "../../components/ExpensesChart/ExpensesChart";
 import css from "./ReportExpensesPage.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getDataForPeriod } from "../../redux/controllers/userController";
-import { selectUserCurrentExpenses, selectUserCurrentIncome, selectUserExpenseData } from "../../redux/slices/userSlice";
+import {
+  selectUserCurrentExpenses,
+  selectUserCurrentIncome,
+  selectUserExpenseData,
+} from "../../redux/slices/userSlice";
 import { selectAccessToken } from "../../redux/slices/authSlice";
+import sprite from "../../assets/svgs-sprite.svg";
 
 const ReportExpensesPage = () => {
   const [date, setDate] = useState(new Date());
@@ -32,44 +37,59 @@ const ReportExpensesPage = () => {
   };
 
   useEffect(() => {
-    if (token) dispatch(getDataForPeriod(String(date.getFullYear()) + "-" + String(date.getMonth() + 1).padStart(2, "0")));
+    if (token)
+      dispatch(
+        getDataForPeriod(
+          String(date.getFullYear()) +
+            "-" +
+            String(date.getMonth() + 1).padStart(2, "0")
+        )
+      );
 
     if (expenseData) {
-      const selected = getSelectedExpenses(
-        selectedIcon,
-        expenseData
-      );
+      const selected = getSelectedExpenses(selectedIcon, expenseData);
       setSelectedExpense(selected);
     }
   }, [selectedIcon, date, token]);
 
   return (
     <>
-    <Main></Main>
-    <div className={css["reports-page-main-container"]}>
-      <div className={css["reports-page-first-container"]}>
-        <MainPageButton />
-        <BalanceComponent />
-        <CurrentPeriodButton date={date} setDate={setDate} />
+      <Main></Main>
+      <div className={css.background}>
+        <svg className={css.kapustas}>
+          <use href={`${sprite}#icon-upper-kapustas`}></use>
+        </svg>
+        <svg className={css.top}>
+          <use href={`${sprite}#icon-two-kapustas`}></use>
+        </svg>
+        <svg className={css.bottom}>
+          <use href={`${sprite}#icon-two-kapustas`}></use>
+        </svg>
       </div>
+      <div className={css["reports-page-main-container"]}>
+        <div className={css["reports-page-first-container"]}>
+          <MainPageButton />
+          <BalanceComponent />
+          <CurrentPeriodButton date={date} setDate={setDate} />
+        </div>
 
-      <div className={css["reports-page-second-container"]}>
-        <IncomeExpensesComparison
-          expenses={currentExpenses}
-          income={currentIncome}
-        />
+        <div className={css["reports-page-second-container"]}>
+          <IncomeExpensesComparison
+            expenses={currentExpenses}
+            income={currentIncome}
+          />
+        </div>
+        <div className={css["reports-page-third-container"]}>
+          <ExpensesDetailedReport
+            transactionsData={expenseData}
+            selectedIcon={selectedIcon}
+            setSelectedIcon={setSelectedIcon}
+          />
+        </div>
+        <div className={css["reports-page-fourth-container"]}>
+          <ExpensesChart expenses={selectedExpense} />
+        </div>
       </div>
-      <div className={css["reports-page-third-container"]}>
-        <ExpensesDetailedReport
-          transactionsData={expenseData}
-          selectedIcon={selectedIcon}
-          setSelectedIcon={setSelectedIcon}
-        />
-      </div>
-      <div className={css["reports-page-fourth-container"]}>
-        <ExpensesChart expenses={selectedExpense} />
-      </div>
-    </div>
     </>
   );
 };
