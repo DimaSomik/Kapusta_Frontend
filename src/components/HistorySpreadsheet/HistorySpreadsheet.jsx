@@ -58,7 +58,7 @@ const HistorySpreadsheet = ({ isExpense }) => {
             <th className={styles.tableHeader}></th>
           </tr>
         </thead>
-        <tbody className={styles.tableBody}>
+        <tbody>
           {records.map((record) => {
             if (isExpense) {
               if (

@@ -21,21 +21,16 @@
 .table {
   border-radius: 12px;
 }
-.tableBody {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
 
 .row {
   position: relative;
-  height: 35px;
+  height: 40px;
   width: 90vw;
   color: var(--primary-color);
 }
 .date {
   position: absolute;
-  bottom: 0;
+  bottom: 3px;
   font-size: 1rem;
 }
 .desc {
@@ -46,7 +41,7 @@
 .category {
   position: absolute;
   left: 80px;
-  bottom: 0;
+  bottom: 3px;
   font-size: 1rem;
 }
 
@@ -102,8 +97,6 @@
     max-width: 600px;
   }
   .tableBody {
-    display: flex;
-    flex-direction: column;
     gap: 0;
   }
   .tableHeaderWrapper {
@@ -122,6 +115,7 @@
   }
 
   .row {
+    height: 35px;
     outline: 2px solid var(--accent-color);
     justify-content: center;
     align-items: center;
@@ -137,27 +131,29 @@
 
   .date {
     font-size: var(--default-font-size);
-    bottom: 10px;
+    bottom: 8px;
     left: 18px;
   }
   .desc {
     left: 140px;
-    top: 10px;
+    top: 12px;
     font-size: var(--default-font-size);
     font-weight: 400;
     color: var(--primary-color);
   }
   .category {
     left: 307px;
-    top: 10px;
+    top: 12px;
     font-size: var(--default-font-size);
     font-weight: 400;
     color: var(--primary-color);
   }
   .sum {
+    top: 12px;
     right: 113px;
   }
   .sumIncome {
+    top: 12px;
     right: 113px;
   }
   .button {
