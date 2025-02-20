@@ -2,46 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 100%;
-}
-
-.expensesButton {
-  width: 100px;
-  height: 32px;
-  background-color: #FEFEFE;
-  border: transparent;
-  color: var(--text-dark-color);
-  top: 161px;
-  border-top-left-radius: 15%;
-  border-top-right-radius: 15%;
-  position: absolute;
-}
-
-.expensesButton:hover {
-  color: #FF751D;
-  background-color: #f0efef;
-  transition: color var(--transition-time) var(--transition-timing-function),
-    background-color var(--transition-time) var(--transition-timing-function);
-}
-
-.incomeButton {
-  width: 100px;
-  height: 32px;
-  background-color: #FEFEFE;
-  border: transparent;
-  color: var(--text-dark-color);
-  top: 161px;
-  left: 280px;
-  border-top-left-radius: 15%;
-  border-top-right-radius: 15%;
-  position: absolute;
-}
-
-.incomeButton:hover {
-  color: #FF751D;
-  background-color: #f0efef;
-  transition: color var(--transition-time) var(--transition-timing-function),
-    background-color var(--transition-time) var(--transition-timing-function);
+  width: 100%;
 }
 
 .date {
@@ -57,7 +18,9 @@
   height: 20px;
   fill: var(--icon-fill-color);
   flex-shrink: 0;
+  cursor: pointer;
 }
+
 .input {
   width: 100%;
   padding: 12px;
@@ -228,7 +191,7 @@ input::placeholder {
   display: flex;
   align-items: center;
   position: relative;
-  cursor: pointer;
+
   gap: 8px;
 }
 
@@ -240,11 +203,43 @@ input::placeholder {
   height: 100%;
   opacity: 0;
   cursor: pointer;
+  z-index: 10;
+}
+
+.navigation {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+.expensesButton {
+  width: 49.5%;
+  height: 53px;
+  background-color: var(--secondary-color);
+  border: none;
+  font-size: var(--bigger-font-size);
+  font-weight: bold;
+  color: var(--text-light-color);
+  cursor: pointer;
+}
+
+.incomeButton {
+  width: 49.5%;
+  height: 53px;
+  background-color: var(--accent-color);
+  border: none;
+  font-size: var(--bigger-font-size);
+  font-weight: bold;
+  color: var(--text-dark-color);
+  cursor: pointer;
 }
 
 @media screen and (min-width: 768px /*var(--brakpoint-medium)*/) {
   .container {
-    max-width: 950px;
+    position: relative;
     margin: 0 auto;
   }
   .date {
@@ -323,11 +318,40 @@ input::placeholder {
     margin-top: 32px;
     flex-direction: row;
   }
+  .navigation {
+    position: absolute;
+    top: -63px;
+    left: -40px;
+    width: 300px;
+    height: fit-content;
+  }
+  .expensesButton {
+    height: 40px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-color: white;
+    color: black;
+    transition: color var(--transition-time) var(--transition-timing-function);
+  }
+  .expensesButton:hover {
+    color: var(--secondary-color);
+  }
+  .incomeButton {
+    height: 40px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+
+    background-color: white;
+    color: black;
+    transition: color var(--transition-time) var(--transition-timing-function);
+  }
+  .incomeButton:hover {
+    color: var(--secondary-color);
+  }
 }
 
 @media screen and (min-width: 1280px /*var(--brakpoint-large)*/) {
   .container {
-    max-width: 1200px;
     gap: 32px;
     flex-direction: row;
     margin: 0;
