@@ -45,7 +45,6 @@ Kapusta is a financial management web application that helps users track their e
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Contributors](#contributors)
-- [License](#license)
 
 ## Installation
 
@@ -71,6 +70,8 @@ To run the project locally, follow these steps:
 
    The application will be available at http://localhost:5173 (default Vite port).
    If you’re using a different setup, check your terminal output for the correct URL.
+
+   Deployment: https://kapusta-frontend.vercel.app
 
 ## Usage
 
