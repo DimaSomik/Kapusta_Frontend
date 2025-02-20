@@ -11,12 +11,12 @@ const InputExpensesPage = () => {
   //not working while resizing window
   const displayingSummaryIn = () => {
     if (window.innerWidth > 1280) {
-      return <SummaryList isExpense={true} />;
+      return <SummaryList isExpense={false} />;
     }
   };
   const displayingSummaryOut = () => {
     if (window.innerWidth < 1280) {
-      return <SummaryList isExpense={true} />;
+      return <SummaryList isExpense={false} />;
     }
   };
 

@@ -130,7 +130,7 @@ const HistorySpreadsheet = ({ isExpense }) => {
       {showModal && (
         <ConfirmationModal
           message="Are you sure you want to delete this record?"
-          onConfirm={confirmDelete}
+          onDelete={confirmDelete}
           onCancel={() => setShowModal(false)}
         />
       )}

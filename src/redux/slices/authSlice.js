@@ -27,9 +27,9 @@ export const authSlice = createSlice({
         state.isLoggedIn = true;
       })
       .addCase(logOut.fulfilled, (state) => {
-        state.accessToken = null;
-        state.refreshToken = null;
-        state.sid = null;
+        state.accessToken = "";
+        state.refreshToken = "";
+        state.sid = "";
         state.isLoggedIn = false;
         state.isLogin = false;
       });

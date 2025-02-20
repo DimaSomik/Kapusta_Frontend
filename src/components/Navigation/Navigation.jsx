@@ -1,8 +1,6 @@
 import styles from "../Navigation/Navigation.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { logOut } from "../../redux/controllers/authController";
+import { useSelector } from "react-redux";
 import { selectUserEmail } from "../../redux/slices/userSlice";
-import { useNavigate } from "react-router-dom";
 import { selectIsLoggedIn } from "../../redux/slices/authSlice";
 import icon from "../../assets/svgs-sprite.svg";
 import { ConfirmationModal } from "../ConfirmationModal/ConfirmationModal";
@@ -11,18 +9,11 @@ import { useState } from "react";
 const Navigation = () => {
   const user = useSelector(selectUserEmail);
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const [showModal, setShowModal] = useState(false);
 
   const handleLogout = () => {
     setShowModal(true);
-  };
-
-  const confirmLogout = () => {
-    dispatch(logOut());
-    navigate("/");
   };
 
   const cancelLogout = () => {
@@ -64,7 +55,6 @@ const Navigation = () => {
       {showModal && (
         <ConfirmationModal
           message="Do you really want to leave?"
-          onConfirm={confirmLogout}
           onCancel={cancelLogout}
         />
       )}
