@@ -2,10 +2,11 @@ import { Field, Form, Formik, ErrorMessage } from "formik";
 import css from "./AuthForm.module.css";
 import * as Yup from "yup";
 import sprite from "../../assets/svgs-sprite.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { logIn } from "../../redux/controllers/authController";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useLocation } from "react-router-dom";
+import { selectAccessToken } from "../../redux/slices/authSlice";
 
 const initialValues = {
   email: "",
@@ -27,6 +28,15 @@ const LoginForm = ({ onToggleForm }) => {
   const [loginError, setLoginError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
+  const accessToken = useSelector(selectAccessToken);
+
+  useEffect(() => {
+    // Sprawdzenie, czy użytkownik jest zalogowany, jeśli tak - przekierowanie
+    if (accessToken) {
+      navigate("/transaction/expenses");
+    }
+  }, [accessToken, navigate]);
 
   const handleSubmit = async (values, actions) => {
     try {
@@ -51,6 +61,16 @@ const LoginForm = ({ onToggleForm }) => {
   const handleGoogleLogin = () => {
     window.location.href = `https://kapusta-fnr2.onrender.com/auth/google`;
   };
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(location.search);
+    const googleToken = urlParams.get("token");
+
+    if (googleToken) {
+      localStorage.setItem("accessToken", googleToken);
+      navigate("/transaction/expenses");
+    }
+  }, [location, navigate]);
 
   return (
     <div className={css.form}>
