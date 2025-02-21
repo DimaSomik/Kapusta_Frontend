@@ -18,7 +18,7 @@
 }
 
 .registerForm {
-  min-height: 650px;
+  min-height: 600px;
 }
 
 .loginGoogle {
@@ -171,6 +171,11 @@
 }
 
 @media screen and (min-width: 768px /*var(--brakpoint-medium)*/) {
+
+  .registerForm {
+    min-height: 680px;
+  }
+
   .form {
     width: 426px;
     height: 552px;

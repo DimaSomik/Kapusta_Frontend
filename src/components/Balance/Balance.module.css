@@ -72,7 +72,6 @@
     gap: 21px;
     margin-top: 0px;
     padding: 16px;
-    margin-bottom: 20px;
     background-color: white;
     border-radius: 20px;
     border-bottom-left-radius: 0;
@@ -92,7 +91,7 @@
   }
 
   .balanceWrapper :nth-child(3) {
-    display: none;
+    display: inline-block;
   }
 
   .balanceInput {

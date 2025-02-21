@@ -44,6 +44,7 @@
     overflow: hidden;
     text-transform: uppercase;
     font-size: var(--default-font-size);
+    margin-bottom: 30px;
   }
 }
 

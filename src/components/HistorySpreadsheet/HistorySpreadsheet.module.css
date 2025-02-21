@@ -95,6 +95,7 @@
 @media screen and (min-width: 768px /*var(--brakpoint-medium)*/) {
   .tableWrapper {
     max-width: 600px;
+    max-height: 360px;
   }
   .tableBody {
     gap: 0;
@@ -180,7 +181,7 @@
   }
   .tableWrapper {
     max-width: 750px;
-    max-height: 480px;
+    max-height: 471px;
   }
 
   .tableWrapper::-webkit-scrollbar {

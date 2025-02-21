@@ -72,6 +72,10 @@
   .reports-page-first-container > :nth-child(1) {
     margin-right: 0;
   }
+
+  .reports-page-first-container > :nth-child(2) > :nth-child(2) > :nth-child(3) {
+    display: none;
+  }
   
   .background {
     position: fixed;
@@ -116,6 +120,10 @@
   }
   .reports-page-first-container > :nth-child(2) {
     margin-top: 0;
+  }
+
+  .reports-page-first-container > :nth-child(2) > :nth-child(2) > :nth-child(3) {
+    display: unset;
   }
   
   .kapustas {

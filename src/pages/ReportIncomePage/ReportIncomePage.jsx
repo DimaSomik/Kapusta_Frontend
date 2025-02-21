@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDataForPeriod } from "../../redux/controllers/userController";
 import { selectUserCurrentExpenses, selectUserCurrentIncome, selectUserIncomeData } from "../../redux/slices/userSlice";
 import { selectAccessToken } from "../../redux/slices/authSlice";
+import sprite from "../../assets/svgs-sprite.svg";
 
 const ReportIncomePage = () => {
   const [date, setDate] = useState(new Date());
@@ -45,6 +46,17 @@ const ReportIncomePage = () => {
   return (
     <>
     <Main></Main>
+    <div className={css.background}>
+            <svg className={css.kapustas}>
+              <use href={`${sprite}#icon-upper-kapustas`}></use>
+            </svg>
+            <svg className={css.top}>
+              <use href={`${sprite}#icon-two-kapustas`}></use>
+            </svg>
+            <svg className={css.bottom}>
+              <use href={`${sprite}#icon-two-kapustas`}></use>
+            </svg>
+          </div>
     <div className={css["reports-page-main-container"]}>
       <div className={css["reports-page-first-container"]}>
         <MainPageButton />

@@ -7,6 +7,7 @@
   align-items: center;
   justify-content: center;
   margin-top: 90px;
+  margin-bottom: 25px;
   transition: color var(--transition-time) var(--transition-timing-function);
 }
 
