@@ -1,19 +1,36 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { register, logIn, logOut } from "../controllers/authController";
+import axios from "axios";
+
+// Pobranie tokena z localStorage przy starcie aplikacji
+const storedAccessToken = localStorage.getItem("accessToken") || "";
+const storedRefreshToken = localStorage.getItem("refreshToken") || "";
+const storedSid = localStorage.getItem("sid") || "";
+const isUserLoggedIn = !!storedAccessToken; // Sprawdzamy, czy token istnieje
+
+// Ustawienie nagłówka Authorization, jeśli jest token
+if (storedAccessToken) {
+  axios.defaults.headers.common.Authorization = `Bearer ${storedAccessToken}`;
+}
 
 export const authSlice = createSlice({
   name: "auth",
   initialState: {
-    accessToken: "",
-    refreshToken: "",
-    sid: "",
-    isLoggedIn: false,
+    accessToken: storedAccessToken,
+    refreshToken: storedRefreshToken,
+    sid: storedSid,
+    isLoggedIn: isUserLoggedIn,
     isLogin: false,
+    isUserLoaded: false,
   },
   reducers: {
     toggleIsLogin: (state) => {
       state.isLogin = !state.isLogin;
     },
+    setUserFromToken: (state, action) => {
+      state.user = action.payload;
+      state.isUserLoaded = true; // Ustawiamy dane użytkownika z tokenu
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -25,13 +42,30 @@ export const authSlice = createSlice({
         state.refreshToken = action.payload.refreshToken;
         state.sid = action.payload.sid;
         state.isLoggedIn = true;
+
+        // Zapisywanie tokenów w localStorage
+        localStorage.setItem("accessToken", action.payload.accessToken);
+        localStorage.setItem("refreshToken", action.payload.refreshToken);
+        localStorage.setItem("sid", action.payload.sid);
+
+        // Ustawienie tokena w nagłówku
+        axios.defaults.headers.common.Authorization = `Bearer ${action.payload.accessToken}`;
       })
       .addCase(logOut.fulfilled, (state) => {
-        state.accessToken = null;
-        state.refreshToken = null;
-        state.sid = null;
+        state.accessToken = "";
+        state.refreshToken = "";
+        state.sid = "";
         state.isLoggedIn = false;
         state.isLogin = false;
+        state.user = null;
+
+        // Czyszczenie localStorage
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("refreshToken");
+        localStorage.removeItem("sid");
+
+        // Usunięcie tokena z nagłówka
+        axios.defaults.headers.common.Authorization = "";
       });
   },
   selectors: {
@@ -43,7 +77,7 @@ export const authSlice = createSlice({
   },
 });
 
-export const { toggleIsLogin } = authSlice.actions;
+export const { toggleIsLogin, setUserFromToken } = authSlice.actions;
 export const {
   selectAccessToken,
   selectRefreshToken,
