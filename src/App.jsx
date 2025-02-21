@@ -52,7 +52,7 @@ function App() {
           path="/"
           element={
             <RestrictedRoute
-              redirectTo="/transaction/expenses"
+              redirectTo="/transaction/income"
               component={<AuthPage />}
             />
           }

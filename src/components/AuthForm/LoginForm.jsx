@@ -34,7 +34,7 @@ const LoginForm = ({ onToggleForm }) => {
   useEffect(() => {
     // Sprawdzenie, czy użytkownik jest zalogowany, jeśli tak - przekierowanie
     if (accessToken) {
-      navigate("/transaction/expenses");
+      navigate("/transaction/income");
     }
   }, [accessToken, navigate]);
 
@@ -68,7 +68,7 @@ const LoginForm = ({ onToggleForm }) => {
 
     if (googleToken) {
       localStorage.setItem("accessToken", googleToken);
-      navigate("/transaction/expenses");
+      navigate("/transaction/income");
     }
   }, [location, navigate]);
 

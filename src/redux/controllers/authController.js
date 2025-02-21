@@ -53,7 +53,7 @@ export const googleLogin = createAsyncThunk(
       const state = getState();
       if (state.auth.isUserLoaded) {
 
-        window.location.href = "/transaction/expenses";
+        window.location.href = "/transaction/income";
       }
 
       return res.data;

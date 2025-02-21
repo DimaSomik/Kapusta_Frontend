@@ -3,22 +3,28 @@ import styles from "./Balance.module.css";
 import { BalanceModal } from "../BalanceModal/BalanceModal";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { updateBalance } from "../../redux/controllers/userController";
+import { getUserData, updateBalance } from "../../redux/controllers/userController";
 import { selectUserBalance } from "../../redux/slices/userSlice";
+import { selectAccessToken } from "../../redux/slices/authSlice";
 
 export const BalanceComponent = () => {
   const userBalance = useSelector(selectUserBalance);
   const dispatch = useDispatch();
   const [newBalance, setNewBalance] = useState(userBalance);
+  const accessToken = useSelector(selectAccessToken);
 
   useEffect(() => {
+    if (accessToken) {
+      dispatch(getUserData());
+    };
+
     const modal = document.querySelector("#modal");
     setNewBalance(userBalance);
 
     if (userBalance !== 0) {
       modal.style.display = "none";
     }
-  }, [userBalance]);
+  }, [userBalance, accessToken]);
 
   const handleSubmit = () => {
     dispatch(

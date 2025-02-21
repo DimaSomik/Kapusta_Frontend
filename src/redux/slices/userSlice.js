@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { logIn, logOut } from "../controllers/authController";
-import { updateBalance, deleteTransaction, getExpenses, addExpense, getIncome, addIncome, getDataForPeriod } from "../controllers/userController";
+import { updateBalance, deleteTransaction, getExpenses, addExpense, getIncome, addIncome, getDataForPeriod, getUserData } from "../controllers/userController";
 
 export const userSlice = createSlice({
     name: "user",
@@ -28,6 +28,11 @@ export const userSlice = createSlice({
                 state.balance = 0;
                 state.id = null;
                 state.transactions = [];
+            })
+            .addCase(getUserData.fulfilled, (state, action) => {
+                state.email = action.payload.email;
+                state.balance = action.payload.balance;
+                state.transactions = action.payload.transactions;
             })
             .addCase(updateBalance.fulfilled, (state, action) => {
                 state.balance = action.payload.newBalance;

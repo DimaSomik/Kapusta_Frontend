@@ -1,4 +1,3 @@
-import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import { auth, provider } from "./firebaseConfig";
 import { signInWithPopup } from "firebase/auth";
