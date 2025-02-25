@@ -114,10 +114,10 @@ After launching the application, you can:
 
 ## Features
 
-- User authentication (login/register)
-- Expense and income tracking
-- Financial reports and analytics
-- Responsive design
+- User authentication (login/register).
+- Expense and income tracking.
+- Financial reports and analytics.
+- Responsive design.
 
 ## Technologies Used
 
