@@ -25,7 +25,7 @@
 
 ### Backend
 
-This is the backend repository for the Kapusta project.
+This is the backend repository for the Kapusta project. API is deployed on Render.com, and to use it the owner of the repository must turn it on, otherwise page won't work properly.
 
 🔗 [Check out the repository](https://github.com/DimaSomik/Kapusta_Backend)
 
